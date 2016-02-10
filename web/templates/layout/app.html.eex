@@ -7,8 +7,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Hello Area91!</title>
+    <title>[Area91]</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="icon" type="image/png" href="<%= static_path(@conn, "/assets/favicon.png") %>">
   </head>
 
   <body>
@@ -16,10 +17,10 @@
       <header class="header">
         <nav role="navigation">
           <ul class="nav nav-pills pull-right">
-            <li><a href="http://www.phoenixframework.org/docs">Get Started</a></li>
+            <li><a href="http://www.nintaitrading.eu" target="_new">NintaiTrading</a></li>
           </ul>
         </nav>
-        <span class="logo"></span>
+        <!--span class="logo"></span-->
       </header>
 
       <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
