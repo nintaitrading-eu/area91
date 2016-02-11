@@ -16,7 +16,9 @@ defmodule Area91.Router do
   scope "/", Area91 do
     pipe_through :browser # Use the default browser stack
 
-    get "/", MainController, :mainpage
+    get "/", MainController, :main
+    get "/admin/account", AdminAccountController, :account
+    resources "/admin/account", AdminAccountController
   end
 
   # Other scopes may use custom stacks.
