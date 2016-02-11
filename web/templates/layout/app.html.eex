@@ -29,7 +29,8 @@
             <div class="custom-menu-screen"></div>
             <ul class="pure-menu-list">
                 <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
-                <li class="pure-menu-item"><a href="/admin/account" class="pure-menu-link">Account</a></li>
+                <li class="pure-menu-item"><a href="/finance/leverage" class="pure-menu-link">[f]Leverage</a></li>
+                <li class="pure-menu-item"><a href="/admin/account" class="pure-menu-link">[a]Account</a></li>
             </ul>
         </div>
     </div>

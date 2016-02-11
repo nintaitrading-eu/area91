@@ -16,9 +16,14 @@ defmodule Area91.Router do
   scope "/", Area91 do
     pipe_through :browser # Use the default browser stack
 
+    ### Main
     get "/", MainController, :main
+    ### Admin
     get "/admin/account", AdminAccountController, :account
     resources "/admin/account", AdminAccountController
+    ### Finance
+    get "/finance/leverage", FinanceLeverageController, :leverage
+    #resources "/finance/leverage", AdminAccountController
   end
 
   # Other scopes may use custom stacks.
