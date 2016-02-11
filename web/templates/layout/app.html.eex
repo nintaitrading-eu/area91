@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <title>[Area91]</title>
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/app.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/pure-min.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/custom_style.css") %>">
     <link rel="icon" type="image/png" href="<%= static_path(@conn, "/assets/favicon.png") %>">
   </head>
 
