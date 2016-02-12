@@ -9,7 +9,7 @@
     <meta name="generator" content="">
     <meta name="author" content="Andy Nagels">
     <meta name="copyright" content="&copy; 2016&ndash;eternity Andy Nagels">
-    <title>Area91y</title>
+    <title>Area91</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/pure-min.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/custom_style.css") %>">
     <link rel="icon" type="image/png" href="<%= static_path(@conn, "/favicon.png") %>">
@@ -22,7 +22,7 @@
     </div-->
     <div class="custom-menu-wrapper">
         <div class="pure-menu custom-menu custom-menu-top">
-            <a href="#" class="pure-menu-heading custom-menu-brand"><img src="<%= static_path(@conn, "/nintaibvba.png") %>" /></a>
+            <a href="#" class="pure-menu-heading custom-menu-brand"><img src="<%= static_path(@conn, "/images/nintaibvba.png") %>" /></a>
             <a href="#" class="custom-menu-toggle" id="toggle"><s class="bar"></s><s class="bar"></s></a>
         </div>
         <div class="pure-menu pure-menu-horizontal pure-menu-scrollable custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
@@ -33,7 +33,7 @@
                 <li class="pure-menu-item"><a href="/admin/account" class="pure-menu-link">[a]Account</a></li>
             </ul>
         </div>
-    </div><img src="<%= static_path(@conn, "/nintaibvba.png") %>" />
+    </div>
     <script>
         (function (window, document) {
             document.getElementById('toggle').addEventListener('click', function (e) {
