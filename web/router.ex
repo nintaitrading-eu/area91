@@ -22,8 +22,8 @@ defmodule Area91.Router do
     get "/admin/account", AdminAccountController, :account
     resources "/admin/account", AdminAccountController
     ### Invoice
-    get "/invoice/invoice", InvoiceInvoiceController, :invoice
-    resources "/invoice/invoice", InvoiceInvoiceController
+    get "/invoice", InvoiceController, :invoice
+    resources "/invoice", InvoiceController
     ### Finance
     get "/finance/leverage", FinanceLeverageController, :leverage
     #resources "/finance/leverage", AdminAccountController

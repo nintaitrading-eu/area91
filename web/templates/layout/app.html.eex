@@ -40,7 +40,8 @@
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                     <a href="#" id="mnu-invoice" class="pure-menu-link">Invoice</a>
                     <ul class="pure-menu-children">
-                        <li class="pure-menu-item"><a href="/invoice/invoice" class="pure-menu-link">Create</a></li>
+                        <li class="pure-menu-item"><a href="/invoice/new" class="pure-menu-link">New</a></li>
+                        <li class="pure-menu-item"><a href="/invoice" class="pure-menu-link">Overview</a></li>
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
