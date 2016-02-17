@@ -1,0 +1,198 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Author: Andy Nagels
+% Date: 2016-02-16
+% Latex invoice template for delivered services.
+% Original code was ased on the template found here:
+% http://www.tristancollins.me/computing/latex-invoice-template-for-vat-registered-consultants/
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\documentclass[11pt,a4paper]{article}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Imports
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\usepackage{datetime}
+\usepackage{fp}
+\usepackage{booktabs}
+\usepackage{ragged2e}
+\usepackage{longtable}
+\usepackage{hhline}
+%\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{marvosym}
+\usepackage{ifpdf}
+\usepackage{textcomp} % for euro symbol
+\ifpdf
+  \usepackage[pdftex]{graphicx}
+\else
+  \usepackage[dvips]{graphicx}\fi
+%\usepackage{invoice}
+%\usepackage[scale=0.8]{geometry}
+\usepackage[margin=1in, top=1in, bottom=1in]{geometry}
+
+
+\pagestyle{empty}
+\setlength{\parindent}{0pt}
+\addtolength{\parskip}{5pt}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Command definitions
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\FirstName{FIRSTNAME}
+\def\FamilyName{LASTNAME}
+\def\FileAuthor{\FirstName \FamilyName}
+\def\FileTitle{XXXX Invoice}
+\def\FileSubject{XXXX Invoice}
+\def\FileKeyWords{XXXX Invoice}
+
+%\newcounter{l_cnt}
+%\setcounter{l_cnt}{0}
+%\def\inc{\stepcounter{l_cnt}\thecnt}
+
+\gdef\TotalAct{0} % Activity total
+\gdef\TotalExp{0} % Expense total
+\gdef\TotalVAT{0} % VAT total
+\gdef\TotalGrand{0} % Grand total
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - ACTIVITIES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\activity}[3]{%
+ #1  &#2   &#3  &\FPmul\temp{#2}{#3}\FPround\temp{\temp}{2}\temp
+% #2 x #3, rounded to 2 decimal places and stored as \temp
+% Calculate totals
+\FPadd\total{\TotalAct}{\temp} % Add \temp to \total
+\FPround\total{\total}{2} % Round \total to 2 decimal places
+\global\let\TotalAct\total % Sets \TotalHT = \total
+\\
+}
+\newcommand{\TotalTTC}{\TotalAct}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - EXPENSES
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\expense}[2]{%
+ #1  & &  &\FPmul\temptwo{1}{#2}\FPround\temptwo{\temptwo}{2}\temptwo
+% #2 x #3, roun­ded to 2 decimal places and stored as \temp
+% Calculate totals
+\FPadd\totaltwo{\TotalExp}{\temptwo} % Add \temp to \total
+\FPround\totaltwo{\totaltwo}{2} % Round \total to 2 decimal places
+\global\let\TotalExp\totaltwo % Sets \TotalHT = \total
+\\ }
+\newcommand{\TotalTTCtwo}{\TotalExp}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - VAT
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\VAT}{
+ VAT (21\%) &&&\FPadd\tempthree{\TotalTTC}{\TotalTTCtwo}\FPmul\tempthree{\tempthree}{0.2}\FPround\tempthree{\tempthree}{2}\tempthree
+% #2 x #3, roun­ded to 2 decimal places and stored as \temp
+% Totals
+\FPadd\totalthree{\TotalVAT}{\tempthree} % Add \temp to \total
+\FPround\totalthree{\totalthree}{2} % Round \total to 2 decimal places
+\global\let\TotalVAT\totalthree % Sets \TotalHT = \total
+\\
+}
+\newcommand{\TotalTTCthree}{\TotalVAT}
+
+\begin{document}
+\sffamily % for use with a resume using sans serif fonts;
+%\rmfamily % for use with a resume using serif fonts;
+\hfill%
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - FROM ADDRESS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{.6\textwidth}
+\raggedleft%
+{\bfseries Nintai bvba}\\[.35ex]
+\small\itshape%
+Astridlaan 28\\
+2580 Putte\\
+Antwerpen\\
+Belgi\"{e}\\[.35ex]
+\Telefon~+32 486 606 002\\
+\Letter~{nintaitrading@gmail.com}
+\end{minipage}\\[1em]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - TO ADDRESS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{.4\textwidth}
+\raggedright
+{\bfseries InvoicedCompany}\\[.35ex]
+\small\itshape
+Address1\\
+Address2\\
+Address3\\
+\end{minipage}\\[1em]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - INVOICE NUMBER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{minipage}[t]{.4\textwidth}
+\bfseries Invoice Number: {\texttt{XXX0000}}
+\end{minipage}
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - MESSAGE
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\hfill % US style
+\\[1em] % UK style
+\begin{minipage}[t]{.4\textwidth}
+%\raggedleft % US style
+%\formatdate{19}{8}{2013}
+\the\year-\the\month-\the\day
+\end{minipage}\\[1em]
+%\raggedright
+Dear XXXXX,\\[0.75em]
+%
+Please find costs for consultancy services provided for the period 1\textsuperscript{st} August to 19\textsuperscript{th} August 2013.
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Invoice template - INVOICE PART
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{longtable}{p{8cm}rrr}
+%\toprule
+\multicolumn{4}{c}{\textbf{Project Name}}\\
+\rule{0pt}{4ex}{\bfseries Activity} & Rate & Qty & Amount (\texteuro)\\
+\midrule
+%%%% PUT YOUR DAYS WORKED AND RATE HERE
+    \activity{Activity 1}{250.00}{12}
+    \activity{Activity 2}{20.00}{3.5}
+\rule{0pt}{4ex}{\bfseries Expenses} &  &  & Amount (\texteuro)\\
+\midrule
+%%%% PUT YOUR EXPENSES HERE
+    \expense{Flights}{123.45}
+    \expense{Hotels}{123.45}
+    \expense{Trains}{74.15}
+    \expense{Subsistence}{17.63}
+    \expense{Taxis}{640.90}
+    \expense{Calls and Data}{230.54}
+\midrule
+ Sum Fees   &&& \TotalTTC\\
+ Sum Expenses   &&& \TotalTTCtwo\\
+\VAT
+%\bottomrule
+\hhline{====} 
+{\bfseries Total} &&& \FPadd\tempfour{\TotalTTC}{\TotalTTCtwo}\FPround\tempfour{\tempfour}{2}\FPadd\tempfour{\tempfour}{\TotalTTCthree}\FPround\tempfour{\tempfour}{2}{\bfseries \tempfour} \\
+%\bottomrule
+\end{longtable}
+
+If this could paid to the following account:\\
+BANK ADDRESS\\
+IBAN: BE64 6528 3426 4952\\
+BIC: HBKABE22
+
+For and on behalf of XXXXXXXXXX,\\[0.75em]
+
+{\bfseries Nintai bvba}
+%
+\vfill%
+
+Company Registration Number: BE 0544.963.222\\
+Registered Office Address: XXXXXXXXXX\\
+VAT Number: BE 0544.963.222
+%{\slshape Enclosure}
+\end{document}

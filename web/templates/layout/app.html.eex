@@ -38,6 +38,12 @@
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <a href="#" id="mnu-invoice" class="pure-menu-link">Invoice</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><a href="/invoice/invoice" class="pure-menu-link">Create</a></li>
+                    </ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                     <a href="#" id="mnu-admin" class="pure-menu-link">Admin</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/admin/account" class="pure-menu-link">Account</a></li>
