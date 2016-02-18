@@ -204,6 +204,11 @@ body
     background-color: #000;//#002b36;
 }
 
+.centered
+{
+    text-align: center;
+}
+
 #main
 {
     width: 100%; 
