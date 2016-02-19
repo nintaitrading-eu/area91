@@ -197,10 +197,10 @@
 
 body
 {
-    /*background-image: url('/static/img/bg-fantasy.jpg');*/
-    background-repeat: no-repeat;
-    background-size: 84%;
-    background-position: top center;
+    background-image: url('../images/nebula_tile.jpg');
+    background-repeat: repeat-x repeat-y;
+    background-size: 100%;
+    //background-position: top center;
     background-color: #000;//#002b36;
 }
 
