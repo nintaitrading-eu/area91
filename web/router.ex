@@ -21,6 +21,12 @@ defmodule Area91.Router do
     ### Admin
     get "/admin/account", AdminAccountController, :account
     resources "/admin/account", AdminAccountController
+    get "/admin/parameter", AdminParameterController, :parameter
+    resources "/admin/parameter", AdminParameterController
+    get "/admin/currency", AdminCurrencyController, :currency
+    resources "/admin/currency", AdminCurrencyController
+    get "/version", VersionController, :version
+    get "/about", VersionController, :version
     ### Invoice
     get "/invoice", InvoiceController, :invoice
     resources "/invoice", InvoiceController

@@ -48,8 +48,11 @@
                     <a href="#" id="mnu-admin" class="pure-menu-link">Admin</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/admin/account" class="pure-menu-link">Account</a></li>
+                        <li class="pure-menu-item"><a href="/admin/currency" class="pure-menu-link">Currency</a></li>
+                        <li class="pure-menu-item"><a href="/admin/parameter" class="pure-menu-link">Parameter</a></li>
                     </ul>
                 </li>
+                <li class="pure-menu-item"><a href="/about" class="pure-menu-link">About</a></li>
             </ul>
         </div>
     </div>

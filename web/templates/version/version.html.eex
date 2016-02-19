@@ -1,0 +1,3 @@
+<p>Admin about/version page is here on Area<%= 80 + 11 %></p>
+<p>Database version = <%= 0.1 %></p>
+<p>Application version = <%= 0.1 %>.<%= 0.0 %></p>
