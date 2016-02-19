@@ -13,6 +13,7 @@ defmodule Area91 do
       supervisor(Area91.Repo, []),
       # Here you could define other workers and supervisors as children
       # worker(Area91.Worker, [arg1, arg2, arg3]),
+      # worker(Area91.Worker, []),
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html

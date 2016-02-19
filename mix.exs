@@ -19,7 +19,7 @@ defmodule Area91.Mixfile do
   def application do
     [mod: {Area91, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex]]
+                    :phoenix_ecto, :postgrex, :connection]]
   end
 
   # Specifies which paths to compile per environment.
@@ -30,7 +30,9 @@ defmodule Area91.Mixfile do
   #
   # Type `mix help deps` for examples and options.
   defp deps do
-    [{:phoenix, "~> 1.1.4"},
+    [
+      {:phoenix, github: "phoenixframework/phoenix", override: True},
+     #{:phoenix, "~> 1.1.4"},
      {:postgrex, ">= 0.0.0"},
      {:phoenix_ecto, "~> 2.0"},
      {:phoenix_html, "~> 2.4"},
