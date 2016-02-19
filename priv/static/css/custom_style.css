@@ -297,3 +297,9 @@ body
     color: #ffffd7;
     font-weight: bold;
 }
+
+.pure-menu-children
+{
+    background-color: #073642;
+    border: 1px solid #859900;
+}
