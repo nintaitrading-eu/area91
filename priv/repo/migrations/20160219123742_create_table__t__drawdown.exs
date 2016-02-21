@@ -2,7 +2,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_DRAWDOWN do
   use Ecto.Migration
 
   def up do
-    "CREATE TABLE T_DRAWDOWN
+    execute "CREATE TABLE T_DRAWDOWN
     (
         drawdown_id serial not null,
         drawdown_current int not null default 0,
@@ -15,7 +15,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_DRAWDOWN do
   end
 
   def down do
-    "drop table T_DRAWDOWN;"
+    execute "drop table T_DRAWDOWN;"
   end
  
   def change do

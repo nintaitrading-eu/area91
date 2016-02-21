@@ -2,7 +2,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
   use Ecto.Migration
 
   def up do
-    "CREATE TABLE T_PARAMETER
+    execute "CREATE TABLE T_PARAMETER
     (
         parameter_id int not null,
         name varchar(50) not null,
@@ -14,7 +14,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
   end
 
   def down do
-    "drop table T_PARAMETER;"
+    execute "drop table T_PARAMETER;"
   end
  
   def change do

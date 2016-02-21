@@ -2,7 +2,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_VERSION do
   use Ecto.Migration
 
   def up do
-    "CREATE TABLE T_VERSION
+    execute "CREATE TABLE T_VERSION
     (
         version_id int not null,
         version varchar(100) not null default '',
@@ -16,7 +16,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_VERSION do
   end
 
   def down do
-    "drop table T_VERSION;"
+    execute "drop table T_VERSION;"
   end
 
   def change do

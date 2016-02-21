@@ -2,7 +2,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
   use Ecto.Migration
 
   def up do
-    "CREATE TABLE T_ACCOUNT
+    execute "CREATE TABLE T_ACCOUNT
     (
         account_id serial not null,
         name varchar(4000) not null,
@@ -15,7 +15,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
   end
 
   def down do
-   "drop table T_ACCOUNTS;" 
+   execute "drop table T_ACCOUNTS;" 
   end
 
 

@@ -2,7 +2,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_MARKET do
   use Ecto.Migration
 
   def up do
-    "CREATE TABLE T_MARKET
+    execute "CREATE TABLE T_MARKET
     (
         market_id int not null,
         code varchar(50) not null,
@@ -18,7 +18,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_MARKET do
   end
 
   def down do
-    "drop table T_MARKET;"
+    execute "drop table T_MARKET;"
   end
 
   def change do
