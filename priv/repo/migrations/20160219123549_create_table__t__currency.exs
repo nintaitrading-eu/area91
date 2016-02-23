@@ -6,7 +6,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY do
     (
         currency_id int not null,
         code varchar(3) not null default '',
-        description varchar(256) not null default '',
+        description varchar(4000) not null default '',
         constraint pk_currency_id primary key(currency_id),
         unique(currency_id)
     );"
