@@ -32,7 +32,7 @@ defmodule Area91.Router do
     resources "/invoice", InvoiceController
     ### Finance
     get "/finance/leverage", FinanceLeverageController, :leverage
-    #resources "/finance/leverage", AdminAccountController
+    get "/finance/drawdown", FinanceDrawdownController, :drawdown
   end
 
   # Other scopes may use custom stacks.

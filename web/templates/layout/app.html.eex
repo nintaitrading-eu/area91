@@ -35,6 +35,7 @@
                     <a href="#" id="mnu-finance" class="pure-menu-link">Finance</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/finance/leverage" class="pure-menu-link">Leverage</a></li>
+                        <li class="pure-menu-item"><a href="/finance/drawdown" class="pure-menu-link">Drawdown</a></li>
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
