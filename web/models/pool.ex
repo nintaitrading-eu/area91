@@ -1,13 +1,16 @@
-defmodule Area91.AdminCurrency do
+defmodule Area91.Pool do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_CURRENCY" do
-    field :code, :string
-    field :description, :string
+  schema "T_POOL" do
+    field :total, :float
+    field :invested, :float
+    field :cash, :float
+    field :is_active, :integer, default: 1
+    timestamps([{:date_created,:date_modified}])
   end
 
-  @required_fields ~w(code)
+  @required_fields ~w(total invested cash)
   @optional_fields ~w()
 
   @doc """
@@ -19,8 +22,6 @@ defmodule Area91.AdminCurrency do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> validate_length(:code, min: 3, max: 3)
-    |> unique_constraint(:code)
   end
 
 end

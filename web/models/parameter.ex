@@ -1,17 +1,16 @@
-defmodule Area91.AdminAccount do
+defmodule Area91.Parameter do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_ACCOUNT" do
+  schema "T_PARAMETER" do
     field :name, :string
+    field :value, :string
     field :description, :string
     field :is_active, :integer, default: 1
-    # Note: timestamps generates inserted_at/updated_at,
-    # the below parameter will make us use our own fieldnames.
     timestamps([{:date_created,:date_modified}])
   end
 
-  @required_fields ~w(name)
+  @required_fields ~w(name value)
   @optional_fields ~w()
 
   @doc """
@@ -23,7 +22,10 @@ defmodule Area91.AdminAccount do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
-    |> unique_constraint(:name)
+    |> validate_length(:name, max: 50)
+    |> validate_length(:value, max: 512)
+    |> unique_constraint(:code)
   end
+
 
 end
