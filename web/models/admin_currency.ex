@@ -20,6 +20,7 @@ defmodule Area91.AdminCurrency do
     model
     |> cast(params, @required_fields, @optional_fields)
     |> validate_length(:code, min: 3, max: 3)
+    |> unique_constraint(:code)
   end
 
 end

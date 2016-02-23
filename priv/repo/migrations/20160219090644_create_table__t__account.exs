@@ -10,7 +10,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
         is_active int not null default 1,
         date_created timestamp not null default '1900-01-01',
         date_modified timestamp not null default '1900-01-01',
-        constraint pk_account_id primary key(account_id)
+        constraint pk_account_id primary key(account_id),
+        unique(name)
     );" 
   end
 
