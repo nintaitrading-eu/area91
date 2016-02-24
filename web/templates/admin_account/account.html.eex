@@ -1,1 +1,19 @@
-<p>Admin account page is here on Area<%= 80 + 11 %></p>
+<p>
+  <div class="center">
+    <a href="/account/new" class="btn btn-primary">New</a>
+  </div>
+  <table>
+    <thead>
+      <tr>
+        <th>name</th>
+        <th>description</th>
+      </tr>
+    </thead>
+    <%= for l_account <- @account do %>
+    <tr>
+      <td><%= l_account.name %></td> 
+      <td><%= l_account.description %></td> 
+    </tr>
+    <% end %>
+  </table>
+</p>
