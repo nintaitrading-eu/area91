@@ -2,7 +2,7 @@ defmodule Area91.Currency do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_CURRENCY" do
+  schema "t_currency" do
     field :code, :string
     field :description, :string
   end

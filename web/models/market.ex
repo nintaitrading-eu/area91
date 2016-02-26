@@ -2,7 +2,7 @@ defmodule Area91.Market do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_MARKET" do
+  schema "t_market" do
     field :code, :string
     field :name, :string
     field :country, :string

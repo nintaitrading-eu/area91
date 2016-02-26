@@ -2,7 +2,7 @@ defmodule Area91.Account do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_ACCOUNT" do
+  schema "t_account" do
     field :name, :string
     field :description, :string
     field :is_active, :integer, default: 1

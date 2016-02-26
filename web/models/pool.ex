@@ -2,7 +2,7 @@ defmodule Area91.Pool do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_POOL" do
+  schema "t_pool" do
     field :total, :float
     field :invested, :float
     field :cash, :float

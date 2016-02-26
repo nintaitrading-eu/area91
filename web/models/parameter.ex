@@ -2,7 +2,7 @@ defmodule Area91.Parameter do
   use Ecto.Schema
   import Ecto.Changeset
 
-  schema "T_PARAMETER" do
+  schema "t_parameter" do
     field :name, :string
     field :value, :string
     field :description, :string
