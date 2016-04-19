@@ -3,6 +3,7 @@ defmodule Area91.Account do
   import Ecto.Changeset
 
   schema "t_account" do
+    field :id, :integer, primary_key: True
     field :name, :string
     field :description, :string
     field :is_active, :integer, default: 1
@@ -12,7 +13,7 @@ defmodule Area91.Account do
   end
 
   @required_fields ~w(name)
-  @optional_fields ~w()
+  @optional_fields ~w(description)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
