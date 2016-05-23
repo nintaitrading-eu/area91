@@ -1,15 +1,16 @@
 defmodule Area91.Account do
-  use Ecto.Schema
+  use Ecto.Schema, Ecto.Type
   import Ecto.Changeset
 
+  @primary_key {:account_id, :integer, []}
+  @derive {Phoenix.Param, key: :account_id}
   schema "t_account" do
-    field :id, :integer, primary_key: True
+    #field :account_id, :integer, primary_key: True
     field :name, :string
     field :description, :string
     field :is_active, :integer, default: 1
-    # Note: timestamps generates inserted_at/updated_at,
-    # the below parameter will make us use our own fieldnames.
-    timestamps([{:date_created,:date_modified}])
+    field :date_created, Ecto.DateTime
+    field :date_modified, Ecto.DateTime
   end
 
   @required_fields ~w(name)

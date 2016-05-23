@@ -9,7 +9,7 @@ defmodule Area91.AdminAccountController do
   def account(conn, _params) do
     conn
     |> assign(:accounts, Area91.Repo.all(Area91.Account))
-    |> render(conn, "account.html")
+    |> render("account.html")
   end
 
   def new(conn, _params) do
