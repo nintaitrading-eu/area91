@@ -12,7 +12,7 @@
     <title>Area91</title>
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/pure-min.css") %>">
     <link rel="stylesheet" href="<%= static_path(@conn, "/css/custom_style.css") %>">
-    <link rel="stylesheet" href="<%= static_path(@conn, "/css/font-awesome.min.css") %>">
+    <link rel="stylesheet" href="<%= static_path(@conn, "/css/font-awesome-4.6.3/css/font-awesome.min.css") %>">
     <link rel="icon" type="image/png" href="<%= static_path(@conn, "/favicon.png") %>">
 </head>
 <body>
@@ -31,30 +31,30 @@
         <div class="pure-menu pure-menu-horizontal custom-menu custom-menu-bottom custom-menu-tucked" id="tuckedMenu">
             <div class="custom-menu-screen"></div>
             <ul class="pure-menu-list">
-                <li class="pure-menu-item"><a href="/" class="pure-menu-link">Home</a></li>
+                <li class="pure-menu-item"><a href="/" class="pure-menu-link"><i class="fa fa-home" title="Home" aria-hidden="true"></i> Home</a></li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                    <a href="#" id="mnu-finance" class="pure-menu-link">Finance</a>
+                    <a href="#" id="mnu-finance" class="pure-menu-link"><i class="fa fa-line-chart" title="Finance" aria-hidden="true"></i> Finance</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/finance/leverage" class="pure-menu-link">Leverage</a></li>
                         <li class="pure-menu-item"><a href="/finance/drawdown" class="pure-menu-link">Drawdown</a></li>
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                    <a href="#" id="mnu-invoice" class="pure-menu-link">Invoice</a>
+                    <a href="#" id="mnu-invoice" class="pure-menu-link"><i class="fa fa-eur" title="Invoice" aria-hidden="true"></i> Invoice</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/invoice/new" class="pure-menu-link">New</a></li>
                         <li class="pure-menu-item"><a href="/invoice" class="pure-menu-link">Overview</a></li>
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                    <a href="#" id="mnu-admin" class="pure-menu-link">Admin</a>
+                    <a href="#" id="mnu-admin" class="pure-menu-link"><i class="fa fa-cog" title="Admin" aria-hidden="true"></i> Admin</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/admin/account" class="pure-menu-link">Account</a></li>
                         <li class="pure-menu-item"><a href="/admin/currency" class="pure-menu-link">Currency</a></li>
                         <li class="pure-menu-item"><a href="/admin/parameter" class="pure-menu-link">Parameter</a></li>
                     </ul>
                 </li>
-                <li class="pure-menu-item"><a href="/about" class="pure-menu-link">About</a></li>
+                <li class="pure-menu-item"><a href="/about" class="pure-menu-link"><i class="fa fa-info" title="About" aria-hidden="true"></i> About</a></li>
             </ul>
         </div>
     </div>
