@@ -197,11 +197,12 @@
 
 body
 {
-    background-image: url('../images/nebula_tile.jpg');
+    background-image: url('../images/bg-2-full.jpg');
     background-repeat: repeat-x repeat-y;
     background-size: 100%;
     //background-position: top center;
-    background-color: #000;//#002b36;
+    //background-color: #000;//#002b36;
+    background-color: #fdf6e3;
 }
 
 .centered
