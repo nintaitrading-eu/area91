@@ -5,9 +5,9 @@
 
 .custom-menu-wrapper
 {
-    //background-color: rgba(0, 43, 54, 0.3);
+    /*background-color: rgba(0, 43, 54, 0.3);*/
     background-color: rgba(0, 43, 54, 0.9);
-    //background-color: #002b36;
+    /*background-color: #002b36;*/
     margin-bottom: 2.5em;
     white-space: nowrap;
     position: relative;
@@ -200,8 +200,8 @@ body
     background-image: url('../images/bg-2-full.jpg');
     background-repeat: repeat-x repeat-y;
     background-size: 100%;
-    //background-position: top center;
-    //background-color: #000;//#002b36;
+    /*background-position: top center;
+    background-color: #000;#002b36;*/
     background-color: #fdf6e3;
 }
 
@@ -212,12 +212,11 @@ body
 
 #main
 {
-    width: 100%; 
+    width: 98.4%; 
     color: #859900;
     background-color: rgba(0, 43, 54, 0.9);
-    //background-color: rgba(0, 43, 54, 0.3);
-    padding-top: 3px;
-    padding-bottom: 3px;
+    /*background-color: rgba(0, 43, 54, 0.3);*/
+    padding: 10px;
     border: 1px solid #859900;
 }
 
@@ -256,6 +255,11 @@ body
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1em;
+}
+
+.pure-table
+{
+    width: 100%;
 }
 
 .table-responsive table
