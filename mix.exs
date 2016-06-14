@@ -38,7 +38,10 @@ defmodule Area91.Mixfile do
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     #{:libcalculatorfinance, git: "https://github.com/rockwolf/elixir/libcalculatorfinance.git", branch: "libcalculatorfinance-develop", app: False}
+     {:libcalculatorfinance, path: "temp/libcalculatorfinance", app: False}
+    ]
   end
 
   # Aliases are shortcut or tasks specific to the current project.
