@@ -53,6 +53,10 @@ defmodule Area91.Web do
       import Area91.ErrorHelpers
       import Area91.Gettext
     end
+
+    #def csrf_token(conn) do
+    #  Map.get(conn.req_cookies, "_csrf_token")
+    #end
   end
 
   def router do

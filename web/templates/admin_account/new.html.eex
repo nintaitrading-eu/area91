@@ -2,6 +2,7 @@
 <p>
   <form action="<%=admin_account_path(@conn, :create) %>" method="post">
     <div class="form-group">
+      <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>">
       <label for="edt_account_name">Name</label>
       <input type="text" name="edt_account_name" class="form-control" />
       <label for="edt_account_description">Description</label>
