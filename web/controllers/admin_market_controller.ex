@@ -6,20 +6,20 @@ defmodule Area91.AdminMarketController do
 
   plug :action
 
-  def account(conn, _params) do
+  def market(conn, _params) do
     conn
-    |> assign(:accounts, Area91.Repo.all(Area91.Market))
-    |> render("account.html")
+    |> assign(:markets, Area91.Repo.all(Area91.Market))
+    |> render("market.html")
   end
 
   def new(conn, _params) do
     render(conn, "new.html")
   end
 
-  def create(conn, %{"account" => %{"name" => name, "description" => description}}) do
-    l_market = %Area91.Market{name: name, description: description}
-    Area91.Repo.insert(l_account)
-    redirect(conn, to: admin_account_path(conn, :overview))
+  def create(conn, %{"market" => %{"name" => name, "code" => code}}) do
+    l_market = %Area91.Market{name: name, code: code}
+    Area91.Repo.insert(l_market)
+    redirect(conn, to: admin_market_path(conn, :overview))
   end
 
 end

@@ -30,7 +30,7 @@
             <td>&nbsp;</td>
             <td><%= l_parameter.description %></td>
             <td>&nbsp;</td>
-            <td><%= if l_parameter.description do %>&#9745;<%= else %>&#9744;<%= end %></td>
+            <td><%= if l_parameter.is_active do %>&#9745;<%= else %>&#9744;<%= end %></td>
             <td>&nbsp;</td>
             <td><%= l_parameter.date_created %></td>
             <td>&nbsp;</td>
