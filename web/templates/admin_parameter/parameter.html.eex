@@ -1,1 +1,49 @@
-<p>Admin parameter page is here on Area<%= 80 + 11 %></p>
+<p>
+  <form action="" method="post" name="frmParameter" class="pure-form pure-form-aligned">
+    <div class="pure-control-group">
+      <a href="/parameter/new" class="pure-button pure-button-active"><i class="fa fa-file" title="New" aria-hidden="true"></i> New</a>
+    </div>
+    <div class="table-responsive">
+      <table class="mq-table pure-table pure-table-bordered">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>&nbsp;</th>
+            <th>value</th>
+            <th>&nbsp;</th>
+            <th>description</th>
+            <th>&nbsp;</th>
+            <th>is_active</th>
+            <th>&nbsp;</th>
+            <th>date_created</th>
+            <th>&nbsp;</th>
+            <th>date_modified</th>
+            <th>&nbsp;</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= for l_parameter <- @parameters do %>
+          <tr>
+            <td><%= l_parameter.name %></td>
+            <td>&nbsp;</td>
+            <td><%= l_parameter.value %></td>
+            <td>&nbsp;</td>
+            <td><%= l_parameter.description %></td>
+            <td>&nbsp;</td>
+            <td><%= if l_parameter.description do %>&#9745;<%= else %>&#9744;<%= end %></td>
+            <td>&nbsp;</td>
+            <td><%= l_parameter.date_created %></td>
+            <td>&nbsp;</td>
+            <td><%= l_parameter.date_modified %></td>
+            <td>&nbsp;</td>
+            <td>
+              <a href="#" class="pure-button"><i class="fa fa-pencil fa-fw" title="Modify" aria-hidden="true"></i> Modify</a>
+              <a href="#" class="pure-button"><i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i> Delete</a>
+            </td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</p>
