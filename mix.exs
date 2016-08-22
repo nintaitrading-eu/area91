@@ -19,7 +19,7 @@ defmodule Area91.Mixfile do
   def application do
     [mod: {Area91, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :connection]]
+                    :phoenix_ecto, :postgrex, :connection, :libcalculatorfinance]]
   end
 
   # Specifies which paths to compile per environment.
@@ -40,7 +40,8 @@ defmodule Area91.Mixfile do
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      #{:libcalculatorfinance, git: "https://github.com/rockwolf/elixir/libcalculatorfinance.git", branch: "libcalculatorfinance-develop", app: False}
-     {:libcalculatorfinance, path: "temp/libcalculatorfinance", app: False}
+     #{:libcalculatorfinance, path: "temp/libcalculatorfinance", app: False}
+     {:libcalculatorfinance, "~> 0.0.1"}
     ]
   end
 
