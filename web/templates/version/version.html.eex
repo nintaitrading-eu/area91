@@ -1,3 +1,9 @@
-<p>Admin about/version page is here on Area<%= 80 + 11 %></p>
-<p>Database version = <%= 0.1 %></p>
-<p>Application version = <%= 0.1 %>.<%= 0.0 %></p>
+<p>About Area91:</p>
+<p>
+  <%= for l_version <- @version do %>
+  <ul>
+    <li>Application version = <%= l_version.application_version %> (<%= l_version.application_version_info %>)</li>
+    <li>Database version = <%= l_version.database_version %> (<%= l_version.database_version_info %>)</li>
+  </ul>
+  <%= end %>
+</p>
