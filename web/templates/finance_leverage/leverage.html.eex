@@ -7,7 +7,7 @@
     </div>
   </form>
 </p>
-<!--% if p_leveraged_contracts %-->
+<!--% if p_leveraged_contracts >= 1 %-->
 <p>Recommended contracts to buy, when using leverage: <span class="result"><%= @p_leveraged_contracts %></span>.</p>
 <!--% else %-->
 <p> Use the money management page, to calculate the number of contracts to buy.</p>

@@ -8,6 +8,8 @@
       <label for="edt_account_description">Description</label>
       <input type="text" name="edt_account_description" class="form-control" />
     </div>
-    <button type="submit" class="btn btn-primary">Save</button>
+    <div class="pure-control-group">
+      <button type="submit" class="pure-button pnure-button-active">Save</button>
+    </div>
   </form>
 </p>
