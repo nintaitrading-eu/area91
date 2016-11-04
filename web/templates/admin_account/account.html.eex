@@ -1,7 +1,7 @@
 <p>
   <form action="" method="post" name="frmAccount" class="pure-form pure-form-aligned">
     <div class="pure-control-group">
-      <a href="/account/new" class="pure-button pure-button-active"><i class="fa fa-file" title="New" aria-hidden="true"></i> New</a>
+      <a href="/admin/account/new" class="pure-button pure-button-active"><i class="fa fa-file" title="New" aria-hidden="true"></i> New</a>
     </div>
     <div class="table-responsive">
       <table class="mq-table pure-table pure-table-bordered">
