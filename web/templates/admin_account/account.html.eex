@@ -8,15 +8,10 @@
         <thead>
           <tr>
             <th>name</th>
-            <th>&nbsp;</th>
             <th>description</th>
-            <th>&nbsp;</th>
             <th>is_active</th>
-            <th>&nbsp;</th>
             <th>date_created</th>
-            <th>&nbsp;</th>
             <th>date_modified</th>
-            <th>&nbsp;</th>
             <th>&nbsp;</th>
           </tr>
         </thead>
@@ -24,18 +19,13 @@
           <%= for l_account <- @accounts do %>
           <tr>
             <td><%= l_account.name %></td>
-            <td>&nbsp;</td>
             <td><%= l_account.description %></td>
-            <td>&nbsp;</td>
             <td><%= if l_account.is_active do %>&#9745;<%= else %>&#9744;<%= end %></td>
-            <td>&nbsp;</td>
             <td><%= l_account.date_created %></td>
-            <td>&nbsp;</td>
             <td><%= l_account.date_modified %></td>
-            <td>&nbsp;</td>
             <td>
-              <a href="#" class="pure-button"><i class="fa fa-pencil fa-fw" title="Modify" aria-hidden="true"></i> Modify</a>
-              <a href="#" class="pure-button"><i class="fa fa-trash-o" title="Delete" aria-hidden="true"></i> Delete</a>
+              <a href="#" class="pure-button"><i class="fa fa-pencil fa-fw" title="Modify" alt="Modify" aria-hidden="true"></i></a>
+              <a href="#" class="pure-button"><i class="fa fa-trash-o" title="Delete" alt="Delete" aria-hidden="true"></i></a>
             </td>
           </tr>
           <% end %>

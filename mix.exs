@@ -31,10 +31,13 @@ defmodule Area91.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, github: "phoenixframework/phoenix", override: True},
-     #{:phoenix, "~> 1.1.4"},
+     #{:plug, git: "git://github.com/elixir-lang/plug.git", override: True},
+     #{:phoenix, github: "phoenixframework/phoenix", override: True},
+     {:plug, "~> 1.0", override: True},
+     {:phoenix, "~> 1.1.0"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_ecto, "~> 2.0"},
+     {:poison, "~> 1.3"},
+     {:phoenix_ecto, "~> 3.0", override: True},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},

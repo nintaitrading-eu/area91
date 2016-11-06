@@ -3,10 +3,10 @@ defmodule Area91.FinanceLeverageController do
 
   plug :action
 
-  def leverage(conn, %{"contracts" => contracts}) do
-    {contracts, _} = Integer.parse(contracts)
+  def leverage(conn, %{"p_contracts" => p_contracts}) do
+    {p_contracts, _} = Integer.parse(p_contracts)
     conn
-    |> assign(:p_leveraged_contracts, LibCalculatorFinance.General.calculate_leveraged_contracts(contracts))
-    |> render("leverage.html")
+    |> assign(:p_leveraged_contracts, LibCalculatorFinance.General.calculate_leveraged_contracts(p_contracts))
+    |> render("leverage.html", p_leveraged_contracts: p_contracts)
   end
 end
