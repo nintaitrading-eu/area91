@@ -2,6 +2,8 @@ defmodule Area91.Pool do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:pool_id, :integer, []}
+  @derive {Phoenix.Param, key: :pool_id}
   schema "t_pool" do
     field :total, :float
     field :invested, :float

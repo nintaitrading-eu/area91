@@ -2,6 +2,8 @@ defmodule Area91.Parameter do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:parameter_id, :integer, []}
+  @derive {Phoenix.Param, key: :parameter_id}
   schema "t_parameter" do
     field :name, :string
     field :value, :string

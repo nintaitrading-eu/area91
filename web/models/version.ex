@@ -2,6 +2,8 @@ defmodule Area91.Version do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:version_id, :integer, []}
+  @derive {Phoenix.Param, key: :version_id}
   schema "t_version" do
     field :database_version, :string
     field :database_version_info, :string
