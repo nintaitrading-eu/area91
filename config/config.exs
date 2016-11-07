@@ -5,12 +5,13 @@
 # is restricted to this project.
 use Mix.Config
 
-config :area91, Area91.Repo,
+config :area91, #Area91.Repo,
   adapter: Ecto.Adapters.Postgres,
   database: "area91_repo",
   username: "user",
   password: "pass",
-  hostname: "localhost"
+  hostname: "localhost",
+  ecto_repos: [Area91.Repo]
 
 
 # Configures the endpoint

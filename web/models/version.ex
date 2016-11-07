@@ -9,7 +9,8 @@ defmodule Area91.Version do
     field :database_version_info, :string
     field :application_version, :string
     field :application_version_info, :string
-    timestamps([{:date_created,:date_modified}])
+    field :date_created, Ecto.DateTime
+    field :date_modified, Ecto.DateTime
   end
 
   @required_fields ~w(database_version, database_version_info, application_version, application_version_info)
