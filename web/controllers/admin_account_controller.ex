@@ -16,7 +16,7 @@ defmodule Area91.AdminAccountController do
     render(conn, "new.html")
   end
 
-  def create(conn, %{"account" => %{"name" => name, "description" => description}}) do
+  def create(conn, %{"txt_account" => %{"name" => name, "description" => description}}) do
     l_account = %Area91.Account{name: name, description: description}
     Area91.Repo.insert(l_account)
     redirect(conn, to: admin_account_path(conn, :index))
