@@ -22,4 +22,10 @@ defmodule Area91.AdminAccountController do
     redirect(conn, to: admin_account_path(conn, :index))
   end
 
+  def edit(conn, %{"account_id" => account_id}) do
+    {account_id, _} = Integer.parse(account_id)
+    conn
+    |> assign(:account, Repo.get(Area91.Account, account_id))
+    |> render("edit.html")
+  end
 end

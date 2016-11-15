@@ -1,0 +1,15 @@
+<h1 class="centered">Edit account</h1>
+<p>
+  <form action="<%=admin_account_path(@conn, :update, @account.account_id) %>" method="post">
+    <div class="form-group">
+      <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>">
+      <label for="account[name]">Name</label>
+      <input type="text" name="account[name]" class="form-control" value="<%= @account.name %>"/>
+      <label for="account[description]">Description</label>
+      <input type="text" name="account[description]" class="form-control" value="<% @account.description %>"/>
+    </div>
+    <div class="pure-control-group">
+      <button type="submit" class="pure-button pnure-button-active">Save</button>
+    </div>
+  </form>
+</p>
