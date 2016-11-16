@@ -81,7 +81,7 @@
           $('form').submit(function(s) {
             var input = $("<input>")
             .attr("type", "hidden")
-            .attr("name", "csrf_token").val("<%= csrf_token(@conn) %>");
+            .attr("name", "_csrf_token").val("<%= get_csrf_token %>");
             $(s.target).append($(input));
           });
         });
