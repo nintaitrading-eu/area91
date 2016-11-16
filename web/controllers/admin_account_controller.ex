@@ -28,4 +28,12 @@ defmodule Area91.AdminAccountController do
     |> assign(:account, Repo.get(Area91.Account, account_id))
     |> render("edit.html")
   end
+
+  def update(conn, %{"account_id" => account_id, "account" => %{"name" => name, "description" => description}}) do
+    {account_id, _} = Integer.parse(account_id)
+    l_account = Area91.Repo.get(Area91.Account, account_id)
+    l_account = %{l_account | name: name, description: description }
+    Area91.Repo.update(l_account)
+    redirect(conn, to: quote_path(conn, :show, l_account.account_id))
+  end
 end
