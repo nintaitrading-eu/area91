@@ -24,8 +24,8 @@
             <td><%= l_account.date_created %></td>
             <td><%= l_account.date_modified %></td>
             <td>
-              <a href="#" class="pure-button"><i class="fa fa-pencil fa-fw" title="Modify" alt="Modify" aria-hidden="true"></i></a>
-              <a href="#" class="pure-button"><i class="fa fa-trash-o" title="Delete" alt="Delete" aria-hidden="true"></i></a>
+              <a href="<%= admin_account_path(@conn, :edit, l_account.account_id) %>" class="pure-button"><i class="fa fa-pencil fa-fw" title="Modify" alt="Modify" aria-hidden="true"></i></a>
+              <a href="<%= admin_account_path(@conn, :destroy, l_account.account_id) %>" class="pure-button"><i class="fa fa-trash-o" title="Delete" alt="Delete" aria-hidden="true" data-method="DELETE" class="rest"></i></a>
             </td>
           </tr>
           <% end %>
