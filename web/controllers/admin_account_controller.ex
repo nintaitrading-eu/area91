@@ -34,13 +34,13 @@ defmodule Area91.AdminAccountController do
     l_account = Area91.Repo.get(Area91.Account, account_id)
     l_account = %{l_account | name: name, description: description }
     Area91.Repo.update(l_account)
-    redirect(conn, to: quote_path(conn, :show, l_account.account_id))
+    redirect(conn, to: admin_account_path(conn, :show, l_account.account_id))
   end
 
   def destroy(conn, %{"account_id" => account_id}) do
     {account_id, _} = Integer.parse(account_id)
     l_account = Area91.Repo.get(Area91.Account, account_id)
     Repo.delete(l_account)
-    redirect conn, to: quote_path(conn, :index)
+    redirect conn, to: admin_account_path(conn, :index)
   end
 end
