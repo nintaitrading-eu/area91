@@ -36,4 +36,11 @@ defmodule Area91.AdminAccountController do
     Area91.Repo.update(l_account)
     redirect(conn, to: quote_path(conn, :show, l_account.account_id))
   end
+
+  def destroy(conn, %{"account_id" => account_id}) do
+    {account_id, _} = Integer.parse(account_id)
+    l_account = Area91.Repo.get(Area91.Account, account_id)
+    Repo.delete(l_account)
+    redirect conn, to: quote_path(conn, :index)
+  end
 end
