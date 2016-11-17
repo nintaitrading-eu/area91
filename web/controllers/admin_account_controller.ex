@@ -22,19 +22,19 @@ defmodule Area91.AdminAccountController do
     redirect(conn, to: admin_account_path(conn, :index))
   end
 
-  def edit(conn, %{"account_id" => account_id}) do
+  def edit(conn, %{"id" => account_id}) do
     {account_id, _} = Integer.parse(account_id)
     conn
-    |> assign(:account, Repo.get(Area91.Account, account_id))
+    |> assign(:account, Area91.Repo.get(Area91.Account, account_id))
     |> render("edit.html")
   end
 
-  def update(conn, %{"account_id" => account_id, "account" => %{"name" => name, "description" => description}}) do
+  def update(conn, %{"id" => account_id, "txt_account" => %{"name" => name, "description" => description}}) do
     {account_id, _} = Integer.parse(account_id)
     l_account = Area91.Repo.get(Area91.Account, account_id)
-    l_account = %{l_account | name: name, description: description }
-    Area91.Repo.update(l_account)
-    redirect(conn, to: admin_account_path(conn, :show, l_account.account_id))
+    l_account_changeset = Area91.Account.changeset{l_account}
+    Area91.Repo.update(l_account_changeset)
+    redirect(conn, to: admin_account_path(conn, :show, account_id))
   end
 
   def delete(conn, %{"account_id" => account_id}) do
