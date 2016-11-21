@@ -1,8 +1,9 @@
-<p>
-  <form action="" method="post" name="frmAccount" class="pure-form pure-form-aligned">
+<!--p-->
+  <!--form action="" method="post" name="frmAccount" class="pure-form pure-form-aligned"-->
     <div class="pure-control-group">
-      <a href="/admin/account/new" class="pure-button pure-button-active"><i class="fa fa-file" title="New" aria-hidden="true"></i> New</a>
+      <a href="/admin/account/new" class="pure-button pure-button-active"><i class="fa fa-file" title="New" aria-hidden="true"></i></a>
     </div>
+    <br />
     <div class="table-responsive">
       <table class="mq-table pure-table pure-table-bordered">
         <thead>
@@ -24,13 +25,14 @@
             <td><%= l_account.date_created %></td>
             <td><%= l_account.date_modified %></td>
             <td>
-              <a href="<%= admin_account_path(@conn, :edit, l_account.account_id) %>" class="pure-button"><i class="fa fa-pencil fa-fw" title="Modify" alt="Modify" aria-hidden="true"></i></a>
-              <a href="<%= admin_account_path(@conn, :delete, l_account.account_id) %>" class="pure-button"><i class="fa fa-trash-o" title="Delete" alt="Delete" aria-hidden="true" data-method="DELETE" class="rest"></i></a>
+              <a href="<%= admin_account_path(@conn, :edit, l_account.account_id) %>"  title="Modify" alt="Modify" class="pure-button"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+              <!--a href="<%= admin_account_path(@conn, :delete, l_account.account_id) %>" title="Delete" alt="Delete" data-method="DELETE" class="rest pure-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a-->
+              <%= link "Delete", to: admin_account_path(@conn, :delete, l_account.account_id), method: :delete, class: "pure-button" %>
             </td>
           </tr>
           <% end %>
         </tbody>
       </table>
     </div>
-  </form>
-</p>
+  <!--/form-->
+<!--/p-->

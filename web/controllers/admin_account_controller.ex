@@ -41,6 +41,6 @@ defmodule Area91.AdminAccountController do
     {account_id, _} = Integer.parse(account_id)
     l_account = Area91.Repo.get(Area91.Account, account_id)
     Repo.delete(l_account)
-    redirect conn, to: admin_account_path(conn, :index)
+    redirect(conn, to: admin_account_path(conn, :show))
   end
 end
