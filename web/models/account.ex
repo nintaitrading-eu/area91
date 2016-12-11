@@ -1,6 +1,7 @@
 defmodule Area91.Account do
-  use Ecto.Schema, Ecto.Type
-  import Ecto.Changeset
+  use Area91.Web, :model
+  #use Ecto.Schema, Ecto.Type
+  #import Ecto.Changeset
 
   @primary_key {:account_id, :integer, []}
   @derive {Phoenix.Param, key: :account_id}
@@ -13,19 +14,17 @@ defmodule Area91.Account do
     field :date_modified, Ecto.DateTime
   end
 
-  @required_fields ~w(name)
-  @optional_fields ~w(description)
-
   @doc """
-  Creates a changeset based on the `model` and `params`.
+  Creates a changeset based on the `struct` and `params`.
 
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
-    |> unique_constraint(:name)
+  def changeset(struct, params \\ %{}) do
+    struct
+    |> cast(params, [:name, :description, :is_active, :date_created, :date_modified])
+    |> validate_required([:name])
+    #|> unique_constraint([:name])
   end
 
 end
