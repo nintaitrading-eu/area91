@@ -20,10 +20,11 @@ defmodule Area91.Account do
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
+  # Note: add required params below.
   def changeset(struct, params \\ %{}) do
     struct
-    |> cast(params, [:name, :description, :is_active, :date_created, :date_modified])
-    |> validate_required([:name])
+    |> cast(params, [])
+    #|> validate_required([:name])
     #|> unique_constraint([:name])
   end
 
