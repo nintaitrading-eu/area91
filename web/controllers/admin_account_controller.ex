@@ -34,7 +34,6 @@ defmodule Area91.AdminAccountController do
     {account_id, _} = Integer.parse(account_id)
     l_account = Area91.Repo.get!(Account, account_id)
     l_account_changeset = Account.changeset{l_account, a_params}
-    Area91.Repo.update(l_account_changeset)
     case Area91.Repo.update(l_account_changeset) do
       {:ok, l_account} ->
         conn
