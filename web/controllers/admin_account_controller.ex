@@ -31,19 +31,20 @@ defmodule Area91.AdminAccountController do
   end
 
   def update(conn, %{"id" => account_id, "txt_account" => a_params}) do
+    redirect(conn, to: admin_account_path(conn, :index, l_account))
     {account_id, _} = Integer.parse(account_id)
     l_account = Area91.Repo.get!(Account, account_id)
     l_account_changeset = Account.changeset{l_account, a_params}
-    case Area91.Repo.update(l_account_changeset) do
-      {:ok, l_account} ->
-        conn
-          |> put_flash(:info, "Account updated successfully.")
-          |> redirect(to: admin_account_path(conn, :index, l_account))
-      {:error, l_account_changeset} ->
-        conn
-          |> put_flash(:info, "Failed to update account.")
-          |> render("edit.html", account: l_account, changeset: l_account_changeset)
-    end
+#    case Area91.Repo.update(l_account_changeset) do
+#      {:ok, l_account} ->
+#        conn
+#          |> put_flash(:info, "Account updated successfully.")
+#          |> redirect(to: admin_account_path(conn, :index, l_account))
+#      {:error, l_account_changeset} ->
+#        conn
+#          |> put_flash(:info, "Failed to update account.")
+#          |> render("edit.html", account: l_account, changeset: l_account_changeset)
+#    end
   end
 
   def delete(conn, %{"id" => account_id}) do
