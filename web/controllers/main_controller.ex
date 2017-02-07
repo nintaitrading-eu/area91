@@ -3,7 +3,7 @@ defmodule Area91.MainController do
 
   plug :action
 
-  def main(conn, _params) do
-    render conn, "main.html"
+  def index(conn, _params) do
+    render conn, "index.html"
   end
 end

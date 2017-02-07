@@ -6,10 +6,10 @@ defmodule Area91.AdminMarketController do
 
   plug :action
 
-  def market(conn, _params) do
+  def index(conn, _params) do
     conn
     |> assign(:markets, Area91.Repo.all(Area91.Market))
-    |> render("market.html")
+    |> render("index.html")
   end
 
   def new(conn, _params) do

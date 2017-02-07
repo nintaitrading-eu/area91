@@ -3,10 +3,10 @@ defmodule Area91.VersionController do
 
   plug :action
 
-  def version(conn, _params) do
+  def index(conn, _params) do
     conn
     |> assign(:version, Area91.Repo.all(Area91.Version))
-    |> render("version.html")
+    |> render("index.html")
   end
 
 end

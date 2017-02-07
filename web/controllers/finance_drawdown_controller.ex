@@ -3,7 +3,7 @@ defmodule Area91.FinanceDrawdownController do
 
   plug :action
 
-  def drawdown(conn, _params) do
-    render conn, "drawdown.html"
+  def index(conn, _params) do
+    render conn, "index.html"
   end
 end

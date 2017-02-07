@@ -7,10 +7,16 @@ defmodule Area91.AdminAccountController do
 
   plug :action
 
-  def account(conn, _params) do
+  def index(conn, _params) do
     conn
     |> assign(:accounts, Area91.Repo.all(Account))
-    |> render("account.html")
+    |> render("index.html")
+  end
+
+  def show(conn, %{"id" => account_id}) do
+    {l_account_id, _} = Integer.parse(l_account_id)
+    l_account = Area91.Repo.get!(Account, l_account_id)
+    render(conn, "show.html", account: l_account)
   end
 
   def new(conn, _params) do

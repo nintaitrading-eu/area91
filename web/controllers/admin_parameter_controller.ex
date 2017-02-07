@@ -6,10 +6,10 @@ defmodule Area91.AdminParameterController do
 
   plug :action
 
-  def parameter(conn, _params) do
+  def index(conn, _params) do
     conn
     |> assign(:parameters, Area91.Repo.all(Area91.Parameter))
-    |> render("parameter.html")
+    |> render("index.html")
   end
 
   def new(conn, _params) do
