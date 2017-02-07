@@ -32,8 +32,8 @@ defmodule Area91.AdminAccountController do
 
   def update(conn, %{"id" => account_id, "txt_account" => a_params}) do
     redirect(conn, to: admin_account_path(conn, :index, l_account))
-    {account_id, _} = Integer.parse(account_id)
-    l_account = Area91.Repo.get!(Account, account_id)
+    {l_account_id, _} = Integer.parse(l_account_id)
+    l_account = Area91.Repo.get!(Account, l_account_id)
     l_account_changeset = Account.changeset{l_account, a_params}
 #    case Area91.Repo.update(l_account_changeset) do
 #      {:ok, l_account} ->

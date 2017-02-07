@@ -40,6 +40,7 @@ defmodule Area91.Mixfile do
      {:phoenix_ecto, "~> 3.0", override: True},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
+     {:phoenix_haml, "~>0.2"},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      #{:libcalculatorfinance, git: "https://github.com/rockwolf/elixir/libcalculatorfinance.git", branch: "libcalculatorfinance-develop", app: False}
