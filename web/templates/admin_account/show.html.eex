@@ -17,19 +17,17 @@
           </tr>
         </thead>
         <tbody>
-          <%= for l_account <- @accounts do %>
           <tr>
-            <td><%= l_account.name %></td>
-            <td><%= l_account.description %></td>
-            <td><%= if l_account.is_active do %>&#9745;<%= else %>&#9744;<%= end %></td>
-            <td><%= l_account.date_created %></td>
-            <td><%= l_account.date_modified %></td>
+            <td><%= @account.name %></td>
+            <td><%= @account.description %></td>
+            <td><%= if @account.is_active do %>&#9745;<%= else %>&#9744;<%= end %></td>
+            <td><%= @account.date_created %></td>
+            <td><%= @account.date_modified %></td>
             <td>
-              <a href="<%= admin_account_path(@conn, :edit, l_account.account_id) %>"  title="Modify" alt="Modify" class="pure-button"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
-              <a href="<%= admin_account_path(@conn, :delete, l_account) %>" title="Delete" alt="Delete" data-method="DELETE" class="rest pure-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
+              <a href="<%= admin_account_path(@conn, :edit, @account.account_id) %>"  title="Modify" alt="Modify" class="pure-button"><i class="fa fa-pencil fa-fw" aria-hidden="true"></i></a>
+              <a href="<%= admin_account_path(@conn, :delete, @account) %>" title="Delete" alt="Delete" data-method="DELETE" class="rest pure-button"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
             </td>
           </tr>
-          <% end %>
         </tbody>
       </table>
     </div>

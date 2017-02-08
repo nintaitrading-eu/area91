@@ -1,6 +1,6 @@
 <h1 class="centered">Edit account</h1>
 <p>
-  <form action="<%= admin_account_path(@conn, :update, @account.account_id) %>" method="post">
+  <form action="<%= admin_account_path(@conn, :update, @account) %>" method="post">
     <div class="form-group">
       <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>">
       <input type="hidden" name="_method" value="PATCH">
