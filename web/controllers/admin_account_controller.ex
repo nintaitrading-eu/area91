@@ -1,5 +1,6 @@
 defmodule Area91.AdminAccountController do
   use Phoenix.Controller
+  require Logger
 
   alias Area91.Router
   alias Area91.Account
@@ -36,10 +37,15 @@ defmodule Area91.AdminAccountController do
     |> render("edit.html")
   end
 
-  def update(conn, %{"id" => a_account_id, "account" => a_params}) do
+  def update(conn, %{"id" => a_account_id, "txt_account" => a_params}) do
     {l_account_id, _} = Integer.parse(a_account_id)
     l_account = Area91.Repo.get!(Account, l_account_id)
     l_account_changeset = Account.changeset{l_account, a_params}
+    Logger.info "--- Test debug info ---"
+    Logger.debug "a_params value: #{inspect(a_params)}"
+    Logger.debug "l_account value: #{inspect(l_account)}"
+    Logger.debug "Changeset value: #{inspect(l_account_changeset)}"
+    Logger.debug "Changeset value: #{inspect(l_account_changeset.data)}"
     case Area91.Repo.update(l_account_changeset) do
       {:ok, l_account} ->
         conn
