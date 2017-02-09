@@ -4,7 +4,7 @@ defmodule Area91.Mixfile do
   def project do
     [app: :area91,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: ">= 1.3.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,

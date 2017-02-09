@@ -36,6 +36,8 @@ defmodule Area91.Router do
     ### Finance
     get "/finance/leverage", FinanceLeverageController, :index
     get "/finance/drawdown", FinanceDrawdownController, :index
+    ### Test
+    get "/test", TestController, :index
   end
 
   # Other scopes may use custom stacks.
