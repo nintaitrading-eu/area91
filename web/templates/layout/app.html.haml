@@ -1,0 +1,87 @@
+!!! 5
+!!!
+%html{:lang => "en"}
+  %head
+    %meta{:http-equiv => "Content-Type", :content => "text/html;charset=utf-8"}
+    %meta{:charset => "utf-8"}
+    %meta{:http-equiv => "X-UA-Compatible", :content => "IE=edge"}
+    %meta{:name => "viewport", :content => "width=device-width, initial-scale=1.0"}
+    %meta{:name => "description", :content => ""}
+    %meta{:name => "generator", :content => ""}
+    %meta{:name => "author", :content => "Andy Nagels"}
+    %meta{:name => "copyright", :content => "&copy; 2016&ndash;eternity Andy Nagels"}
+    %title Area91
+    %link{:rel => "stylesheet", :href => "#{static_path(@conn, "/css/pure-min.css")}"}
+    %link{:rel => "stylesheet", :href => "#{static_path(@conn, "/css/custom_style.css")}"}
+    %link{:rel => "stylesheet", :href => "#{static_path(@conn, "/css/font-awesome-4.6.3/css/font-awesome.min.css")}"}
+    %link{:rel => "icon", :type => "image/png", :href => "#{static_path(@conn, "/favicon.png")}"}
+  %body
+    <script src="<%= static_path(@conn, "/js/pure-css-menu.js") %>"></script>
+    .custom-menu-wrapper
+      .pure-menu.custom-menu.custom-menu-top
+        %a.pure-menu-heading.custom-menu-brand{:href => "#"}
+          %img{:src => "#{static_path(@conn, "/favicon.png")}"}
+        %a.custom-menu-toggle#toggle{:href => "#"}
+          %s.bar
+          %s.bar
+      .pure-menu.pure-menu-horizontal.custom-menu.custom-menu-bottom.custom-menu-tucked#tuckedMenu
+        .custom-menu-screen
+          %ul.pure-menu-list
+            %li.pure-menu-item
+              %a.pure-menu-link{:href => "/", :title => " Home"}
+                %i.fa.fa-home{:title => "Home", :aria-hidden => "true"}
+            %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
+              %a.pure-menu-link#mnu-finance{:href => "#"} &nbsp;Finance
+                %i.fa.fa-line-chart{:title = "Finance", :aria-hidden => "true"}
+                %ul.pure-menu-children
+                  %li.pure-menu-item
+                    %a.pure-menu-link{:href => "/finance/leverage"} &nbsp;Leverage
+                  %li.pure-menu-item
+                    %a.pure-menu-link{:href => "/finance/drawdown"} &nbsp;Drawdown
+            %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
+              %a.pure-menu-link#mnu-invoice{:href => "#"} &nbsp;Invoice
+                %i.fa.fa-eur{:title => "Invoice", :aria-hidden => "true"}
+                  %ul.pure-menu-children
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/invoice/new"} New
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/invoice"} Overview
+            %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
+              %a.pure-menu-link#mnu-admin{:href => "#"} &nbsp;Admin
+                %i.fa.fa-cog{:title => "Admin", :aria-hidden => "true"}
+                  %ul.pure-menu-children
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/admin/account"} Account
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/admin/currency"} Currency
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/admin/parameter"} Parameter
+            %li.pure-menu-item
+              %a.pure-menu-link{:href => "/about"} About
+                %i.fa.fa-info{:title => "About", :aria-hidden => "true"}
+    :javascript
+      $(function (window, document) {
+        document.getElementById('toggle').addEventListener('click', function (e) {
+          document.getElementById('tuckedMenu').classList.toggle('custom-menu-tucked');
+          document.getElementById('toggle').classList.toggle('x');
+        });
+      })(this, this.document);
+    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
+    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+
+    <main role="main" id="main">
+      <%= render @view_module, @view_template, assigns %>
+    </main>
+    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="/js/jquery.restfulizer.js"></script>
+    :javascript
+      $(function() {
+        $(".rest").click(function(d) {
+          $('form').submit(function(s) {
+            var input = $("<input>").attr("type", "hidden").attr("name", "_csrf_token").val("#{get_csrf_token}");
+            $(s.target).append($(input));
+          });
+        });
+        $(".rest").restfulizer({});
+      });
