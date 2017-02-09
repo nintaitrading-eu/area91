@@ -44,7 +44,7 @@ defmodule Area91.AdminAccountController do
       {:ok, l_account} ->
         conn
           |> put_flash(:info, "Account updated successfully.")
-          |> redirect(to: admin_account_path(conn, :show, l_account))
+          |> redirect(to: admin_account_path(conn, :index, Area91.Repo.all(Account)))
       {:error, l_account_changeset} ->
         conn
           |> put_flash(:info, "Failed to update account.")
