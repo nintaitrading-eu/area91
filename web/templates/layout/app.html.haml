@@ -16,7 +16,7 @@
     %link{:rel => "stylesheet", :href => "#{static_path(@conn, "/css/font-awesome-4.6.3/css/font-awesome.min.css")}"}
     %link{:rel => "icon", :type => "image/png", :href => "#{static_path(@conn, "/favicon.png")}"}
   %body
-    <script src="<%= static_path(@conn, "/js/pure-css-menu.js") %>"></script>
+    %script{:src => "#{static_path(@conn, "/js/pure-css-menu.js")}"}
     .custom-menu-wrapper
       .pure-menu.custom-menu.custom-menu-top
         %a.pure-menu-heading.custom-menu-brand{:href => "#"}
@@ -66,15 +66,14 @@
           document.getElementById('toggle').classList.toggle('x');
         });
       })(this, this.document);
-    <p class="alert alert-info" role="alert"><%= get_flash(@conn, :info) %></p>
-    <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
+    %p.alert.alert-info{:role => "alert"}#{get_flash(@conn, :info)}
+    %p.alert.alert-danger{:role => "alert"}#{get_flash(@conn, :error)}
 
-    <main role="main" id="main">
-      <%= render @view_module, @view_template, assigns %>
-    </main>
-    <script src="<%= static_path(@conn, "/js/app.js") %>"></script>
-    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="/js/jquery.restfulizer.js"></script>
+    %main#main{:role => "main"}
+      = render @view_module, @view_template, assigns
+    %script{:src => "#{static_path(@conn, "/js/app.js")}"}
+    %script{:src => "https://code.jquery.com/jquery-1.11.2.min.js"}
+    %script{:src => "/js/jquery.restfulizer.js"}
     :javascript
       $(function() {
         $(".rest").click(function(d) {
