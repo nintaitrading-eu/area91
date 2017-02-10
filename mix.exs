@@ -19,7 +19,7 @@ defmodule Area91.Mixfile do
   def application do
     [mod: {Area91, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :connection, :libcalculatorfinance]]
+                    :phoenix_haml, :phoenix_ecto, :postgrex, :connection, :libcalculatorfinance]]
   end
 
   # Specifies which paths to compile per environment.
@@ -41,6 +41,7 @@ defmodule Area91.Mixfile do
      {:phoenix_html, "~> 2.9"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:phoenix_haml, "~> 0.2"},
+     {:calliope, github: "nurugger07/calliope", override: true},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
      #{:libcalculatorfinance, git: "https://github.com/rockwolf/elixir/libcalculatorfinance.git", branch: "libcalculatorfinance-develop", app: False}
