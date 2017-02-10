@@ -38,5 +38,5 @@ config :phoenix, :generators,
   binary_id: false
 
 # Configure HAML templates
-#config :phoenix, :template_engines,
-#  haml: PhoenixHaml.Engine
+config :phoenix, :template_engines,
+  haml: PhoenixHaml.Engine
