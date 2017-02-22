@@ -41,18 +41,39 @@
 		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
 		<type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
 	</group>
-</datatypes><table x="158" y="88" name="t_parameter">
+</datatypes><table x="142" y="235" name="t_parameter">
 <row name="parameter_id" null="0" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>BIGINT</datatype>
 <default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="value" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>'NULL'</default></row>
+<row name="value_default" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
 <key type="PRIMARY" name="">
 <part>parameter_id</part>
 </key>
 <comment>Table that contains global parameters, with default values and descriptions.</comment>
 </table>
-<table x="153" y="175" name="t_account">
+<table x="449" y="20" name="t_account">
 <row name="account_id" null="0" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>BIGINT</datatype>
 <default>NULL</default></row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(4000)</datatype>
@@ -77,18 +98,34 @@
 </key>
 <comment>Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.</comment>
 </table>
-<table x="445" y="107" name="t_currency">
-<row name="id" null="1" autoincrement="1">
-<datatype>INTEGER</datatype>
+<table x="456" y="224" name="t_currency">
+<row name="currency_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
 <default>NULL</default></row>
+<row name="code" null="0" autoincrement="0">
+<datatype>VARCHAR(3)</datatype>
+<default>'NULL'</default><comment>Iso currency code, 3 characters.</comment>
+</row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
 <key type="PRIMARY" name="">
-<part>id</part>
+<part>currency_id</part>
 </key>
 <comment>Contains a list of currency symbols.</comment>
 </table>
-<table x="166" y="395" name="t_market">
+<table x="671" y="28" name="t_market">
 <row name="market_id" null="0" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>BIGINT</datatype>
 <default>NULL</default></row>
 <row name="code" null="0" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
@@ -116,9 +153,9 @@
 </key>
 <comment>Contains a list of markets you can trade.</comment>
 </table>
-<table x="494" y="434" name="t_version">
+<table x="142" y="14" name="t_version">
 <row name="version_id" null="0" autoincrement="1">
-<datatype>INTEGER</datatype>
+<datatype>BIGINT</datatype>
 <default>NULL</default></row>
 <row name="database_version" null="0" autoincrement="0">
 <datatype>VARCHAR(100)</datatype>
@@ -142,5 +179,34 @@
 <part>version_id</part>
 </key>
 <comment>Application and database version information.</comment>
+</table>
+<table x="741" y="278" name="t_currency_exchange">
+<row name="currency_exchange_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="currency_from_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_currency" row="currency_id" />
+</row>
+<row name="currency_to_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_currency" row="currency_id" />
+</row>
+<row name="exchange_rate" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>currency_exchange_id</part>
+</key>
+<comment>Table that hold exchange-rates.</comment>
 </table>
 </sql>
