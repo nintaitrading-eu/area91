@@ -1,0 +1,15 @@
+= README
+
+== General
+
+This readme explains what this ba-folder is all about.
+It is used for all information regarding business analysis of the project, database schema desing, etc.
+
+== bpmn
+
+Various bpmn diagrams, that document the flow of the application.
+They are created with http://bpmn.io.
+
+== database
+
+Database schema xml, created and exported with www sql designer (http://ondras.zarovi.cz/sql/demo/).

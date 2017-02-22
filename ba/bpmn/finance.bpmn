@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="sid-38422fae-e03e-43a3-bef4-bd33b32041b2" targetNamespace="http://bpmn.io/bpmn" exporter="http://bpmn.io" exporterVersion="0.10.1">
+  <collaboration id="Collaboration_1pihfcf">
+    <participant id="Participant_010x0kr" name="leverage&#10;" processRef="Process_1" />
+    <participant id="Participant_0ph7ihg" name="contracts" processRef="Process_1g1cpnr" />
+    <messageFlow id="MessageFlow_1wiwjoh" sourceRef="Task_0ja89z8" targetRef="StartEvent_1e6r31e" />
+    <messageFlow id="MessageFlow_0r6ojjn" sourceRef="EndEvent_1xmh5s7" targetRef="Task_0ja89z8" />
+    <textAnnotation id="TextAnnotation_1m3uu0g">    <text><![CDATA[The total pool could be automated in area91
+]]></text>
+</textAnnotation>
+    <association id="Association_0n2idby" sourceRef="Participant_0ph7ihg" targetRef="TextAnnotation_1m3uu0g" />
+    <textAnnotation id="TextAnnotation_1e6dicm">    <text><![CDATA[The calculations could be used from libcalculatorfinance-ex, this way, the entire calculation tab in trading_ods.fish could be removed.
+]]></text>
+</textAnnotation>
+    <association id="Association_1ji2hin" sourceRef="Participant_0ph7ihg" targetRef="TextAnnotation_1e6dicm" />
+  </collaboration>
+  <process id="Process_1" isExecutable="false">
+    <laneSet>
+      <lane id="Lane_071fmgd">
+        <flowNodeRef>Task_0lyp3r4</flowNodeRef>
+        <flowNodeRef>Task_1vhwn47</flowNodeRef>
+        <flowNodeRef>Task_1v74fal</flowNodeRef>
+        <flowNodeRef>EndEvent_1okqa81</flowNodeRef>
+        <flowNodeRef>StartEvent_06h2ztd</flowNodeRef>
+        <flowNodeRef>ExclusiveGateway_0ot0mzg</flowNodeRef>
+        <flowNodeRef>Task_0ja89z8</flowNodeRef>
+      </lane>
+    </laneSet>
+    <startEvent id="StartEvent_06h2ztd" name="use leverage&#10;">
+      <outgoing>SequenceFlow_104odal</outgoing>
+    </startEvent>
+    <sequenceFlow id="SequenceFlow_104odal" sourceRef="StartEvent_06h2ztd" targetRef="Task_0ja89z8" />
+    <exclusiveGateway id="ExclusiveGateway_0ot0mzg" name="&#10;&#62;3?&#10;">
+      <incoming>SequenceFlow_1ifhha2</incoming>
+      <outgoing>SequenceFlow_011i48r</outgoing>
+    </exclusiveGateway>
+    <sequenceFlow id="SequenceFlow_1ifhha2" sourceRef="Task_0ja89z8" targetRef="ExclusiveGateway_0ot0mzg" />
+    <task id="Task_0lyp3r4" name="load leverage screen&#10;">
+      <incoming>SequenceFlow_011i48r</incoming>
+      <outgoing>SequenceFlow_0x7su6q</outgoing>
+    </task>
+    <sequenceFlow id="SequenceFlow_011i48r" sourceRef="ExclusiveGateway_0ot0mzg" targetRef="Task_0lyp3r4" />
+    <task id="Task_1vhwn47" name="enter calculated number of contracts without leverage&#10;">
+      <incoming>SequenceFlow_0x7su6q</incoming>
+      <outgoing>SequenceFlow_140zqg1</outgoing>
+    </task>
+    <sequenceFlow id="SequenceFlow_0x7su6q" sourceRef="Task_0lyp3r4" targetRef="Task_1vhwn47" />
+    <task id="Task_1v74fal" name="press calculate&#10;">
+      <incoming>SequenceFlow_140zqg1</incoming>
+      <outgoing>SequenceFlow_05scn4i</outgoing>
+    </task>
+    <sequenceFlow id="SequenceFlow_140zqg1" sourceRef="Task_1vhwn47" targetRef="Task_1v74fal" />
+    <endEvent id="EndEvent_1okqa81" name="&#10;new number of contracts shown&#10;">
+      <incoming>SequenceFlow_05scn4i</incoming>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_05scn4i" sourceRef="Task_1v74fal" targetRef="EndEvent_1okqa81" />
+    <task id="Task_0ja89z8" name="calculate contracts without leverage&#10;">
+      <incoming>SequenceFlow_104odal</incoming>
+      <outgoing>SequenceFlow_1ifhha2</outgoing>
+    </task>
+  </process>
+  <process id="Process_1g1cpnr">
+    <startEvent id="StartEvent_1e6r31e" name="&#10;calculate contracts to trade&#10;">
+      <outgoing>SequenceFlow_0qawv0d</outgoing>
+    </startEvent>
+    <task id="Task_1n4s91l" name="open trading_ods.fish, the first tab&#10;">
+      <incoming>SequenceFlow_0qawv0d</incoming>
+      <outgoing>SequenceFlow_1ihbzkm</outgoing>
+    </task>
+    <sequenceFlow id="SequenceFlow_0qawv0d" sourceRef="StartEvent_1e6r31e" targetRef="Task_1n4s91l" />
+    <task id="Task_19j7y2i" name="update total pool data, price and risk %&#10;">
+      <incoming>SequenceFlow_1ihbzkm</incoming>
+      <outgoing>SequenceFlow_1neu1ni</outgoing>
+    </task>
+    <sequenceFlow id="SequenceFlow_1ihbzkm" sourceRef="Task_1n4s91l" targetRef="Task_19j7y2i" />
+    <task id="Task_0kxs0e3" name="check the shares_recommended&#10;">
+      <incoming>SequenceFlow_1neu1ni</incoming>
+      <outgoing>SequenceFlow_1jw9f68</outgoing>
+    </task>
+    <sequenceFlow id="SequenceFlow_1neu1ni" sourceRef="Task_19j7y2i" targetRef="Task_0kxs0e3" />
+    <endEvent id="EndEvent_1xmh5s7" name="&#10;&#10;calculated number of contracts&#10;">
+      <incoming>SequenceFlow_1jw9f68</incoming>
+    </endEvent>
+    <sequenceFlow id="SequenceFlow_1jw9f68" sourceRef="Task_0kxs0e3" targetRef="EndEvent_1xmh5s7" />
+  </process>
+  <bpmndi:BPMNDiagram id="BpmnDiagram_1">
+    <bpmndi:BPMNPlane id="BpmnPlane_1" bpmnElement="Collaboration_1pihfcf">
+      <bpmndi:BPMNShape id="Participant_010x0kr_di" bpmnElement="Participant_010x0kr">
+        <omgdc:Bounds x="163" y="81" width="909" height="303" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_071fmgd_di" bpmnElement="Lane_071fmgd">
+        <omgdc:Bounds x="193" y="81" width="879" height="303" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_06h2ztd_di" bpmnElement="StartEvent_06h2ztd">
+        <omgdc:Bounds x="242.43800539083554" y="206.8679245283019" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="229" y="248" width="63" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_0ja89z8_di" bpmnElement="Task_0ja89z8">
+        <omgdc:Bounds x="306" y="185" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_104odal_di" bpmnElement="SequenceFlow_104odal">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="278" y="225" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="306" y="225" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="292" y="210" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="ExclusiveGateway_0ot0mzg_di" bpmnElement="ExclusiveGateway_0ot0mzg" isMarkerVisible="true">
+        <omgdc:Bounds x="468.5719480519481" y="200" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="484" y="255" width="19" height="13" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ifhha2_di" bpmnElement="SequenceFlow_1ifhha2">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="406" y="225" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="469" y="225" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="438" y="210" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0lyp3r4_di" bpmnElement="Task_0lyp3r4">
+        <omgdc:Bounds x="554.9952670723462" y="185" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_011i48r_di" bpmnElement="SequenceFlow_011i48r">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="519" y="225" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="555" y="225" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="537" y="200" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1vhwn47_di" bpmnElement="Task_1vhwn47">
+        <omgdc:Bounds x="682.2551020408164" y="185" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0x7su6q_di" bpmnElement="SequenceFlow_0x7su6q">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="655" y="225" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="682" y="225" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="669" y="200" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_1v74fal_di" bpmnElement="Task_1v74fal">
+        <omgdc:Bounds x="797.1632653061224" y="185" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_140zqg1_di" bpmnElement="SequenceFlow_140zqg1">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="782" y="225" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="797" y="225" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="790" y="200" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1okqa81_di" bpmnElement="EndEvent_1okqa81">
+        <omgdc:Bounds x="941.1632653061224" y="207" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="920" y="248" width="80" height="26" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_05scn4i_di" bpmnElement="SequenceFlow_05scn4i">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="897" y="225" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="941" y="225" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="919" y="200" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Participant_0ph7ihg_di" bpmnElement="Participant_0ph7ihg">
+        <omgdc:Bounds x="219.57936507936506" y="434.1111111111111" width="600" height="250" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="StartEvent_1e6r31e_di" bpmnElement="StartEvent_1e6r31e">
+        <omgdc:Bounds x="294.57936507936506" y="520.1111111111111" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="270" y="556.1111111111111" width="85" height="26" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Task_1n4s91l_di" bpmnElement="Task_1n4s91l">
+        <omgdc:Bounds x="369.8462383305876" y="498" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_0qawv0d_di" bpmnElement="SequenceFlow_0qawv0d">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="331" y="538" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="370" y="538" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="351" y="513" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1m3uu0g_di" bpmnElement="TextAnnotation_1m3uu0g">
+        <omgdc:Bounds x="57.521109770808195" y="424.60554885404105" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_0n2idby_di" bpmnElement="Association_0n2idby">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="220" y="472" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="158" y="454" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_19j7y2i_di" bpmnElement="Task_19j7y2i">
+        <omgdc:Bounds x="505.113172541744" y="498" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1ihbzkm_di" bpmnElement="SequenceFlow_1ihbzkm">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="470" y="538" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="505" y="538" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="488" y="513" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Task_0kxs0e3_di" bpmnElement="Task_0kxs0e3">
+        <omgdc:Bounds x="630.113172541744" y="498" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1neu1ni_di" bpmnElement="SequenceFlow_1neu1ni">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="605" y="538" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="630" y="538" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="618" y="513" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="EndEvent_1xmh5s7_di" bpmnElement="EndEvent_1xmh5s7">
+        <omgdc:Bounds x="754.113172541744" y="520" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="726" y="556" width="93" height="26" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="SequenceFlow_1jw9f68_di" bpmnElement="SequenceFlow_1jw9f68">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="730" y="538" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="754" y="538" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="742" y="513" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="TextAnnotation_1e6dicm_di" bpmnElement="TextAnnotation_1e6dicm">
+        <omgdc:Bounds x="909" y="544" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Association_1ji2hin_di" bpmnElement="Association_1ji2hin">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="820" y="559" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="909" y="558" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_1wiwjoh_di" bpmnElement="MessageFlow_1wiwjoh">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="315" y="264" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="315" y="521" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="330" y="392.5" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="MessageFlow_0r6ojjn_di" bpmnElement="MessageFlow_0r6ojjn">
+        <omgdi:waypoint xsi:type="omgdc:Point" x="770" y="520" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="770.470066518847" y="393" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="353.47006651884703" y="393" />
+        <omgdi:waypoint xsi:type="omgdc:Point" x="353" y="265" />
+        <bpmndi:BPMNLabel>
+          <omgdc:Bounds x="562" y="368" width="0" height="0" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</definitions>
