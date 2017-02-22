@@ -60,10 +60,6 @@
 <row name="description" null="0" autoincrement="0">
 <datatype>VARCHAR(4000)</datatype>
 <default>'NULL'</default></row>
-<row name="is_active" null="0" autoincrement="0">
-<datatype>BOOLEAN</datatype>
-<default>'True'</default><comment>Can be used to deactivate a record, so it is no longer used in reports or displayed in comboboxes, etc.</comment>
-</row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'False'</default><comment>When a record is deleted. Nothing gets actually removed.</comment>
@@ -89,5 +85,62 @@
 <part>id</part>
 </key>
 <comment>Contains a list of currency symbols.</comment>
+</table>
+<table x="166" y="395" name="t_market">
+<row name="market_id" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="code" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default><comment>A unique short code representation to use in applications. e.g.: EBR</comment>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>'NULL'</default></row>
+<row name="country" null="0" autoincrement="0">
+<datatype>CHAR(3)</datatype>
+<default>'NULL'</default><comment>Iso country code, 3 characters.</comment>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default><comment>When a record is deleted. Nothing gets actually removed.</comment>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="pk_market_id">
+<part>market_id</part>
+</key>
+<comment>Contains a list of markets you can trade.</comment>
+</table>
+<table x="494" y="434" name="t_version">
+<row name="version_id" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="database_version" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="database_version_info" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="application_version" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="application_version_info" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>version_id</part>
+</key>
+<comment>Application and database version information.</comment>
 </table>
 </sql>
