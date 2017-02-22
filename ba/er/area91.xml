@@ -41,7 +41,7 @@
 		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
 		<type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
 	</group>
-</datatypes><table x="142" y="235" name="t_parameter">
+</datatypes><table x="770" y="241" name="t_parameter">
 <row name="parameter_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -71,7 +71,7 @@
 </key>
 <comment>Table that contains global parameters, with default values and descriptions.</comment>
 </table>
-<table x="449" y="20" name="t_account">
+<table x="499" y="28" name="t_account">
 <row name="account_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -98,7 +98,7 @@
 </key>
 <comment>Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.</comment>
 </table>
-<table x="456" y="224" name="t_currency">
+<table x="492" y="403" name="t_currency">
 <row name="currency_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -123,7 +123,7 @@
 </key>
 <comment>Contains a list of currency symbols.</comment>
 </table>
-<table x="671" y="28" name="t_market">
+<table x="181" y="317" name="t_market">
 <row name="market_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -151,9 +151,9 @@
 <key type="PRIMARY" name="pk_market_id">
 <part>market_id</part>
 </key>
-<comment>Contains a list of markets you can trade.</comment>
+<comment>Contains a list of markets you can trade. E.g.: 'cfd .gold', 'ebr'</comment>
 </table>
-<table x="142" y="14" name="t_version">
+<table x="734" y="26" name="t_version">
 <row name="version_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -180,7 +180,7 @@
 </key>
 <comment>Application and database version information.</comment>
 </table>
-<table x="741" y="278" name="t_currency_exchange">
+<table x="745" y="462" name="t_currency_exchange">
 <row name="currency_exchange_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -208,5 +208,65 @@
 <part>currency_exchange_id</part>
 </key>
 <comment>Table that hold exchange-rates.</comment>
+</table>
+<table x="147" y="40" name="t_product">
+<row name="product_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="product_type_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_product_type" row="product_type_id" />
+</row>
+<row name="currency_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_currency" row="currency_id" />
+</row>
+<row name="market_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_market" row="market_id" />
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_id</part>
+</key>
+<comment>Table with products. This is the detailed version of the type of contract or other product_type you deal with. E.g: CCZ3.cfd</comment>
+</table>
+<table x="481" y="224" name="t_product_type">
+<row name="product_type_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_type_id</part>
+</key>
+<comment>Table with product type, e.g.: cfd, stock, fund, ...</comment>
 </table>
 </sql>
