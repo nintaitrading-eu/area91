@@ -50,4 +50,44 @@
 </key>
 <comment>Table that contains global parameters, with default values and descriptions.</comment>
 </table>
+<table x="153" y="175" name="t_account">
+<row name="account_id" null="0" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_active" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'True'</default><comment>Can be used to deactivate a record, so it is no longer used in reports or displayed in comboboxes, etc.</comment>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default><comment>When a record is deleted. Nothing gets actually removed.</comment>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Date, on which the record was created.</comment>
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default><comment>Date, on which the record was last modified.</comment>
+</row>
+<key type="PRIMARY" name="pk_account_id">
+<part>account_id</part>
+</key>
+<comment>Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.</comment>
+</table>
+<table x="445" y="107" name="t_currency">
+<row name="id" null="1" autoincrement="1">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<key type="PRIMARY" name="">
+<part>id</part>
+</key>
+<comment>Contains a list of currency symbols.</comment>
+</table>
 </sql>
