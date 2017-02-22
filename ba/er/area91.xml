@@ -71,7 +71,7 @@
 </key>
 <comment>Table that contains global parameters, with default values and descriptions.</comment>
 </table>
-<table x="499" y="28" name="t_account">
+<table x="769" y="675" name="t_account">
 <row name="account_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -268,5 +268,60 @@
 <part>product_type_id</part>
 </key>
 <comment>Table with product type, e.g.: cfd, stock, fund, ...</comment>
+</table>
+<table x="158" y="608" name="t_drawdown">
+<row name="drawdown_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="drawdown_current" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="drawdown_max" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>drawdown_id</part>
+</key>
+<comment>Table, used to keep track of drawdown periods.</comment>
+</table>
+<table x="431" y="625" name="t_pool">
+<row name="pool_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="account_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_account" row="account_id" />
+</row>
+<row name="total" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="invested" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="cash" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>pool_id</part>
+</key>
+<comment>To keep track of the available money per account: invested amount, cash amount and total available.</comment>
 </table>
 </sql>
