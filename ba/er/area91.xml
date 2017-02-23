@@ -193,7 +193,7 @@
 <default>NULL</default><relation table="t_currency" row="currency_id" />
 </row>
 <row name="exchange_rate" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
@@ -302,13 +302,13 @@
 <default>NULL</default><relation table="t_account" row="account_id" />
 </row>
 <row name="total" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="invested" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="cash" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="is_manually_added" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
@@ -339,13 +339,13 @@
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
 <row name="total" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="invested" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="cash" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="is_manually_added" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
@@ -385,7 +385,7 @@
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
 <row name="exchange_rate" null="0" autoincrement="0">
-<datatype>DECIMAL((18,6))</datatype>
+<datatype>DECIMAL(18,6)</datatype>
 <default>NULL</default></row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
@@ -406,5 +406,39 @@
 <part>currency_exchange_hist_id</part>
 </key>
 <comment>History table for t_currency_exchange.</comment>
+</table>
+<table x="748" y="921" name="t_account_hist">
+<row name="account_hist_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="account_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_account" row="account_id" />
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>account_hist_id</part>
+</key>
+<comment>History table for t_account.</comment>
 </table>
 </sql>
