@@ -310,6 +310,9 @@
 <row name="cash" null="0" autoincrement="0">
 <datatype>DECIMAL((18,6))</datatype>
 <default>NULL</default></row>
+<row name="is_manually_added" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'False'</default></row>
@@ -323,5 +326,48 @@
 <part>pool_id</part>
 </key>
 <comment>To keep track of the available money per account: invested amount, cash amount and total available.</comment>
+</table>
+<table x="414" y="918" name="t_pool_hist">
+<row name="pool_hist_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="pool_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_pool" row="pool_id" />
+</row>
+<row name="account_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="total" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="invested" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="cash" null="0" autoincrement="0">
+<datatype>DECIMAL((18,6))</datatype>
+<default>NULL</default></row>
+<row name="is_manually_added" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>pool_hist_id</part>
+</key>
+<comment>History table for t_pool, gets a new entry for every insert/update.</comment>
 </table>
 </sql>
