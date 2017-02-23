@@ -41,7 +41,7 @@
 		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
 		<type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
 	</group>
-</datatypes><table x="770" y="241" name="t_parameter">
+</datatypes><table x="1028" y="147" name="t_parameter">
 <row name="parameter_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -71,7 +71,7 @@
 </key>
 <comment>Table that contains global parameters, with default values and descriptions.</comment>
 </table>
-<table x="769" y="675" name="t_account">
+<table x="156" y="498" name="t_account">
 <row name="account_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -98,7 +98,7 @@
 </key>
 <comment>Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.</comment>
 </table>
-<table x="492" y="403" name="t_currency">
+<table x="1269" y="341" name="t_currency">
 <row name="currency_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -123,7 +123,7 @@
 </key>
 <comment>Contains a list of currency symbols.</comment>
 </table>
-<table x="181" y="317" name="t_market">
+<table x="1945" y="711" name="t_market">
 <row name="market_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -153,7 +153,7 @@
 </key>
 <comment>Contains a list of markets you can trade. E.g.: 'cfd .gold', 'ebr'</comment>
 </table>
-<table x="734" y="26" name="t_version">
+<table x="61" y="13" name="t_version">
 <row name="version_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -180,7 +180,7 @@
 </key>
 <comment>Application and database version information.</comment>
 </table>
-<table x="745" y="462" name="t_currency_exchange">
+<table x="698" y="444" name="t_currency_exchange">
 <row name="currency_exchange_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -209,7 +209,7 @@
 </key>
 <comment>Table that hold exchange-rates.</comment>
 </table>
-<table x="147" y="40" name="t_product">
+<table x="1645" y="431" name="t_product">
 <row name="product_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -245,7 +245,7 @@
 </key>
 <comment>Table with products. This is the detailed version of the type of contract or other product_type you deal with. E.g: CCZ3.cfd</comment>
 </table>
-<table x="481" y="224" name="t_product_type">
+<table x="1253" y="80" name="t_product_type">
 <row name="product_type_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -269,7 +269,7 @@
 </key>
 <comment>Table with product type, e.g.: cfd, stock, fund, ...</comment>
 </table>
-<table x="158" y="608" name="t_drawdown">
+<table x="894" y="1294" name="t_drawdown">
 <row name="drawdown_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -293,7 +293,7 @@
 </key>
 <comment>Table, used to keep track of drawdown periods.</comment>
 </table>
-<table x="431" y="625" name="t_pool">
+<table x="475" y="757" name="t_pool">
 <row name="pool_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -327,7 +327,7 @@
 </key>
 <comment>To keep track of the available money per account: invested amount, cash amount and total available.</comment>
 </table>
-<table x="414" y="918" name="t_pool_hist">
+<table x="454" y="1059" name="t_pool_hist">
 <row name="pool_hist_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -370,7 +370,7 @@
 </key>
 <comment>History table for t_pool, gets a new entry for every insert/update.</comment>
 </table>
-<table x="1054" y="463" name="t_currency_exchange_hist">
+<table x="658" y="92" name="t_currency_exchange_hist">
 <row name="currency_exchange_hist_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -407,7 +407,7 @@
 </key>
 <comment>History table for t_currency_exchange.</comment>
 </table>
-<table x="748" y="921" name="t_account_hist">
+<table x="117" y="714" name="t_account_hist">
 <row name="account_hist_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -441,7 +441,7 @@
 </key>
 <comment>History table for t_account.</comment>
 </table>
-<table x="1065" y="820" name="t_trade">
+<table x="898" y="798" name="t_trade">
 <row name="trade_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -449,22 +449,22 @@
 <datatype>BIGINT</datatype>
 <default>NULL</default><relation table="t_trade_calculated" row="trade_calculated_id" />
 </row>
-<row name="market_id" null="0" autoincrement="0">
-<datatype>BIGINT</datatype>
-<default>NULL</default></row>
 <row name="product_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="t_product" row="product_id" />
+</row>
 <row name="pool_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="t_pool" row="pool_id" />
+</row>
 <row name="trade_cost_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
 <default>NULL</default><relation table="t_trade_cost" row="trade_cost_id" />
 </row>
 <row name="drawdown_id" null="1" autoincrement="0">
 <datatype>INTEGER</datatype>
-<default>NULL</default></row>
+<default>NULL</default><relation table="t_drawdown" row="drawdown_id" />
+</row>
 <row name="date_buy" null="0" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
 <default>'NULL'</default></row>
@@ -503,7 +503,7 @@
 </key>
 <comment>Table to log trading transactions.</comment>
 </table>
-<table x="1442" y="856" name="t_trade_calculated">
+<table x="1239" y="904" name="t_trade_calculated">
 <row name="trade_calculated_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -586,7 +586,7 @@
 </key>
 <comment>Calculated fields for trading transactions.</comment>
 </table>
-<table x="1026" y="1332" name="t_trade_cost">
+<table x="869" y="1485" name="t_trade_cost">
 <row name="trade_cost_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -613,7 +613,7 @@
 </key>
 <comment>Tax and commission.</comment>
 </table>
-<table x="1053" y="1565" name="t_trade_cost_hist">
+<table x="492" y="1413" name="t_trade_cost_hist">
 <row name="trade_cost_hist_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -650,7 +650,7 @@
 </key>
 <comment>History table for t_trade_cost.</comment>
 </table>
-<table x="1801" y="865" name="t_trade_calculated_hist">
+<table x="1597" y="884" name="t_trade_calculated_hist">
 <row name="trade_calculated_hist_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
