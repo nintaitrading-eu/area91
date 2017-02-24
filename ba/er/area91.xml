@@ -507,7 +507,7 @@
 </key>
 <comment>Table to log trading transactions.</comment>
 </table>
-<table x="1239" y="904" name="t_trade_calculated">
+<table x="1281" y="627" name="t_trade_calculated">
 <row name="trade_calculated_id" null="0" autoincrement="1">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
@@ -827,5 +827,72 @@
 <part>product_hist_id</part>
 </key>
 <comment>History table for t_product.</comment>
+</table>
+<table x="1213" y="1269" name="t_trade_hist">
+<row name="trade_hist_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="trade_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_trade" row="trade_id" />
+</row>
+<row name="trade_calculated_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="product_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="pool_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="trade_cost_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="drawdown_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="date_buy" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="year_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="month_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="day_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="date_sell" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="year_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="month_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="day_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_hist_id</part>
+</key>
+<comment>History table for t_trade.</comment>
 </table>
 </sql>
