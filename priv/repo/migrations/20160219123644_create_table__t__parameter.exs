@@ -4,16 +4,20 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
   def up do
     execute "CREATE TABLE T_PARAMETER
     (
-        parameter_id int not null,
+        parameter_id bigserial not null,
         name varchar(50) not null,
         value varchar(512) not null,
+        value_default varchar(512) not null,
         description varchar(4000) not null,
-        is_active int not null default 1,
-        date_created timestamp not null default '1900-01-01',
-        date_modified timestamp not null default '1900-01-01',
+        datatype varchar(50) not null,
+        is_deleted boolean not null default 'false',
+        date_created timestamp not null,
+        date_modified timestamp not null default current_date,
         constraint pk_parameter_id primary key(parameter_id),
         unique(parameter_id)
-    );"
+    );
+    COMMENT ON TABLE T_PARAMETER IS 'Table that contains global parameters, with default values and descriptions.';
+    COMMENT ON COLUMN T_PARAMETER.datatype IS 'Note: add check constraint: integer, string, decimal(18,6)';"
   end
 
   def down do
