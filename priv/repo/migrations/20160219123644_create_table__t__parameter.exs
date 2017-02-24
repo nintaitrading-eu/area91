@@ -23,7 +23,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
   def down do
     execute "drop table T_PARAMETER;"
   end
- 
+
   def change do
   end
 end
