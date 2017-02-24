@@ -1,8 +1,8 @@
-defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
+defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT_HIST do
   use Ecto.Migration
 
   def up do
-    execute "CREATE TABLE T_ACCOUNT
+    execute "CREATE TABLE T_ACCOUNT_HIST
     (
         account_hist_id bigserial not null,
         account_id bigint not null
@@ -13,7 +13,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
         date_modified timestamp not null,
         date_hist_created timestamp not null,
         date_hist_modified timestamp not null default current_date,
-        constraint pk_account_hist_id primary key(account_hist_id)
+        constraint pk_account_hist_id primary key(account_hist_id),
+        constraint fk_T_ACCOUNT_HIST_account_id foreign key (account_id) references T_ACCOUNT (account_id)
     );
     COMMENT ON TABLE T_ACCOUNT_HIST IS 'History table for T_ACCOUNT.';"
   end

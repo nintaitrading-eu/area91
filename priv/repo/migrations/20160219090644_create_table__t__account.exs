@@ -7,7 +7,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
         account_id bigserial not null,
         name varchar(4000) not null,
         description varchar(4000) not null,
-        is_deleted boolean not null default 'False' /* When a record is deleted. Nothing gets actually removed. */,
+        is_deleted boolean not null default 'false' /* When a record is deleted. Nothing gets actually removed. */,
         date_created timestamp not null /* Date, on which the record was created. */,
         date_modified timestamp not null default current_date /* Date, on which the record was last modified. */,
         constraint pk_account_id primary key(account_id),
