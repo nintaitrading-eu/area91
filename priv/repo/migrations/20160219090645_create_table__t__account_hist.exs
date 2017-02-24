@@ -15,12 +15,12 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
         date_hist_modified timestamp not null default current_date,
         constraint pk_account_hist_id primary key(account_hist_id)
     );
-    COMMENT ON TABLE T_ACCOUNT_HIST IS 'History table for T_ACCOUNT.';" 
+    COMMENT ON TABLE T_ACCOUNT_HIST IS 'History table for T_ACCOUNT.';"
   end
 
 
   def down do
-   execute "drop table T_ACCOUNT_HIST;" 
+   execute "drop table T_ACCOUNT_HIST;"
   end
 
 
