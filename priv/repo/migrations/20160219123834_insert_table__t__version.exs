@@ -1,4 +1,4 @@
-defmodule Area91.Repo.Migrations.InsertTableTVersion do
+defmodule Area91.Repo.Migrations.InsertTable_T_VERSION do
   use Ecto.Migration
 
   def up do
