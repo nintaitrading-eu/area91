@@ -8,7 +8,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_MARKET_HIST do
         market_id bigint not null,
         code varchar(50) not null,
         name varchar(50) not null,
-        country char(3) not null,
+        country char(2) not null,
         is_deleted int not null,
         date_created timestamp not null,
         date_modified timestamp not null,

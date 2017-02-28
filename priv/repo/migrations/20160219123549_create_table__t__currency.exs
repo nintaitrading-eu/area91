@@ -11,7 +11,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY_EXCHANGE do
         is_deleted boolean not null default 'false',
         constraint pk_currency_id primary key(currency_exchange_id),
         unique(currency_exchange_id),
-        constraint fk_T_CURRENCY_EXCHANGE_currency_from_id foreign key (currency_from_id) references (T_
+        constraint fk_T_CURRENCY_EXCHANGE_currency_from_id foreign key (currency_from_id) references T_CURRENCY(currency_id),
+        constraint fk_T_CURRENCY_EXCHANGE_currency_to_id foreign key (currency_to_id) references T_CURRENCY(currency_id)
     );
     COMMENT ON TABLE T_CURRENCY_EXCHANGE IS 'Table that hold exchange-rates.';"
   end
