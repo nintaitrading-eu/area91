@@ -1,0 +1,23 @@
+.pure-control-group
+  %a.pure-button.pure-button-active{:href => "/trade/financing/new", :title => "New"}
+    %i.fa.fa-file{:title => "New", :aria-hidden => "true"}
+%br/
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th trade_financing_id
+        %th date_created
+        %th date_modified
+        %th &nbsp;
+    %tbody
+    - for l_record <- @financing_records do
+      %tr
+        %td= l_record.trade_financing_id
+        %td= l_record.date_created
+        %td= l_record.date_modified
+        %td
+          %a.pure-button{:href => "#{trade_financing_path(@conn, :edit, l_record.trade_financing_id)}", :title => "Modify", :alt => "Modify"}
+            %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
+          %a.rest.pure-button{:href => "#{trade_financing_path(@conn, :delete, l_record)}", :title => "Delete", :alt => "Delete", :data-method => "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}

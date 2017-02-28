@@ -1,4 +1,4 @@
-defmodule Area91.FinanceLeverageController do
+defmodule Area91.TradeLeverageController do
   use Phoenix.Controller
 
   plug :action

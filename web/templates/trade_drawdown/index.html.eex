@@ -1,6 +1,6 @@
 <h1 class="centered">Drawdown registration</h1>
 <p>
-  <form action="<%=finance_drawdown_path(@conn, :drawdown) %>" method="post">
+  <form action="<%=trade_drawdown_path(@conn, :drawdown) %>" method="post">
     <div class="form-group">
       <label for="edt_drawdown_current">Current drawdown:</label>
       <input type="text" name="edt_drawdown_current" class="form-control" />

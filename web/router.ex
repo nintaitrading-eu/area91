@@ -33,9 +33,11 @@ defmodule Area91.Router do
     ### Invoice
     get "/invoice", InvoiceController, :index
     resources "/invoice", InvoiceController
-    ### Finance
-    get "/finance/leverage", FinanceLeverageController, :index
-    get "/finance/drawdown", FinanceDrawdownController, :index
+    ### Trade
+    get "/trade/journal", TradeJournalController, :index
+    get "/trade/financing", TradeFinancingController, :index
+    get "/trade/leverage", TradeLeverageController, :index
+    get "/trade/drawdown", TradeDrawdownController, :index
     ### Test
     get "/test", TestController, :index
   end

@@ -33,10 +33,12 @@
             <ul class="pure-menu-list">
                 <li class="pure-menu-item"><a href="/" class="pure-menu-link"><i class="fa fa-home" title="Home" aria-hidden="true"></i> Home</a></li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
-                    <a href="#" id="mnu-finance" class="pure-menu-link"><i class="fa fa-line-chart" title="Finance" aria-hidden="true"></i> Finance</a>
+                    <a href="#" id="mnu-trade" class="pure-menu-link"><i class="fa fa-line-chart" title="Trade" aria-hidden="true"></i> Trade</a>
                     <ul class="pure-menu-children">
-                        <li class="pure-menu-item"><a href="/finance/leverage" class="pure-menu-link">Leverage</a></li>
-                        <li class="pure-menu-item"><a href="/finance/drawdown" class="pure-menu-link">Drawdown</a></li>
+                        <li class="pure-menu-item"><a href="/trade/journal" class="pure-menu-link">Journal</a></li>
+                        <li class="pure-menu-item"><a href="/trade/financing" class="pure-menu-link">Financing</a></li>
+                        <li class="pure-menu-item"><a href="/trade/leverage" class="pure-menu-link">Leverage</a></li>
+                        <li class="pure-menu-item"><a href="/trade/drawdown" class="pure-menu-link">Drawdown</a></li>
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">

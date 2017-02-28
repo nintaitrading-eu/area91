@@ -1,4 +1,4 @@
-defmodule Area91.FinanceDrawdownController do
+defmodule Area91.TradeDrawdownController do
   use Phoenix.Controller
 
   plug :action
