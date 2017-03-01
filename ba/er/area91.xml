@@ -659,7 +659,7 @@
 </key>
 <comment>History table for t_trade_cost.</comment>
 </table>
-<table x="1597" y="884" name="t_trade_calculated_hist">
+<table x="1599" y="1239" name="t_trade_calculated_hist">
 <row name="trade_calculated_hist_id" null="0" autoincrement="1">
 <datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
@@ -960,5 +960,51 @@
 <part>product_tick_info_id</part>
 </key>
 <comment>Table with tick value information on contracts. Only belongs to cfd products and futures contracts.</comment>
+</table>
+<table x="1607" y="880" name="t_product_tick_info_hist">
+<row name="product_tick_info_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+</row>
+<row name="product_tick_info_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<relation table="t_product_tick_info" row="product_tick_info_id" />
+</row>
+<row name="tick" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="tick_value" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_min" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_max" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_day_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_night_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_tick_info_hist_id</part>
+</key>
+<comment>History table for T_PRODUCT_TICK_INFO.</comment>
 </table>
 </sql>
