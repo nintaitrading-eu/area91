@@ -43,27 +43,27 @@
 	</group>
 </datatypes><table x="122" y="228" name="t_parameter">
 <row name="parameter_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
-<default>NULL</default></row>
+<datatype>BIGSERIAL</datatype>
+</row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
-<default>'NULL'</default></row>
+</row>
 <row name="description" null="0" autoincrement="0">
 <datatype>VARCHAR(4000)</datatype>
-<default>'NULL'</default></row>
+</row>
 <row name="value" null="0" autoincrement="0">
 <datatype>VARCHAR(512)</datatype>
-<default>'NULL'</default></row>
+</row>
 <row name="value_default" null="0" autoincrement="0">
 <datatype>VARCHAR(512)</datatype>
-<default>'NULL'</default></row>
+</row>
 <row name="datatype" null="0" autoincrement="0">
 <datatype>VARCHAR(512)</datatype>
-<default>'NULL'</default><comment>Note: add check constraint: integer, string, decimal(18,6)</comment>
+<comment>Note: add check constraint: integer, string, decimal(18,6)</comment>
 </row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
-<default>'False'</default></row>
+<default>'false'</default></row>
 <row name="date_created" null="0" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
 <default>'NULL'</default></row>
@@ -77,14 +77,14 @@
 </table>
 <table x="113" y="518" name="t_account">
 <row name="account_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
-<default>NULL</default></row>
+<datatype>BIGSERIAL</datatype>
+</row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(4000)</datatype>
 <default>'NULL'</default></row>
 <row name="description" null="0" autoincrement="0">
 <datatype>VARCHAR(4000)</datatype>
-<default>'NULL'</default></row>
+</row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'False'</default><comment>When a record is deleted. Nothing gets actually removed.</comment>
@@ -104,7 +104,7 @@
 </table>
 <table x="1269" y="341" name="t_currency">
 <row name="currency_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="code" null="0" autoincrement="0">
 <datatype>VARCHAR(3)</datatype>
@@ -129,7 +129,7 @@
 </table>
 <table x="1945" y="711" name="t_market">
 <row name="market_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="code" null="0" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
@@ -159,7 +159,7 @@
 </table>
 <table x="61" y="13" name="t_version">
 <row name="version_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="database_version" null="0" autoincrement="0">
 <datatype>VARCHAR(100)</datatype>
@@ -186,7 +186,7 @@
 </table>
 <table x="698" y="444" name="t_currency_exchange">
 <row name="currency_exchange_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="currency_from_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -194,7 +194,7 @@
 </row>
 <row name="currency_to_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
-<default>NULL</default><relation table="t_currency" row="currency_id" />
+<relation table="t_currency" row="currency_id" />
 </row>
 <row name="exchange_rate" null="0" autoincrement="0">
 <datatype>DECIMAL(18,6)</datatype>
@@ -213,9 +213,9 @@
 </key>
 <comment>Table that hold exchange-rates.</comment>
 </table>
-<table x="1645" y="431" name="t_product">
+<table x="1647" y="299" name="t_product">
 <row name="product_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
@@ -235,6 +235,10 @@
 <datatype>BIGINT</datatype>
 <default>NULL</default><relation table="t_market" row="market_id" />
 </row>
+<row name="product_tick_info_id" null="1" autoincrement="0">
+<datatype>BIGINT</datatype>
+<relation table="t_product_tick_info" row="product_tick_info_id" />
+</row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'False'</default></row>
@@ -251,7 +255,7 @@
 </table>
 <table x="1253" y="80" name="t_product_type">
 <row name="product_type_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="name" null="0" autoincrement="0">
 <datatype>VARCHAR(50)</datatype>
@@ -275,7 +279,7 @@
 </table>
 <table x="894" y="1294" name="t_drawdown">
 <row name="drawdown_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="drawdown_current" null="0" autoincrement="0">
 <datatype>INTEGER</datatype>
@@ -299,7 +303,7 @@
 </table>
 <table x="475" y="757" name="t_pool">
 <row name="pool_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="account_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -333,7 +337,7 @@
 </table>
 <table x="454" y="1059" name="t_pool_hist">
 <row name="pool_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="pool_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -376,7 +380,7 @@
 </table>
 <table x="658" y="92" name="t_currency_exchange_hist">
 <row name="currency_exchange_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="currency_exchange_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -413,7 +417,7 @@
 </table>
 <table x="117" y="714" name="t_account_hist">
 <row name="account_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="account_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -447,7 +451,7 @@
 </table>
 <table x="898" y="798" name="t_trade">
 <row name="trade_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="trade_calculated_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -458,7 +462,7 @@
 <default>NULL</default><relation table="t_product" row="product_id" />
 </row>
 <row name="pool_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>BIGINT</datatype>
 <default>NULL</default><relation table="t_pool" row="pool_id" />
 </row>
 <row name="trade_cost_id" null="0" autoincrement="0">
@@ -466,7 +470,7 @@
 <default>NULL</default><relation table="t_trade_cost" row="trade_cost_id" />
 </row>
 <row name="drawdown_id" null="1" autoincrement="0">
-<datatype>INTEGER</datatype>
+<datatype>BIGINT</datatype>
 <default>NULL</default><relation table="t_drawdown" row="drawdown_id" />
 </row>
 <row name="date_buy" null="0" autoincrement="0">
@@ -509,7 +513,7 @@
 </table>
 <table x="1281" y="627" name="t_trade_calculated">
 <row name="trade_calculated_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="price_buy" null="0" autoincrement="0">
 <datatype>DECIMAL(18,6)</datatype>
@@ -592,7 +596,7 @@
 </table>
 <table x="869" y="1485" name="t_trade_cost">
 <row name="trade_cost_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="commission" null="0" autoincrement="0">
 <datatype>DECIMAL(18,6)</datatype>
@@ -619,7 +623,7 @@
 </table>
 <table x="492" y="1413" name="t_trade_cost_hist">
 <row name="trade_cost_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="trade_cost_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -656,7 +660,7 @@
 </table>
 <table x="1597" y="884" name="t_trade_calculated_hist">
 <row name="trade_calculated_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="trade_calculated_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -744,7 +748,7 @@
 </table>
 <table x="394" y="182" name="t_parameter_hist">
 <row name="parameter_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="parameter_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -809,6 +813,9 @@
 <row name="market_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
 <default>NULL</default></row>
+<row name="product_tick_info_id" null="1" autoincrement="0">
+<datatype>BIGINT</datatype>
+</row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'NULL'</default></row>
@@ -831,7 +838,7 @@
 </table>
 <table x="1213" y="1269" name="t_trade_hist">
 <row name="trade_hist_id" null="0" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="trade_id" null="0" autoincrement="0">
 <datatype>BIGINT</datatype>
@@ -898,7 +905,7 @@
 </table>
 <table x="415" y="551" name="t_parameter_datatype">
 <row name="parameter_datatype_id" null="1" autoincrement="1">
-<datatype>BIGINT</datatype>
+<datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
 <row name="datatype" null="0" autoincrement="0">
 <datatype>VARCHAR(512)</datatype>
@@ -916,5 +923,41 @@
 <part>parameter_datatype_id</part>
 </key>
 <comment>A table, containing valid datatypes for the parameters.</comment>
+</table>
+<table x="1633" y="590" name="t_product_tick_info">
+<row name="product_tick_info_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="tick" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="tick_value" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_min" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_max" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_day_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_night_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_tick_info_id</part>
+</key>
+<comment>Table with tick value information on contracts. Only belongs to cfd products and futures contracts.</comment>
 </table>
 </sql>
