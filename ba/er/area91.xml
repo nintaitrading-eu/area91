@@ -238,6 +238,7 @@
 <row name="product_tick_info_id" null="1" autoincrement="0">
 <datatype>BIGINT</datatype>
 <relation table="t_product_tick_info" row="product_tick_info_id" />
+<comment>May be NULL! The link is only valid for products that are cfd or futures contracts.</comment>
 </row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>

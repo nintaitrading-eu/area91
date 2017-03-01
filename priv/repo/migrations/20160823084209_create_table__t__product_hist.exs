@@ -11,6 +11,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_HIST do
         product_type_id bigint not null,
         currency_id bigint not null,
         market_id bigint not null,
+        product_tick_info_id bigint not null,
         is_deleted boolean not null default 'false',
         date_created timestamp not null,
         date_modified timestamp not null,
