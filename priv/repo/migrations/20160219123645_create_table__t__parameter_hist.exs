@@ -19,8 +19,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
         constraint pk_parameter_hist_id primary key(parameter_hist_id),
         unique(parameter_id),
         constraint fk_T_PARAMETER_HIST_parameter_id foreign key (parameter_id) references T_PARAMETER (parameter_id)
-    );
-    COMMENT ON TABLE T_PARAMETER_HIST IS 'History table for T_PARAMETER.';"
+    );"
+    execute "COMMENT ON TABLE T_PARAMETER_HIST IS 'History table for T_PARAMETER.';"
   end
 
   def down do

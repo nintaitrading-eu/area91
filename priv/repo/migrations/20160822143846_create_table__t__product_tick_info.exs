@@ -17,8 +17,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TICK_INFO do
         date_modified timestamp not null default current_date,
         constraint pk_product_tick_info_id primary key(product_tick_info_id),
         unique(product_tick_info_id)
-    );
-    COMMENT ON TABLE T_PRODUCT_TICK_INFO IS 'Table with tick value information on contracts. Only belongs to cfd products and futures contracts.';"
+    );"
+    execute "COMMENT ON TABLE T_PRODUCT_TICK_INFO IS 'Table with tick value information on contracts. Only belongs to cfd products and futures contracts.';"
   end
 
   def down do

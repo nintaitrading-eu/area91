@@ -19,8 +19,8 @@ defmodule Area91.Repo.Migrations.CreateTableT_POOL_HIST do
         constraint pk_pool_hist_id primary key(pool_hist_id),
         unique(pool_hist_id),
         constraint fk_T_POOL_pool_id foreign key(pool_id) references T_POOL(pool_id),
-    );
-    COMMENT ON TABLE T_POOL_HIST IS 'History table for T_POOL.';"
+    );"
+    execute "COMMENT ON TABLE T_POOL_HIST IS 'History table for T_POOL.';"
   end
 
   def down do

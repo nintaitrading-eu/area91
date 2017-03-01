@@ -20,8 +20,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_HIST do
         constraint pk_product_hist_id primary key(product_hist_id),
         unique(product_hist_id),
         constraint fk_T_PRODUCT_HIST_product_id foreign key (product_id) references T_PRODUCT (product_id)
-    );
-    COMMENT ON TABLE T_PRODUCT_TYPE IS 'History table for T_PRODUCT.'"
+    );"
+    execute "COMMENT ON TABLE T_PRODUCT_TYPE IS 'History table for T_PRODUCT.'"
   end
 
   def down do

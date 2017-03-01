@@ -15,8 +15,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY_EXCHANGE_HIST do
         date_hist_modified timestamp not null,
         constraint pk_currency_exchange_hist_id primary key(currency_exchange_hist_id),
         constraint fk_T_CURRENCY_EXCHANGE_HIST_currency_exchange_id foreign key(currency_exchange_id) references T_CURRENCY_EXCHANGE(currency_exchange_id)
-    );
-    COMMONT ON TABLE T_CURRENCY_EXCHANGE_HIST IS 'History table for T_CURRENCY_EXCHANGE.'"
+    );"
+    execute "COMMENT ON TABLE T_CURRENCY_EXCHANGE_HIST IS 'History table for T_CURRENCY_EXCHANGE.'"
   end
 
   def down do

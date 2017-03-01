@@ -12,8 +12,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TYPE do
         date_modified timestamp not null default current_date,
         constraint pk_product_type_id primary key(product_type_id),
         unique(product_type_id)
-    );
-    COMMENT ON TABLE T_PRODUCT_TYPE IS 'Table with product type, e.g.: cfd, stock, fund, ...'"
+    );"
+    execute "COMMENT ON TABLE T_PRODUCT_TYPE IS 'Table with product type, e.g.: cfd, stock, fund, ...'"
   end
 
   def down do

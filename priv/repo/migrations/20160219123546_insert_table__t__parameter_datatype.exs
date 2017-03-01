@@ -3,10 +3,12 @@ defmodule Area91.Repo.Migrations.InsertTable_T_PARAMETER_DATATYPE do
 
   def up do
     execute "
+      begin;
       insert into t_parameter_datatype(datatype, date_created) values('int', current_date);
       insert into t_parameter_datatype(datatype, date_created) values('string', current_date);
       insert into t_parameter_datatype(datatype, date_created) values('decimal(18,6)', current_date);
       insert into t_parameter_datatype(datatype, date_created) values('double', current_date);
+      commit;
 "
   end
 

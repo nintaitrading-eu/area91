@@ -11,8 +11,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER_DATATYPE do
         date_modified timestamp not null default current_date,
         constraint pk_parameter_datatype_id primary key(parameter_datatype_id),
         unique(parameter_datatype_id)
-    );
-    COMMENT ON TABLE T_PARAMETER_DATATYPE IS 'Table that contains datatypes that may be used for the parameters. Please use valid datatypes, so a conversion can succeed.';"
+    );"
+    execute "COMMENT ON TABLE T_PARAMETER_DATATYPE IS 'Table that contains datatypes that may be used for the parameters. Please use valid datatypes, so a conversion can succeed.';"
   end
 
   def down do

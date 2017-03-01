@@ -21,8 +21,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TICK_INFO_HIST do
         constraint pk_product_tick_info_hist_id primary key(product_tick_info_hist_id),
         unique(product_tick_info_hist_id),
         constraint fk_T_PRODUCT_TICK_INFO_HIST_product_tick_info_id foreign key(product_tick_info_id) references T_PRODUCT_TICK_INFO (product_tick_info_id)
-    );
-    COMMENT ON TABLE T_PRODUCT_TICK_INFO_HIST IS 'History table for T_PRODUCT_TICK_INFO.';"
+    );"
+    execute "COMMENT ON TABLE T_PRODUCT_TICK_INFO_HIST IS 'History table for T_PRODUCT_TICK_INFO.';"
   end
 
   def down do
