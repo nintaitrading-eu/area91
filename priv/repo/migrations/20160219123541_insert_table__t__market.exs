@@ -3,6 +3,7 @@ defmodule Area91.Repo.Migrations.InsertTable_T_MARKET do
 
   def up do
     execute "
+    begin;
     -- GENERAL
     INSERT INTO T_MARKET(code, name, country, date_created) values('ams', 'Amsterdam stock exchange AEX25', 'NL', current_date);
     INSERT INTO T_MARKET(code, name, country, date_created) values('ebr', 'Brussels stock exchange BEL20', 'BE', current_date);
@@ -44,6 +45,7 @@ defmodule Area91.Repo.Migrations.InsertTable_T_MARKET do
     INSERT INTO T_MARKET(code, name, country, date_created) values('otc bb & pinksheets', 'OTC BB & pinksheets', 'US', current_date);
     INSERT INTO T_MARKET(code, name, country, date_created) values('amex', 'American Exchange', 'US', current_date);
     INSERT INTO T_MARKET(code, name, country, date_created) values('other us', 'Other US markets', 'US', current_date);
+    commit;
     "
   end
 
