@@ -5,6 +5,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TICK_INFO do
     execute "CREATE TABLE T_PRODUCT_TICK_INFO
     (
         product_tick_info_id bigserial not null,
+        description varchar(4000) not null,
         tick decimal(18,6) not null,
         tick_value decimal(18,6) not null,
         order_min decimal(18,6) not null,

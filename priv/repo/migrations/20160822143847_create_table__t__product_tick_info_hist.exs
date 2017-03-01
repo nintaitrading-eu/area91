@@ -6,6 +6,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TICK_INFO_HIST do
     (
         product_tick_info_hist_id bigserial not null,
         product_tick_info_id bigint not null,
+        description varchar(4000) not null,
         tick decimal(18,6) not null,
         tick_value decimal(18,6) not null,
         order_min decimal(18,6) not null,
