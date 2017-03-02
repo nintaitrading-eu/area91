@@ -40,6 +40,7 @@ defmodule Area91.Repo.Migrations.InsertTable_T_PRODUCT_TICK_INFO do
       INSERT INTO T_PRODUCT_TICK_INFO(description, tick, tick_value, order_min, order_max, margin_day_proc, margin_night_proc, date_created) VALUES('Spot Mini Silver', 0.1, 0.1, 1.0, 25.0, 1.0, 2.0, current_date);
       INSERT INTO T_PRODUCT_TICK_INFO(description, tick, tick_value, order_min, order_max, margin_day_proc, margin_night_proc, date_created) VALUES('Spot Silver', 0.1, 1.0, 1.0, 250.0, 1.0, 2.0, current_date);
       INSERT INTO T_PRODUCT_TICK_INFO(description, tick, tick_value, order_min, order_max, margin_day_proc, margin_night_proc, date_created) VALUES('Spot WTI Light Crude Oil', 0.01, 1.0, 1.0, 100.0, 1.0, 2.0, current_date);
+      -- TODO: add tick info for indices?
       commit;
 "
   end
