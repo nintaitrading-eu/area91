@@ -15,7 +15,7 @@ defmodule Area91.Repo.Migrations.CreateTableT_POOL do
         date_modified timestamp not null default current_date,
         constraint pk_pool_id primary key(pool_id),
         unique(pool_id),
-        constraint fk_T_ACCOUNT_account_id foreign key(account_id) references T_ACCOUNT(account_id),
+        constraint fk_T_POOL_pool_id foreign key(pool_id) references T_POOL(pool_id)
     );"
   end
 
