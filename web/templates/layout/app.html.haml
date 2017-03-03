@@ -43,6 +43,12 @@
                   %li.pure-menu-item
                     %a.pure-menu-link{:href => "/trade/drawdown"} &nbsp;Drawdown
             %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
+              %a.pure-menu-link#mnu-import{:href => "#"} &nbsp;Import
+                %i.fa.fa-upload{:title => "Invoice", :aria-hidden => "true"}
+                  %ul.pure-menu-children
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/import/accounts"} Accounts
+            %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
               %a.pure-menu-link#mnu-invoice{:href => "#"} &nbsp;Invoice
                 %i.fa.fa-eur{:title => "Invoice", :aria-hidden => "true"}
                   %ul.pure-menu-children

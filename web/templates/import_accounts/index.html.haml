@@ -1,0 +1,3 @@
+.pure-control-group
+  %h1 Import accounts
+  = render "form.html", changeset: @changeset, action: import_accounts_path(@conn, :edit, @file)
