@@ -8,12 +8,13 @@ defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY_EXCHANGE do
         currency_from_id int not null,
         currency_to_id int not null,
         exchange_rate decimal(18,6) not null,
-        date_created timestamp not null default '1900-01-01',
-        date_modified timestamp not null default '1900-01-01',
+        date_created timestamp not null,
+        date_modified timestamp not null default current_date,
         constraint pk_currency_exchange_id primary key(currency_exchange_id),
         constraint fk_T_CURRENCY_EXCHANGE_currency_from_id foreign key(currency_from_id) references T_CURRENCY(currency_from_id),
         constraint fk_T_CURRENCY_EXCHANGE_currency_to_id foreign key(currency_to_id) references T_CURRENCY(currency_to_id)
     );"
+    execute "COMMENT ON TABLE T_CURRENCY IS 'Table that holds the currency exchange rates."
   end
 
   def down do

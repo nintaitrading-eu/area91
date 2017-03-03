@@ -1,24 +1,21 @@
-defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY_EXCHANGE do
+defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY do
   use Ecto.Migration
 
   def up do
-    execute "CREATE TABLE T_CURRENCY_EXCHANGE
+    execute "CREATE TABLE T_CURRENCY
     (
-        currency_exchange_id bigserial not null,
-        currency_from_id bigint not null,
-        currency_to_id bigint not null,
-        exchange_rate decimal(18,6) not null,
+        currency_id bigserial not null,
+        code varchar(3) not null,
+        description varchar(4000) not null,
         is_deleted boolean not null default 'false',
-        constraint pk_currency_id primary key(currency_exchange_id),
-        unique(currency_exchange_id),
-        constraint fk_T_CURRENCY_EXCHANGE_currency_from_id foreign key (currency_from_id) references T_CURRENCY(currency_id),
-        constraint fk_T_CURRENCY_EXCHANGE_currency_to_id foreign key (currency_to_id) references T_CURRENCY(currency_id)
+        constraint pk_currency_id primary key(currency_id),
+        unique(currency_id)
     );"
-    execute "COMMENT ON TABLE T_CURRENCY_EXCHANGE IS 'Table that hold exchange-rates.';"
+    execute "COMMENT ON TABLE T_CURRENCY IS 'Table that holds ISO currency codes.';"
   end
 
   def down do
-    execute "drop table T_CURRENCY_EXCHANGE;"
+    execute "drop table T_CURRENCY;"
   end
 
   def change do
