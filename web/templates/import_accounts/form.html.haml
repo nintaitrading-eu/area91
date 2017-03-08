@@ -1,12 +1,12 @@
-- form_for @action, [multipart: true], fn f ->
-  -# - if @changeset.action do
-  -#   .alert.alert-danger
-  -#     %p Oops, something went wrong! Please check the errors below.
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      %p Oops, something went wrong! Please check the errors below.
 
   .form-group
-    = label f, :name, class: "control-label"
-    = file_input f, :name, class: "form-control"
-    = error_tag f, :name
+    = label f, :file_full_path, class: "control-label"
+    = file_input f, :file_full_path, class: "form-control"
+    = error_tag f, :file_full_path
 
   .form-group
     = submit "Import", class: "pure-button pure-button-active"
