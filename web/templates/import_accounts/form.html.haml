@@ -2,11 +2,11 @@
   - if @changeset.action do
     .alert.alert-danger
       %p Oops, something went wrong! Please check the errors below.
-
+  
   .form-group
-    = label f, :file_full_path, class: "control-label"
-    = file_input f, :file_full_path, class: "form-control"
-    = error_tag f, :file_full_path
-
+    = label f, :import_file, title: "Browse:", class: "control-label"
+    = file_input f, :import_file, class: "form-control"
+    = error_tag f, :import_file
+  
   .form-group
     = submit "Import", class: "pure-button pure-button-active"

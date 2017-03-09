@@ -308,3 +308,8 @@ body
     background-color: #073642;
     border: 1px solid #859900;
 }
+
+.form-group
+{
+  padding-top: 10px;
+}
