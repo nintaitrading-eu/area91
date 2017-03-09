@@ -1,7 +1,12 @@
-%h1 Import accounts
+%h1.centered Import accounts
 
 -# TODO: fix the form.html...
 
+%p On this page, you can upload a ledger accounts.dat file...<br/>When pressing the <strong>Import</strong> button, the file will be read and new accounts will be added to the database.
+
 = render "form.html", changeset: @changeset, action: import_accounts_path(@conn, :create)
 
--#= link "Back", to: import_accounts_path(@conn, :index)
+%h2 History
+%p
+  %ul
+    %li TBD

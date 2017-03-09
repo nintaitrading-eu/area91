@@ -1,13 +1,11 @@
 defmodule Area91.ImportAccounts do
   use Area91.Web, :model
-  #import Ecto.Changeset
+  import Tuple
 
   schema "import_accounts" do
-    field :file_full_path, :string
-    field :file_content,  :string
+    field :file, :any, virtual: true
   end
 
-  #@required_fields ~w(file_full_path)
   @doc """
   Creates a changeset based on the `model` and `params`.
 
@@ -16,8 +14,8 @@ defmodule Area91.ImportAccounts do
   """
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:file_full_path])
-    |> validate_required([:file_full_path])
+    |> cast(params, [:file])
+    |> validate_required([:file])
   end
 
 end
