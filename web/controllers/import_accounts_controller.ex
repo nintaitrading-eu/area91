@@ -24,11 +24,16 @@ defmodule Area91.ImportAccountsController do
 #  "import_accounts" => %{"import_file" => %Plug.Upload{content_type: "application/octet-stream",
 #     filename: "2014.dat",
 #     path: "C:\\Users\\AD78F~1.NAG\\AppData\\Local\\Temp/plug-1489/multipart-51791-141000-4"}}}
-#  def create(conn, %{"import_accounts" => %{"file" => a_file}}) do
-  def create(conn, a_params) do
-    #l_import_accounts = %ImportAccounts{file: a_file}
-    #IO.inspect l_import_accounts
-    File.read! a_params.path
+  def create(conn, %{"import_accounts" => %{"file" => a_file}}) do
+  #def create(conn, a_params) do
+    l_file = a_file
+    IO.inspect l_file.path
+    IO.inspect l_file.filename
+    IO.inspect Path.join(l_file.path, l_file.filename)
+    case File.read(Path.join(l_file.path, l_file.filename)) do
+      {:ok, l_body} -> IO.inspect l_body
+      {:error, l_reason} -> IO.puts :stdio, l_reason
+    end
     #IO.inspect a_params
     #conn
     #|> render("index.html")
