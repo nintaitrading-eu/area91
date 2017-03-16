@@ -1,5 +1,6 @@
 defmodule Area91.AdminAccountController do
   use Phoenix.Controller
+  use Timex
   require Logger
 
   alias Area91.Router
@@ -9,9 +10,10 @@ defmodule Area91.AdminAccountController do
   plug :action
 
   def index(conn, _params) do
+    l_accounts = Area91.Repo.all(Account)
     conn
-    |> assign(:accounts, Area91.Repo.all(Account))
-    |> render("index.html")
+    #|> assign(:accounts, Area91.Repo.all(Account))
+    |> render("index.html", accounts: l_accounts)
   end
 
   def show(conn, %{"id" => a_account_id}) do
@@ -25,7 +27,7 @@ defmodule Area91.AdminAccountController do
   end
 
   def create(conn, %{"txt_account" => %{"name" => name, "description" => description}}) do
-    l_account = %Account{name: name, description: description}
+    l_account = %Account{name: name, description: description, date_created: Timex.now}
     Area91.Repo.insert(l_account)
     redirect(conn, to: admin_account_path(conn, :index))
   end

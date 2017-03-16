@@ -8,8 +8,9 @@ defmodule Area91.Parameter do
     field :name, :string
     field :value, :string
     field :description, :string
-    field :is_active, :integer, default: 1
-    timestamps([{:date_created,:date_modified}])
+    field :is_deleted, :boolean
+    field :date_created, Timex.Ecto.DateTime
+    field :date_modified, Timex.Ecto.DateTime
   end
 
   @required_fields ~w(name value)

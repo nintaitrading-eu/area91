@@ -10,9 +10,9 @@ defmodule Area91.Account do
     #field :account_id, :integer, primary_key: True
     field :name, :string
     field :description, :string
-    field :is_active, :integer, default: 1
-    field :date_created, Ecto.DateTime
-    field :date_modified, Ecto.DateTime
+    field :is_deleted, :boolean
+    field :date_created, Timex.Ecto.DateTime
+    field :date_modified, Timex.Ecto.DateTime
     #belongs_to :account, Area91.Account
   end
 
