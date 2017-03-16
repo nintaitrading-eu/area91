@@ -1,6 +1,6 @@
 .pure-control-group
-  %a.pure-button.pure-button-active{:href => "/admin/account/new", :title => "New"}
-    %i.fa.fa-file{:title => "New", :aria-hidden => "true"}
+  %a.pure-button.pure-button-active{href: "/admin/account/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
 
 .table-responsive
   %table.mq-table.pure-table.pure-table-bordered
@@ -21,7 +21,7 @@
         %td= l_account.date_created
         %td= l_account.date_modified
         %td
-          %a.pure-button{:href => "#{admin_account_path(@conn, :edit, l_account.account_id)}", :title => "Modify", :alt => "Modify"}
+          %a.pure-button{href: "#{admin_account_path(@conn, :edit, l_account.account_id)}", title: "Modify", alt: "Modify"}
             %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
-          %a.rest.pure-button{:href => "#{admin_account_path(@conn, :delete, l_account)}", :title => "Delete", :alt => "Delete", :data-method => "DELETE"}
+          %a.rest.pure-button{href: "#{admin_account_path(@conn, :delete, l_account)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
             %i.fa.fa-trash-o{:aria-hidden => "true"}
