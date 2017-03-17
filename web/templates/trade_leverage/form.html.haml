@@ -5,7 +5,6 @@
   
   .form-group.centered
     = label f, :contracts, class: "control-label"
-    = file_input f, :contracts, class: "form-control"
-    = error_tag f, :contracts
-
-  = submit "Calculate", class: "pure-button pure-button-active"
+    = text_input f, :contracts, class: "form-control"
+    = error_tag f, :contracts 
+    = submit "Calculate", class: "pure-button pure-button-active"

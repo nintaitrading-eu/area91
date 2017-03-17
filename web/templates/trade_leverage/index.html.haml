@@ -6,7 +6,7 @@
 = render "form.html", changeset: @changeset, action: trade_leverage_path(@conn, :index)
 
 <!--% if p_leveraged_contracts >= 1 %-->
-%p Recommended contracts to buy, when using leverage: <span class="result"><%= @p_leveraged_contracts %></span>.
+-#%p Recommended contracts to buy, when using leverage: <span class="result"><%= @p_leveraged_contracts %></span>.
 <!--% else %-->
 %p Use the money management page, to calculate the number of contracts to buy, without using leverage.
 %p If you want to use leverage, use the above form to calculate the leverage-adjusted number of contracts to use.

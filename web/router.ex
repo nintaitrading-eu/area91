@@ -37,6 +37,7 @@ defmodule Area91.Router do
     get "/trade/journal", TradeJournalController, :index
     get "/trade/financing", TradeFinancingController, :index
     get "/trade/leverage", TradeLeverageController, :index
+    post "/trade/leverage", TradeLeverageController, :index
     get "/trade/drawdown", TradeDrawdownController, :index
     ### Import
     get "/import/accounts", ImportAccountsController, :index
