@@ -1,0 +1,13 @@
+%h1.centered Leverage calculation
+
+%p On this page, you can calculate an optimal amount of leverage to use. The result wil be the number of contracts you should buy.
+-# TODO: add algorithm to output, so you can see which algorithm is used.
+
+= render "form.html", changeset: @changeset, action: trade_leverage_path(@conn, :index)
+
+<!--% if p_leveraged_contracts >= 1 %-->
+%p Recommended contracts to buy, when using leverage: <span class="result"><%= @p_leveraged_contracts %></span>.
+<!--% else %-->
+%p Use the money management page, to calculate the number of contracts to buy, without using leverage.
+%p If you want to use leverage, use the above form to calculate the leverage-adjusted number of contracts to use.
+<!--% endif %-->
