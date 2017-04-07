@@ -8,10 +8,10 @@ defmodule Area91.TradeLeverageController do
 
   plug :action
 
-  def index(conn, %{"trade_leverage" => %{"contracts" => a_contracts}}) do
+  def index(conn, %{"trade_leverage" => %{"contracts" => a_contracts, "contracts_leverage" => a_contracts_leverage}}) do
     {l_contracts, _} = Integer.parse(a_contracts)
     if l_contracts > 0 do 
-      l_changeset = TradeLeverage.changeset(%TradeLeverage{contracts: LibCalculatorFinance.General.calculate_leveraged_contracts(l_contracts)})
+      l_changeset = TradeLeverage.changeset(%TradeLeverage{contracts: a_contracts, contracts_leverage: LibCalculatorFinance.General.calculate_leveraged_contracts(l_contracts)})
     else
       l_changeset = TradeLeverage.changeset(%TradeLeverage{})
     end
