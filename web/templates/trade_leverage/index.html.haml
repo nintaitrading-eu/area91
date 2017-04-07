@@ -4,12 +4,7 @@
 
 = render "form.html", changeset: @changeset, action: trade_leverage_path(@conn, :index)
 
--# TODO: TradeLeverage uitbreiden met een extra form veld voor het resultaat.
--# Dan kunnen we het resultaat aanpassen bij klikken op calculate, i.p.v. het input veld te gebruiken om het resultaat in te zetten.
-<!--% if p_leveraged_contracts >= 1 %-->
--#%p Recommended contracts to buy, when using leverage: <span class="result"><%= @p_leveraged_contracts %></span>.
-<!--% else %-->
 %p Use the money management page, to calculate the number of contracts to buy, without using leverage.
 %p If you want to use leverage, use the above form to calculate the leverage-adjusted number of contracts to use.
+%br/
 %p Algorithm used: Float.ceil(a_n / 3.0) - 1 + a_n
-<!--% endif %-->
