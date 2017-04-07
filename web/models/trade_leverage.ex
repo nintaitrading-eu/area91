@@ -4,6 +4,7 @@ defmodule Area91.TradeLeverage do
 
   schema "trade_leverage" do
     field :contracts, :any, virtual: true
+    field :contracts_leverage, :any, virtual: true
   end
 
   @doc """
