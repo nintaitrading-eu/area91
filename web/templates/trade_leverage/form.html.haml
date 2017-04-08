@@ -7,7 +7,9 @@
     = label f, :contracts, class: "control-label"
     = text_input f, :contracts, class: "form-control"
     = error_tag f, :contracts 
-    = label f, :contracts_leverage, class: "control-label"
+  .form-group.centered
+    = label f, :result, class: "control-label"
     = text_input f, :contracts_leverage, class: "form-control"
     = error_tag f, :contracts_leverage 
+  .form-group.centered
     = submit "Calculate", class: "pure-button pure-button-active"

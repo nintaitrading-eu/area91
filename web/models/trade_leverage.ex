@@ -3,8 +3,8 @@ defmodule Area91.TradeLeverage do
   import Tuple
 
   schema "trade_leverage" do
-    field :contracts, :any, virtual: true
-    field :contracts_leverage, :any, virtual: true
+    field :contracts, :integer, virtual: true
+    field :contracts_leverage, :integer, virtual: true
   end
 
   @doc """
@@ -15,7 +15,7 @@ defmodule Area91.TradeLeverage do
   """
   def changeset(model, params \\ %{}) do
     model
-    |> cast(params, [:contracts])
+    |> cast(params, [:contracts, :contracts_leverage])
     |> validate_required([:contracts])
   end
 
