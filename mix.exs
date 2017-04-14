@@ -31,16 +31,17 @@ defmodule Area91.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
-      {:phoenix, github: "phoenixframework/phoenix", override: True},
-     #{:phoenix, "~> 1.1.4"},
+     #{:phoenix, github: "phoenixframework/phoenix", override: True},
+     {:phoenix, "~> 1.1.6"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_ecto, "~> 2.0"},
+     {:phoenix_ecto, "~> 3.0"},
      {:phoenix_html, "~> 2.4"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
      {:gettext, "~> 0.9"},
      {:cowboy, "~> 1.0"},
+     {:libcalculatorfinance, "~> 0.0.1"}
      #{:libcalculatorfinance, git: "https://github.com/rockwolf/elixir/libcalculatorfinance.git", branch: "libcalculatorfinance-develop", app: False}
-     {:libcalculatorfinance, path: "temp/libcalculatorfinance", app: False}
+     #{:libcalculatorfinance, path: "temp/libcalculatorfinance", app: False}
     ]
   end
 
