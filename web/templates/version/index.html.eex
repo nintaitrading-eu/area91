@@ -1,9 +1,0 @@
-<p>About Area91:</p>
-<p>
-  <%= for l_version <- @version do %>
-  <ul>
-    <li>Application version = <%= l_version.application_version %> (<%= l_version.application_version_info %>)</li>
-    <li>Database version = <%= l_version.database_version %> (<%= l_version.database_version_info %>)</li>
-  </ul>
-  <%= end %>
-</p>

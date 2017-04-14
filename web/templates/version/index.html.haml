@@ -1,6 +1,7 @@
-%h1 About Area91
-%p
+%h1.centered About Area91
+
+%p.centered
   - for l_version <- @version do
     %ul
-      %li Application version: = l_version.application_version (= l_version.application_version_info)
-      %li Database version: = l_version.database_version (= l_version.database_version_info)
+      %li Application version: <%= l_version.application_version %> (<%= l_version.application_version_info %>)
+      %li Database version: <%= l_version.database_version %> (<%= l_version.database_version_info %>)
