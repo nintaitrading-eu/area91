@@ -2,12 +2,15 @@ defmodule Area91.Parameter do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:parameter_id, :integer, []}
+  @derive {Phoenix.Param, key: :parameter_id}
   schema "t_parameter" do
     field :name, :string
     field :value, :string
     field :description, :string
-    field :is_active, :integer, default: 1
-    timestamps([{:date_created,:date_modified}])
+    field :is_deleted, :boolean
+    field :date_created, Timex.Ecto.DateTime
+    field :date_modified, Timex.Ecto.DateTime
   end
 
   @required_fields ~w(name value)

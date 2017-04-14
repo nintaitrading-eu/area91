@@ -1,0 +1,10 @@
+<h1 class="centered">Drawdown registration</h1>
+<p>
+  <form action="<%=trade_drawdown_path(@conn, :drawdown) %>" method="post">
+    <div class="form-group">
+      <label for="edt_drawdown_current">Current drawdown:</label>
+      <input type="text" name="edt_drawdown_current" class="form-control" />
+    </div>
+  </form>
+</p>
+  <p>TODO: show max drawdown and pre-fill current drawdown<span class="result"><%=1%></span>. This should be editable for all active trades. Perhaps show a screen inbetween, to choose one to edit?</p>

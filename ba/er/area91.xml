@@ -1,0 +1,1016 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- SQL XML created by WWW SQL Designer, https://github.com/ondras/wwwsqldesigner/ -->
+<!-- Active URL: http://ondras.zarovi.cz/sql/demo/ -->
+<sql>
+<datatypes db="postgresql">
+	<group label="Numeric" color="rgb(238,238,170)">
+		<type label="Integer" length="0" sql="INTEGER" re="INT" quote=""/>
+		<type label="Small Integer" length="0" sql="SMALLINT" quote=""/>
+		<type label="Big Integer" length="0" sql="BIGINT" quote=""/>
+		<type label="Decimal" length="1" sql="DECIMAL" re="numeric" quote=""/>
+		<type label="Serial" length="0" sql="SERIAL" re="SERIAL4" fk="Integer" quote=""/>
+		<type label="Big Serial" length="0" sql="BIGSERIAL" re="SERIAL8" fk="Big Integer" quote=""/>
+		<type label="Real" length="0" sql="BIGINT" quote=""/>
+		<type label="Single precision" length="0" sql="FLOAT" quote=""/>
+		<type label="Double precision" length="0" sql="DOUBLE" re="DOUBLE" quote=""/>
+	</group>
+
+	<group label="Character" color="rgb(255,200,200)">
+		<type label="Char" length="1" sql="CHAR" quote="'"/>
+		<type label="Varchar" length="1" sql="VARCHAR" re="CHARACTER VARYING" quote="'"/>
+		<type label="Text" length="0" sql="TEXT" quote="'"/>
+		<type label="Binary" length="1" sql="BYTEA" quote="'"/>
+		<type label="Boolean" length="0" sql="BOOLEAN" quote="'"/>
+	</group>
+
+	<group label="Date &amp; Time" color="rgb(200,255,200)">
+		<type label="Date" length="0" sql="DATE" quote="'"/>
+		<type label="Time" length="1" sql="TIME" quote="'"/>
+		<type label="Time w/ TZ" length="0" sql="TIME WITH TIME ZONE" quote="'"/>
+		<type label="Interval" length="1" sql="INTERVAL" quote="'"/>
+		<type label="Timestamp" length="1" sql="TIMESTAMP" quote="'"/>
+		<type label="Timestamp w/ TZ" length="0" sql="TIMESTAMP WITH TIME ZONE" quote="'"/>
+		<type label="Timestamp wo/ TZ" length="0" sql="TIMESTAMP WITHOUT TIME ZONE" quote="'"/>
+	</group>
+
+	<group label="Miscellaneous" color="rgb(200,200,255)">
+		<type label="XML" length="1" sql="XML" quote="'"/>
+		<type label="Bit" length="1" sql="BIT" quote="'"/>
+		<type label="Bit Varying" length="1" sql="VARBIT" re="BIT VARYING" quote="'"/>
+		<type label="Inet Host Addr" length="0" sql="INET" quote="'"/>
+		<type label="Inet CIDR Addr" length="0" sql="CIDR" quote="'"/>
+		<type label="Geometry" length="0" sql="GEOMETRY" quote="'"/>
+	</group>
+</datatypes><table x="122" y="228" name="t_parameter">
+<row name="parameter_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+</row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+</row>
+<row name="value" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+</row>
+<row name="value_default" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+</row>
+<row name="datatype" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<comment>Note: add check constraint: integer, string, decimal(18,6)</comment>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>parameter_id</part>
+</key>
+<comment>Table that contains global parameters, with default values and descriptions.</comment>
+</table>
+<table x="113" y="518" name="t_account">
+<row name="account_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default><comment>When a record is deleted. Nothing gets actually removed.</comment>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default><comment>Date, on which the record was created.</comment>
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default><comment>Date, on which the record was last modified.</comment>
+</row>
+<key type="PRIMARY" name="pk_account_id">
+<part>account_id</part>
+</key>
+<comment>Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.</comment>
+</table>
+<table x="1269" y="341" name="t_currency">
+<row name="currency_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="code" null="0" autoincrement="0">
+<datatype>VARCHAR(3)</datatype>
+<default>'NULL'</default><comment>Iso currency code, 3 characters.</comment>
+</row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>currency_id</part>
+</key>
+<comment>Contains a list of currency symbols.</comment>
+</table>
+<table x="1945" y="711" name="t_market">
+<row name="market_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="code" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default><comment>A unique short code representation to use in applications. e.g.: EBR</comment>
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(30)</datatype>
+<default>'NULL'</default></row>
+<row name="country" null="0" autoincrement="0">
+<datatype>CHAR(3)</datatype>
+<default>'NULL'</default><comment>Iso country code, 3 characters.</comment>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default><comment>When a record is deleted. Nothing gets actually removed.</comment>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="pk_market_id">
+<part>market_id</part>
+</key>
+<comment>Contains a list of markets you can trade. E.g.: 'cfd .gold', 'ebr'</comment>
+</table>
+<table x="61" y="13" name="t_version">
+<row name="version_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="database_version" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="database_version_info" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="application_version" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="application_version_info" null="0" autoincrement="0">
+<datatype>VARCHAR(100)</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>version_id</part>
+</key>
+<comment>Application and database version information.</comment>
+</table>
+<table x="698" y="444" name="t_currency_exchange">
+<row name="currency_exchange_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="currency_from_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_currency" row="currency_id" />
+</row>
+<row name="currency_to_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<relation table="t_currency" row="currency_id" />
+</row>
+<row name="exchange_rate" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>currency_exchange_id</part>
+</key>
+<comment>Table that hold exchange-rates.</comment>
+</table>
+<table x="1647" y="299" name="t_product">
+<row name="product_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="product_type_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_product_type" row="product_type_id" />
+</row>
+<row name="currency_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_currency" row="currency_id" />
+</row>
+<row name="market_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_market" row="market_id" />
+</row>
+<row name="product_tick_info_id" null="1" autoincrement="0">
+<datatype>BIGINT</datatype>
+<relation table="t_product_tick_info" row="product_tick_info_id" />
+<comment>May be NULL! The link is only valid for products that are cfd or futures contracts.</comment>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_id</part>
+</key>
+<comment>Table with products. This is the detailed version of the type of contract or other product_type you deal with. E.g: CCZ3.cfd</comment>
+</table>
+<table x="1253" y="80" name="t_product_type">
+<row name="product_type_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_type_id</part>
+</key>
+<comment>Table with product type, e.g.: cfd, stock, fund, ...</comment>
+</table>
+<table x="894" y="1294" name="t_drawdown">
+<row name="drawdown_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="drawdown_current" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="drawdown_max" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>drawdown_id</part>
+</key>
+<comment>Table, used to keep track of drawdown periods.</comment>
+</table>
+<table x="475" y="757" name="t_pool">
+<row name="pool_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="account_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_account" row="account_id" />
+</row>
+<row name="total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="invested" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="cash" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_manually_added" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>pool_id</part>
+</key>
+<comment>To keep track of the available money per account: invested amount, cash amount and total available.</comment>
+</table>
+<table x="454" y="1059" name="t_pool_hist">
+<row name="pool_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="pool_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_pool" row="pool_id" />
+</row>
+<row name="account_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="invested" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="cash" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_manually_added" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>pool_hist_id</part>
+</key>
+<comment>History table for t_pool, gets a new entry for every insert/update.</comment>
+</table>
+<table x="658" y="92" name="t_currency_exchange_hist">
+<row name="currency_exchange_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="currency_exchange_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_currency_exchange" row="currency_exchange_id" />
+</row>
+<row name="currency_from_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="currency_to_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="exchange_rate" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>currency_exchange_hist_id</part>
+</key>
+<comment>History table for t_currency_exchange.</comment>
+</table>
+<table x="117" y="714" name="t_account_hist">
+<row name="account_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="account_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_account" row="account_id" />
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>account_hist_id</part>
+</key>
+<comment>History table for t_account.</comment>
+</table>
+<table x="898" y="798" name="t_trade">
+<row name="trade_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="trade_calculated_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_trade_calculated" row="trade_calculated_id" />
+</row>
+<row name="product_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_product" row="product_id" />
+</row>
+<row name="pool_id" null="1" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_pool" row="pool_id" />
+</row>
+<row name="trade_cost_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_trade_cost" row="trade_cost_id" />
+</row>
+<row name="drawdown_id" null="1" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_drawdown" row="drawdown_id" />
+</row>
+<row name="date_buy" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="year_buy" null="1" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="month_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="day_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="date_sell" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="year_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="month_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="day_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_id</part>
+</key>
+<comment>Table to log trading transactions.</comment>
+</table>
+<table x="1281" y="627" name="t_trade_calculated">
+<row name="trade_calculated_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="price_buy" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default><comment>Price after applying exchange rate conversion.</comment>
+</row>
+<row name="price_sell" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default><comment>Price after applying exchange rate conversion.</comment>
+</row>
+<row name="amount_buy" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="amount_sell" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="amount_buy_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default><comment>Tax and commission included.</comment>
+</row>
+<row name="amount_sell_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default><comment>Tax and commission included.</comment>
+</row>
+<row name="risk_input" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_initial" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_initial_percent" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_actual" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_actual_percent" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="cost_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="cost_other" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="stoploss" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="stoploss_orig" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss_orig" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default><comment>Tax and commissiont included.</comment>
+</row>
+<row name="profit_loss_total_percent" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="r_multiple" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modifed" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_calculated_id</part>
+</key>
+<comment>Calculated fields for trading transactions.</comment>
+</table>
+<table x="869" y="1485" name="t_trade_cost">
+<row name="trade_cost_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="commission" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="tax" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_manually_added" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'False'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_cost_id</part>
+</key>
+<comment>Tax and commission.</comment>
+</table>
+<table x="492" y="1413" name="t_trade_cost_hist">
+<row name="trade_cost_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="trade_cost_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_trade_cost" row="trade_cost_id" />
+</row>
+<row name="commission" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="tax" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_manually_added" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_cost_hist_id</part>
+</key>
+<comment>History table for t_trade_cost.</comment>
+</table>
+<table x="1599" y="1239" name="t_trade_calculated_hist">
+<row name="trade_calculated_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="trade_calculated_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_trade_calculated" row="trade_calculated_id" />
+</row>
+<row name="price_buy" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="price_sell" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="amount_buy" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="amount_sell" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="amount_buy_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="amount_sell_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_input" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_initial" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_initial_percent" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_actual" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="risk_actual_percent" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="cost_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="cost_other" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="stoploss" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="stoploss_orig" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss_orig" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss_total" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="profit_loss_total_percent" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="r_multiple" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_calculated_hist_id</part>
+</key>
+<comment>History table for t_trade_calculated.</comment>
+</table>
+<table x="394" y="182" name="t_parameter_hist">
+<row name="parameter_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="parameter_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_parameter" row="parameter_id" />
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="value" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>'NULL'</default></row>
+<row name="value_default" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>'NULL'</default></row>
+<row name="datatype_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_parameter_datatype" row="parameter_datatype_id" />
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>parameter_hist_id</part>
+</key>
+<comment>History table for t_parameter.</comment>
+</table>
+<table x="2000" y="314" name="t_product_hist">
+<row name="product_hist_id" null="0" autoincrement="1">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="product_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_product" row="product_id" />
+</row>
+<row name="name" null="0" autoincrement="0">
+<datatype>VARCHAR(50)</datatype>
+<default>'NULL'</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+<default>'NULL'</default></row>
+<row name="product_type_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="currency_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="market_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="product_tick_info_id" null="1" autoincrement="0">
+<datatype>BIGINT</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modifed" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_hist_id</part>
+</key>
+<comment>History table for t_product.</comment>
+</table>
+<table x="1213" y="1269" name="t_trade_hist">
+<row name="trade_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="trade_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default><relation table="t_trade" row="trade_id" />
+</row>
+<row name="trade_calculated_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="product_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="pool_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="trade_cost_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="drawdown_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<default>NULL</default></row>
+<row name="date_buy" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="year_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="month_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="day_buy" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="date_sell" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="year_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="month_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="day_sell" null="0" autoincrement="0">
+<datatype>INTEGER</datatype>
+<default>NULL</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'NULL'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_hist_id</part>
+</key>
+<comment>History table for t_trade.</comment>
+</table>
+<table x="415" y="551" name="t_parameter_datatype">
+<row name="parameter_datatype_id" null="1" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="datatype" null="0" autoincrement="0">
+<datatype>VARCHAR(512)</datatype>
+<default>'NULL'</default></row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>parameter_datatype_id</part>
+</key>
+<comment>A table, containing valid datatypes for the parameters.</comment>
+</table>
+<table x="1633" y="590" name="t_product_tick_info">
+<row name="product_tick_info_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+</row>
+<row name="tick" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="tick_value" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_min" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_max" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_day_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_night_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_tick_info_id</part>
+</key>
+<comment>Table with tick value information on contracts. Only belongs to cfd products and futures contracts.</comment>
+</table>
+<table x="1607" y="880" name="t_product_tick_info_hist">
+<row name="product_tick_info_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+</row>
+<row name="product_tick_info_id" null="0" autoincrement="0">
+<datatype>BIGINT</datatype>
+<relation table="t_product_tick_info" row="product_tick_info_id" />
+</row>
+<row name="description" null="0" autoincrement="0">
+<datatype>VARCHAR(4000)</datatype>
+</row>
+<row name="tick" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="tick_value" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_min" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="order_max" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_day_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="margin_night_proc" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+</row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_hist_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+</row>
+<row name="date_hist_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>product_tick_info_hist_id</part>
+</key>
+<comment>History table for T_PRODUCT_TICK_INFO.</comment>
+</table>
+</sql>

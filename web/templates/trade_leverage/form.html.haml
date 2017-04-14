@@ -1,0 +1,15 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger.centered
+      %p Oops, something went wrong! Please check the errors below.
+  
+  .form-group.centered
+    = label f, :contracts, class: "control-label"
+    = text_input f, :contracts, class: "form-control"
+    = error_tag f, :contracts 
+  .form-group.centered
+    = label f, :result, class: "control-label"
+    = text_input f, :contracts_leverage, class: "form-control"
+    = error_tag f, :contracts_leverage 
+  .form-group.centered
+    = submit "Calculate", class: "pure-button pure-button-active"

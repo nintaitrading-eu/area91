@@ -2,6 +2,8 @@ defmodule Area91.Market do
   use Ecto.Schema
   import Ecto.Changeset
 
+  @primary_key {:market_id, :integer, []}
+  @derive {Phoenix.Param, key: :market_id}
   schema "t_market" do
     field :code, :string
     field :name, :string

@@ -1,0 +1,27 @@
+.pure-control-group
+  %a.pure-button.pure-button-active{href: "/admin/account/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
+
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th name
+        %th description
+        %th is_deleted
+        %th date_created
+        %th date_modified
+        %th &nbsp;
+    %tbody
+    - for l_account <- @accounts do
+      %tr
+        %td= l_account.name
+        %td= l_account.description
+        %td #{if l_account.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td= l_account.date_created
+        %td= l_account.date_modified
+        %td
+          %a.pure-button{href: "#{admin_account_path(@conn, :edit, l_account.account_id)}", title: "Modify", alt: "Modify"}
+            %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
+          %a.rest.pure-button{href: "#{admin_account_path(@conn, :delete, l_account)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}

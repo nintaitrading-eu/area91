@@ -1,0 +1,13 @@
+<h1 class="centered">Create new market</h1>
+<p>
+  <form action="<%=admin_market_path(@conn, :create) %>" method="post">
+    <div class="form-group">
+      <input type="hidden" name="_csrf_token" value="<%= get_csrf_token %>">
+      <label for="edt_market_name">Name</label>
+      <input type="text" name="edt_market_name" class="form-control" />
+      <label for="edt_market_description">Description</label>
+      <input type="text" name="edt_market_description" class="form-control" />
+    </div>
+    <button type="submit" class="btn btn-primary">Save</button>
+  </form>
+</p>

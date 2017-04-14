@@ -3,11 +3,11 @@ defmodule Area91.InvoiceController do
 
   plug :action
 
-  def invoice(conn, _params) do
-    render conn, "invoice.html"
+  def index(conn, _params) do
+    render conn, "index.html"
   end
 
   def new(conn, _params) do
-    render conn, "invoice_new.html"
+    render conn, "index.html"
   end
 end

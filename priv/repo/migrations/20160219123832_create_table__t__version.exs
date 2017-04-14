@@ -5,8 +5,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_VERSION do
     execute "CREATE TABLE T_VERSION
     (
         version_id int not null,
-        version varchar(100) not null default '',
-        version_info varchar(100) not null default '',
+        database_version varchar(100) not null default '',
+        database_version_info varchar(100) not null default '',
         application_version varchar(100) not null default '',
         application_version_info varchar(100) not null default '',
         date_created timestamp not null default '1900-01-01',

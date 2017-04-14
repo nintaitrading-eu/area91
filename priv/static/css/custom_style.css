@@ -197,7 +197,7 @@
 
 body
 {
-    background-image: url('../images/bg-2-full.jpg');
+    background-image: url('../images/futuristic.jpg');
     background-repeat: repeat-x repeat-y;
     background-size: 100%;
     /*background-position: top center;
@@ -307,4 +307,9 @@ body
 {
     background-color: #073642;
     border: 1px solid #859900;
+}
+
+.form-group
+{
+  padding-top: 10px;
 }

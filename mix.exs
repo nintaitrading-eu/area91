@@ -4,7 +4,7 @@ defmodule Area91.Mixfile do
   def project do
     [app: :area91,
      version: "0.0.1",
-     elixir: "~> 1.0",
+     elixir: ">= 1.3.0",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [:phoenix, :gettext] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
@@ -19,7 +19,8 @@ defmodule Area91.Mixfile do
   def application do
     [mod: {Area91, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
-                    :phoenix_ecto, :postgrex, :connection]]
+                    :phoenix_haml, :phoenix_ecto, :postgrex, :connection,
+                    :timex, :timex_ecto, :libcalculatorfinance]]
   end
 
   # Specifies which paths to compile per environment.
@@ -31,17 +32,24 @@ defmodule Area91.Mixfile do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+     #{:plug, git: "git://github.com/elixir-lang/plug.git", override: True},
      #{:phoenix, github: "phoenixframework/phoenix", override: True},
-     {:phoenix, "~> 1.1.6"},
+     {:plug, "~> 1.0", override: True},
+     {:phoenix, ">= 1.1.0"},
      {:postgrex, ">= 0.0.0"},
-     {:phoenix_ecto, "~> 3.0"},
-     {:phoenix_html, "~> 2.4"},
+     {:poison, "~> 2.2"},
+     {:phoenix_ecto, "~> 3.0", override: True},
+     {:phoenix_html, "~> 2.9"},
      {:phoenix_live_reload, "~> 1.0", only: :dev},
-     {:gettext, "~> 0.9"},
+     {:phoenix_haml, "~> 0.2"},
+     {:calliope, github: "nurugger07/calliope", override: true},
+     {:gettext, "~> 0.10"},
      {:cowboy, "~> 1.0"},
-     {:libcalculatorfinance, "~> 0.0.1"}
+     {:timex, "~> 3.0"},
+     {:timex_ecto, "~> 3.0"},
      #{:libcalculatorfinance, git: "https://github.com/rockwolf/elixir/libcalculatorfinance.git", branch: "libcalculatorfinance-develop", app: False}
      #{:libcalculatorfinance, path: "temp/libcalculatorfinance", app: False}
+     {:libcalculatorfinance, "~> 0.0.1"}
     ]
   end
 
