@@ -11,7 +11,7 @@ defmodule Area91.Repo.Migrations.InsertTable_T_PRODUCT_TICK_INFO do
                   ('Corn Futures', 1.0, 1.0, 1.0, 1000.0, 3.0, 6.0, current_date),
                   ('Gold Futures', 0.1, 1.0, 1.0, 500.0, 0.5, 1.0, current_date),
                   ('Heating Oil', 0.01, 1.0, 1.0, 100.0, 10.0, 20.0, current_date),
-                  ('High Grade Copper', 16, 2, 0.05, 1.0, 1.0, 500.0, 3.0, 6.0, current_date),
+                  ('High Grade Copper', 0.05, 1.0, 1.0, 500.0, 3.0, 6.0, current_date),
                   ('London Cocoa Futures', 1.0, 1.0, 1.0, 1000.0, 5.0, 10.0, current_date),
                   ('London Coffee Futures', 1.0, 1.0, 1.0, 50.0, 5.0, 10.0, current_date),
                   ('London Gas Oil Futures', 25.0, 1.0, 1.0, 250.0, 4.0, 8.0, current_date),
