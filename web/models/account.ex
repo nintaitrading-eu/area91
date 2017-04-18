@@ -18,15 +18,15 @@ defmodule Area91.Account do
 
   #@required_fields ~w(name description)
   @doc """
-  Creates a changeset based on the `model` and `params`.
+  Creates a changeset based on the `a_model` and `a_params`.
 
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
   # Note: add required params below.
-  def changeset(model, params \\ %{}) do
-    model
-    |> cast(params, [:name, :description])
+  def changeset(a_model, a_params \\ %{}) do
+    a_model
+    |> cast(a_params, [:name, :description])
     |> validate_required([:name, :description])
     #|> unique_constraint([:name])
   end

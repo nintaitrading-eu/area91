@@ -12,7 +12,7 @@ defmodule Area91.AdminAccountController do
   def index(conn, _params) do
     l_accounts = Area91.Repo.all(Account)
     conn
-    #|> assign(:accounts, Area91.Repo.all(Account))
+    |> assign(:accounts, Area91.Repo.all(Account))
     |> render("index.html", accounts: l_accounts)
   end
 
@@ -23,10 +23,12 @@ defmodule Area91.AdminAccountController do
   end
 
   def new(conn, _params) do
-    render(conn, "new.html")
+    l_account = %Account{}
+    l_changeset = Account.changeset(l_account)
+    render(conn, "new.html", account: l_account, changeset: l_changeset)
   end
 
-  def create(conn, %{"txt_account" => %{"name" => name, "description" => description}}) do
+  def create(conn, %{"account" => %{"name" => name, "description" => description}}) do
     l_account = %Account{name: name, description: description, date_created: Timex.now}
     Area91.Repo.insert(l_account)
     redirect(conn, to: admin_account_path(conn, :index))
@@ -39,15 +41,15 @@ defmodule Area91.AdminAccountController do
     render(conn, "edit.html", account: l_account, changeset: l_changeset)
   end
 
-  def update(conn, %{"id" => a_account_id, "txt_account" => a_params}) do
+  def update(conn, %{"id" => a_account_id, "account" => a_params}) do
+    #Logger.info "--- Test debug info ---"
+    #Logger.debug "update --- a_params value: #{inspect(a_params)}"
     {l_account_id, _} = Integer.parse(a_account_id)
     l_account = Area91.Repo.get!(Account, l_account_id)
-    l_account_changeset = Account.changeset{l_account, a_params}
-    Logger.info "--- Test debug info ---"
-    Logger.debug "a_params value: #{inspect(a_params)}"
-    Logger.debug "l_account value: #{inspect(l_account)}"
-    Logger.debug "Changeset value: #{inspect(l_account_changeset)}"
-    Logger.debug "Changeset value: #{inspect(l_account_changeset.data)}"
+    #Logger.debug "update --- l_account value: #{inspect(l_account)}"
+    l_account_changeset = Account.changeset(l_account, a_params)
+    #Logger.debug "update --- l_account_changeset: #{inspect(l_account_changeset)}"
+    #Logger.debug "update --- l_account_changeset.data: #{inspect(l_account_changeset.data)}"
     case Area91.Repo.update(l_account_changeset) do
       {:ok, l_account} ->
         conn
