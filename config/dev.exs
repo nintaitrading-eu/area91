@@ -35,8 +35,8 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :area91, Area91.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "testuser",
-  password: "testpassword",
-  database: "area91_test",
-  hostname: "localhost",
+  username: "rockwolf",
+  password: "",
+  database: "finance",
+  hostname: "debby_test",
   pool_size: 10
