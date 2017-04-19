@@ -1,0 +1,5 @@
+%h1.centered Invoice 
+
+%p On this page, you can create invoices.
+
+= render "form.html", changeset: @changeset, action: invoice_path(@conn, :index)

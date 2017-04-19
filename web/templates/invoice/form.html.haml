@@ -1,0 +1,15 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger.centered
+      %p Oops, something went wrong! Please check the errors below.
+  -# TODO: invent the table structure in the repo first, before you create this 
+  -#.form-group.centered
+  -#  = label f, :number, class: "control-label"
+  -#  = text_input f, :invoice, class: "form-control"
+  -#  = error_tag f, :invoice
+  -#.form-group.centered
+  -#  = label f, :result, class: "control-label"
+  -#  = text_input f, :contracts_leverage, class: "form-control"
+  -#  = error_tag f, :contracts_leverage 
+  .form-group.centered
+    = submit "Generate", class: "pure-button pure-button-active"
