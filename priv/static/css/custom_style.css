@@ -231,7 +231,7 @@ body
  * ----------------------------
  */
 
-.warning
+.warning, .alert
 {
     color: #dc322f;
     font-weight: bold;
@@ -258,19 +258,11 @@ body
     margin-bottom: 1em;
 }*/
 
-/*.pure-table
+.pure-table
 {
     width: 100%;
     text-align: center;
-}*/
-/*
-.table-responsive table
-{
-    width: 100%;
-    #min-width: 35.5em;
-    border-left-width: 0;
-    border-right-width: 0;
-}*/
+}
 
 .table-responsive .mq-table
 {
@@ -286,6 +278,7 @@ thead th
     color: #859900;
     text-align: center;
 }
+
 /*.mq-table th.highlight
 {
     background-color: rgb(255, 234, 133);
