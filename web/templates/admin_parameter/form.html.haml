@@ -1,0 +1,32 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      %p Oops, something went wrong! Please check the errors below.
+
+  .form-group
+    = label f, :name, class: "control-label"
+    = text_input f, :name, class: "form-control"
+    = error_tag f, :name
+
+  .form-group
+    = label f, :value, class: "control-label"
+    = text_input f, :value, class: "form-control"
+    = error_tag f, :value
+
+  .form-group
+    = label f, :value_default, class: "control-label"
+    = text_input f, :value_default, class: "form-control"
+    = error_tag f, :value_default
+
+  .form-group
+    = label f, :description, class: "control-label"
+    = text_input f, :description, class: "form-control"
+    = error_tag f, :description
+
+  .form-group
+    = label f, :datatype, class: "control-label"
+    = text_input f, :datatype, class: "form-control"
+    = error_tag f, :datatype
+
+  .form-group
+    = submit "Submit", class: "pure-button pure-button-active"

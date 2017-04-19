@@ -1,0 +1,33 @@
+.pure-control-group
+  %a.pure-button.pure-button-active{href: "/admin/parameter/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
+      
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th name
+        %th value
+        %th value_default
+        %th description
+        %th datatype
+        %th is_deleted
+        %th date_created
+        %th date_modified
+        %th &nbsp;
+    %tbody
+    - for l_parameter <- @parameter_records do
+      %tr
+        %td= l_parameter.name
+        %td= l_parameter.value
+        %td= l_parameter.value_default
+        %td= l_parameter.description
+        %td= l_parameter.datatype
+        %td #{if l_parameter.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td= l_parameter.date_created
+        %td= l_parameter.date_modified
+        %td
+          %a.pure-button{href: "#{admin_parameter_path(@conn, :edit, l_parameter.parameter_id)}", title: "Modify", alt: "Modify"}
+            %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
+          %a.rest.pure-button{href: "#{admin_parameter_path(@conn, :delete, l_parameter)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}

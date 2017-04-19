@@ -1,0 +1,5 @@
+%h1.centered Create new parameter
+
+= render "form.html", changeset: @changeset, action: admin_parameter_path(@conn, :create)
+
+= link "Back", to: admin_parameter_path(@conn, :index)
