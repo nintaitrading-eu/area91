@@ -277,8 +277,15 @@ body
     margin-top: 10px;
     width: 100%;
     min-width: 44em;
+    text-align: center;
 }
 
+thead th
+{
+    background-color: #073642;
+    color: #859900;
+    text-align: center;
+}
 /*.mq-table th.highlight
 {
     background-color: rgb(255, 234, 133);
