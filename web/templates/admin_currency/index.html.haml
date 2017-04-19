@@ -1,1 +1,27 @@
-%p Admin currency page is here on Area91
+.pure-control-group
+  %a.pure-button.pure-button-active{href: "/admin/currency/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
+      
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th name
+        %th description
+        %th is_deleted
+        %th date_created
+        %th date_modified
+        %th &nbsp;
+    %tbody
+    - for l_currency <- @currency_records do
+      %tr
+        %td= l_currency.code
+        %td= l_currency.description
+        %td #{if l_currency.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td= l_currency.date_created
+        %td= l_currency.date_modified
+        %td
+          %a.pure-button{href: "#{admin_currency_path(@conn, :edit, l_currency.currency_id)}", title: "Modify", alt: "Modify"}
+            %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
+          %a.rest.pure-button{href: "#{admin_currency_path(@conn, :delete, l_currency)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}

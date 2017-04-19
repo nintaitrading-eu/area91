@@ -1,6 +1,7 @@
 defmodule Area91.Currency do
-  use Ecto.Schema
-  import Ecto.Changeset
+  use Area91.Web, :model
+  #import Ecto.Changeset
+  import Ecto.Query
 
   @primary_key {:currency_id, :integer, []}
   @derive {Phoenix.Param, key: :currency_id}
@@ -13,17 +14,17 @@ defmodule Area91.Currency do
   end
 
   @required_fields ~w(code)
-  @optional_fields ~w()
 
   @doc """
-  Creates a changeset based on the `model` and `params`.
+  Creates a changeset based on the `a_model` and `a_params`.
 
-  If no params are provided, an invalid changeset is returned
+  If no a_params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(a_model, a_params \\ :empty) do
+    a_model
+    |> cast(a_params, [:code, :description])
+    |> validate_required([:code, :description])
     |> validate_length(:code, min: 3, max: 3)
     |> unique_constraint(:code)
   end

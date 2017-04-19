@@ -3,21 +3,21 @@ defmodule Area91.Repo.Migrations.InsertTable_T_CURRENCY do
 
   def up do
     execute "
-      INSERT INTO T_CURRENCY (code, description)
-           VALUES ('EUR', 'Euro'),
-                  ('USD', 'United States Dollar'),
-                  ('GBP', 'British Pound'),
-                  ('CHF', 'Swiss Frank'),
-                  ('CAD', 'Canadian Dollar'),
-                  ('JPY', 'Japanese Yen'),
-                  ('NZD', 'New Zealand Dollar'),
-                  ('AUD', 'Australian Dollar'),
-                  ('HKD', 'Hong Kong Dollar'),
-                  ('DKK', 'Danish Krone'),
-                  ('PLN', 'Polish Zloty'),
-                  ('MXN', 'Mexican Peso'),
-                  ('SEK', 'Swedish Krona'),
-                  ('RUB', 'Russian Ruble');"
+      INSERT INTO T_CURRENCY (code, description, date_created)
+           VALUES ('EUR', 'Euro', current_date),
+                  ('USD', 'United States Dollar', current_date),
+                  ('GBP', 'British Pound', current_date),
+                  ('CHF', 'Swiss Frank', current_date),
+                  ('CAD', 'Canadian Dollar', current_date),
+                  ('JPY', 'Japanese Yen', current_date),
+                  ('NZD', 'New Zealand Dollar', current_date),
+                  ('AUD', 'Australian Dollar', current_date),
+                  ('HKD', 'Hong Kong Dollar', current_date),
+                  ('DKK', 'Danish Krone', current_date),
+                  ('PLN', 'Polish Zloty', current_date),
+                  ('MXN', 'Mexican Peso', current_date),
+                  ('SEK', 'Swedish Krona', current_date),
+                  ('RUB', 'Russian Ruble', current_date);"
   end
 
 

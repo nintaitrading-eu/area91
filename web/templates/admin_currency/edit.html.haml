@@ -1,0 +1,5 @@
+%h1.centered Edit currency
+
+= render "form.html", changeset: @changeset, action: admin_currency_path(@conn, :update, @currency)
+
+= link "Back", to: admin_currency_path(@conn, :index)
