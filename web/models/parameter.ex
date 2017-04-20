@@ -7,27 +7,27 @@ defmodule Area91.Parameter do
   schema "t_parameter" do
     field :name, :string
     field :value, :string
+    field :value_default, :string
     field :description, :string
+    field :datatype, :string
     field :is_deleted, :boolean
     field :date_created, Timex.Ecto.DateTime
     field :date_modified, Timex.Ecto.DateTime
   end
 
-  @required_fields ~w(name value)
-  @optional_fields ~w()
+  @required_fields ~w(name value value_default description datatype)
 
   @doc """
-  Creates a changeset based on the `model` and `params`.
+  Creates a changeset based on the `a_model` and `a_params`.
 
-  If no params are provided, an invalid changeset is returned
+  If no a_params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
-    |> validate_length(:name, max: 50)
+  def changeset(a_model, a_params \\ :empty) do
+    a_model
+    |> cast(a_params, @required_fields)
     |> validate_length(:value, max: 512)
-    |> unique_constraint(:code)
+    |> unique_constraint(:name)
   end
 
 
