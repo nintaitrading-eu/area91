@@ -242,33 +242,35 @@ body
  * ----------------------------
  */
 
-/*.pure-table th,
+.pure-table th,
 .pure-table td
 {
-    padding: 0.5em 1em;
-}*/
+    border: 0px solid #ff0;
+}
 
-/*.table-responsive
+.table-responsive
 {
     text-align: center;
-    margin-left: -1em;
-    margin-right: -1em;
+    /*margin-left: -1em;
+    margin-right: -1em;*/
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     margin-bottom: 1em;
-}*/
+    border: 0px;
+}
 
 .pure-table
 {
     width: 100%;
     text-align: center;
+    border: 0px solid #ff0;
 }
 
 .table-responsive .mq-table
 {
     margin-top: 10px;
     width: 100%;
-    min-width: 44em;
+    /*min-width: 44em;*/
     text-align: center;
 }
 
