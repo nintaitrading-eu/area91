@@ -23,11 +23,11 @@ defmodule Area91.Parameter do
   If no a_params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(a_model, a_params \\ :empty) do
+  def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, @required_fields)
+    |> cast(a_params, [:name, :value, :value_default, :description, :datatype])
+    |> validate_required([:name, :value, :value_default, :description, :datatype])
     |> validate_length(:value, max: 512)
-    |> unique_constraint(:name)
   end
 
 

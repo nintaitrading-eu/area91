@@ -11,6 +11,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
         date_created timestamp not null /* Date, on which the record was created. */,
         date_modified timestamp not null default current_date /* Date, on which the record was last modified. */,
         constraint pk_account_id primary key(account_id),
+        unique(account_id),
         unique(name)
     );"
     execute "COMMENT ON TABLE T_ACCOUNT IS 'Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.';"

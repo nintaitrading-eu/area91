@@ -11,7 +11,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY do
         date_created timestamp not null /* Date, on which the record was created. */,
         date_modified timestamp not null default current_date /* Date, on which the record was last modified. */,
         constraint pk_currency_id primary key(currency_id),
-        unique(currency_id)
+        unique(currency_id),
+        unique(code)
     );"
     execute "COMMENT ON TABLE T_CURRENCY IS 'Table that holds ISO currency codes.';"
     execute "COMMENT ON COLUMN T_ACCOUNT.date_created IS 'Date, on which the record was created.';"
