@@ -15,8 +15,6 @@ defmodule Area91.Parameter do
     field :date_modified, Timex.Ecto.DateTime
   end
 
-  @required_fields ~w(name value value_default description datatype)
-
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
 
