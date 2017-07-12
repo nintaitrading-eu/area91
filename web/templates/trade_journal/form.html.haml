@@ -5,12 +5,12 @@
 
   .form-group
     = label f, :date_buy, class: "control-label"
-    = datetime_input f, :date_buy, class: "form-control"
+    = datetime_select f, :date_buy, class: "form-control"
     = error_tag f, :date_buy
 
   .form-group
     = label f, :date_sell, class: "control-label"
-    = datetime_input f, :date_sell, class: "form-control"
+    = datetime_select f, :date_sell, class: "form-control"
     = error_tag f, :date_sell
 
   .form-group
