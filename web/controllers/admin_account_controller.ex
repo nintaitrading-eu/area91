@@ -3,7 +3,6 @@ defmodule Area91.AdminAccountController do
   use Timex
   require Logger
 
-  alias Area91.Router
   alias Area91.Account
   import Area91.Router.Helpers
 
@@ -12,7 +11,7 @@ defmodule Area91.AdminAccountController do
   def index(conn, _params) do
     l_accounts = Area91.Repo.all(Account)
     conn
-    |> assign(:accounts, Area91.Repo.all(Account))
+    |> assign(:accounts, l_accounts)
     |> render("index.html", accounts: l_accounts)
   end
 
