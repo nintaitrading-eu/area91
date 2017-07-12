@@ -1,0 +1,17 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      %p Oops, something went wrong! Please check the errors below.
+
+  .form-group
+    = label f, :date_buy, class: "control-label"
+    = datetime_input f, :date_buy, class: "form-control"
+    = error_tag f, :date_buy
+
+  .form-group
+    = label f, :date_sell, class: "control-label"
+    = datetime_input f, :date_sell, class: "form-control"
+    = error_tag f, :date_sell
+
+  .form-group
+    = submit "Submit", class: "pure-button pure-button-active"

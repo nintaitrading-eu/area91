@@ -1,0 +1,5 @@
+%h1.centered Log new trade
+
+= render "form.html", changeset: @changeset, action: trade_journal_path(@conn, :create)
+
+= link "Back", to: trade_journal_path(@conn, :index)

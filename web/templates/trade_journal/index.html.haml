@@ -5,15 +5,26 @@
 .table-responsive
   %table.mq-table.pure-table.pure-table-bordered
     %thead
+        -# TODO: split/visualize entered values vs calculated values.
       %tr
-        %th trade_journal_id
+        %th trade_id
+        -# TODO: link in product
+        -# TODO: link in pool info
+        -# TODO: link in trade costs? perhaps in detail screen?
+        -# TODO: link in drawdown
+        %th date_buy
+        %th date_sell
         %th date_created
         %th date_modified
         %th &nbsp;
     %tbody
     - for l_record <- @journal_records do
       %tr
-        %td= l_record.trade_journal_id
+        %td= l_record.trade_id
+        -# TODO: link in product
+        -# TODO: link in pool info
+        -# TODO: link in trade costs? perhaps in detail screen?
+        -# TODO: link in drawdown
         %td= l_record.date_created
         %td= l_record.date_modified
         %td
