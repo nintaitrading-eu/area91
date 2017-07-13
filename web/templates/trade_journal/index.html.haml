@@ -7,7 +7,11 @@
     %thead
       -# TODO: split/visualize entered values vs calculated values.
       %tr
-        %th trade_id
+        %th trade_calculated_id
+        %th product_id
+        %th pool_id
+        %th trade_cost_id
+        %th trade_drawdown_id
         -# TODO: link in product
         -# TODO: link in pool info
         -# TODO: link in trade costs? perhaps in detail screen?
@@ -20,11 +24,17 @@
     %tbody
     - for l_record <- @trade_records do
       %tr
-        %td= l_record.trade_id
+        %td= l_record.trade_calculated_id
+        %td= l_record.product_id
+        %td= l_record.pool_id
+        %td= l_record.trade_cost_id
+        %td= l_record.trade_drawdown_id
         -# TODO: link in product
         -# TODO: link in pool info
         -# TODO: link in trade costs? perhaps in detail screen?
         -# TODO: link in drawdown
+        %td= l_record.date_buy
+        %td= l_record.date_sell
         %td= l_record.date_created
         %td= l_record.date_modified
         %td
