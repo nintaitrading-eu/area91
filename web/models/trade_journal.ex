@@ -5,8 +5,10 @@ defmodule Area91.Trade do
   @primary_key {:trade_id, :integer, []}
   @derive {Phoenix.Param, key: :trade_id}
   schema "t_trade" do
+    field :account_name, :string, virtual: true
     # TODO: add fields from trade_calculated
     field :product_name, :string, virtual: true
+    field :product_type_name, :string, virtual: true
     field :currency_code, :string, virtual: true
     field :pool, :double, virtual: true
     # TODO: add costs
