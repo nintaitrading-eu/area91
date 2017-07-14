@@ -38,5 +38,5 @@ config :area91, Area91.Repo,
   username: "rockwolf",
   password: "",
   database: "finance",
-  hostname: "debby_test",
+  hostname: "se-db0-tst",
   pool_size: 10

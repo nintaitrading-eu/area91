@@ -1,16 +1,14 @@
-defmodule Area91.Trade do
+defmodule Area91.TradeJournal do
   use Area91.Web, :model
-  import Ecto.Query
+  import Tuple
 
-  @primary_key {:trade_id, :integer, []}
-  @derive {Phoenix.Param, key: :trade_id}
-  schema "t_trade" do
+  schema "trade_journal" do
     field :account_name, :string, virtual: true
     # TODO: add fields from trade_calculated
     field :product_name, :string, virtual: true
     field :product_type_name, :string, virtual: true
     field :currency_code, :string, virtual: true
-    field :pool, :double, virtual: true
+    field :pool, :float, virtual: true
     # TODO: add costs
     # TODO: add drawdown values
     field :date_buy, Timex.Ecto.DateTime, virtual: true
@@ -35,8 +33,34 @@ defmodule Area91.Trade do
   # Note: add required params below.
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:trade_calculated_id, :product_id, :pool_id, :trade_cost_id, :drawdown_id, :date_buy, :year_buy, :month_buy, :day_buy, :date_sell, :year_sell, :month_sell, :day_sell])
-    |> validate_required([:trade_calculated_id, :product_id, :pool_id, :trade_cost_id, :drawdown_id, :date_buy, :year_buy, :month_buy, :day_buy, :date_sell, :year_sell, :month_sell, :day_sell])
+    |> cast(a_params, [
+        :account_name,
+        :product_name,
+        :product_type_name,
+        :currency_code,
+        :pool,
+        :date_buy,
+        :year_buy,
+        :month_buy,
+        :day_buy,
+        :date_sell,
+        :year_sell,
+        :month_sell,
+        :day_sell])
+    |> validate_required([
+        :account_name,
+        :product_name,
+        :product_type_name,
+        :currency_code,
+        :pool,
+        :date_buy,
+        :year_buy,
+        :month_buy,
+        :day_buy,
+        :date_sell,
+        :year_sell,
+        :month_sell,
+        :day_sell])
   end
 
 end
