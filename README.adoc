@@ -4,6 +4,28 @@ Elixir web application.
 
 == Area91
 
+=== Create database
+
+FreeBSD instructions are provided as an example.
+
+su - postgres
+psql
+
+==== Role
+
+Create a login on the database, that is allowed to create a database.
+create role testuser with login createdb;
+
+==== Create database
+
+Create the database with this command:
+mix ecto.create
+
+Execute the database migrations, with this command:
+mix ecto.migrate
+
+=== Start application
+
 To start your Phoenix app:
 
   * Install dependencies with `mix deps.get`
