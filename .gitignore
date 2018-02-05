@@ -24,3 +24,4 @@ erl_crash.dump
 /config/prod.secret.exs
 *.css.map
 *.js.map
+*.lock
