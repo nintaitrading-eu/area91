@@ -19,7 +19,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_HIST do
         year_sell int,
         month_sell int,
         day_sell int,
-        is_deleted int not null,
+        is_deleted boolean not null default 'false',
         date_created timestamp not null,
         date_modified timestamp not null,
         date_hist_created timestamp not null,
