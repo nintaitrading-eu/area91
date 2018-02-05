@@ -2,7 +2,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_CALCULATED do
   use Ecto.Migration
 
   def up do
-    execute "CREATE TABLE T_TRADE_CALCULTATED
+    execute "CREATE TABLE T_TRADE_CALCULATED
     (
         trade_calculated_id bigserial not null,
         price_buy decimal(18,6) not null,
@@ -28,10 +28,10 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_CALCULATED do
         is_deleted boolean not null default 'false',
         date_created timestamp not null,
         date_modified timestamp not null default current_date,
-        constraint pk_trade_id primary key(trade_id),
+        constraint pk_trade_calculated_id primary key(trade_calculated_id),
         unique(trade_calculated_id)
     );"
-    execute "COMMENT ON TABLE T_TRADE_CALCULTATED IS 'Contains a trade records calculated values.';"
+    execute "COMMENT ON TABLE T_TRADE_CALCULATED IS 'Contains a trade records calculated values.';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.price_buy IS 'Price at time of buying (start of long contract or stop of short contract).';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.price_sell IS 'Price at time of selling (stop of long contract or start of short contract).';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.amount_buy IS 'Amount at time of buying (start of long contract or stop of short contract).';"
