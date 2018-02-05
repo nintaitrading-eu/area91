@@ -34,7 +34,21 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_CALCULATED do
     execute "COMMENT ON TABLE T_TRADE_CALCULTATED IS 'Contains a trade records calculated values.';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.price_buy IS 'Price at time of buying (start of long contract or stop of short contract).';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.price_sell IS 'Price at time of selling (stop of long contract or start of short contract).';"
-# TODO: Add descriptions for all the columns.
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.amount_buy IS 'Amount at time of buying (start of long contract or stop of short contract).';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.amount_sell IS 'Amount at time of selling (stop of long contract or start of short contract).';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.risk_input IS 'Risk total, theoretical value.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.risk_initial IS 'Risk amount at start of trade.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.risk_initial_percent IS 'Risk amount at start of trade (in %).';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.risk_actual IS 'Actual risk amount at close of trade.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.risk_initial_percent IS 'Actual risk amount at close of trade (in %).';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.cost_total IS 'Total expenses incurred, at close of trade.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.cost_other IS 'Total expenses incurred, at close of trade, that are neither tax, nor commission. Mostly financing and negative dividends.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.stoploss IS 'Stoploss amount, in the base currency of the application.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.stoploss_orig IS 'Stoploss amount, in the base currency of the commodity.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.profit_loss IS 'Profit/loss amount, without tax and commission, in the base currency of the application.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.profit_loss_orig IS 'Profit/loss amount, without tax and commission, in the base currency of the commodity.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.profit_loss_total IS 'Profit/loss amount, with tax and commission, in the base currency of the application.';"
+    execute "COMMENT ON COLUMN T_TRADE_CALCULATED.profit_loss_total_percent IS 'Profit/loss amount, with tax and commission, in the base currency of the application (in %).';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.is_deleted IS 'When a record is deleted. Nothing gets actually removed.';"
   end
 
