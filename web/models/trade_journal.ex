@@ -5,6 +5,7 @@ defmodule Area91.TradeJournal do
   schema "trade_journal" do
     field :account_name, :string, virtual: true
     # TODO: add fields from trade_calculated
+    has_one :trade_calculated, Area91.TradeCalculated
     field :product_name, :string, virtual: true
     field :product_type_name, :string, virtual: true
     field :currency_code, :string, virtual: true
