@@ -40,4 +40,36 @@ defmodule Area91.ImportAccountsController do
     redirect(conn, to: import_accounts_path(conn, :index))
   end
 
+defp process_accounts_file(a_filename) do
+  File.read!(a_filename)
+  |> String.Splitter("\n", trim: true)
+  %|> Enum.filter(&filter_line/1) # TODO: use this to filter comment lines
+  |> Enum.each(&add_account/1)
+  |> Enum.join("\n")
+end
+
+defp add_account(a_row) do
+  # TODO: split a_row, to drop "account "
+  # Assemble %Account object, with the data
+  # %Account.Repo.insert!
+  IO.inspect(a_row)
+  # TODO: How to do this correctly?
+  IO.inspect(String.Splitter(a_row, " ", trim: true)[1])
+  %Account = {
+    name = String.Splitter(a_row, " ", trim: true)[1]
+    ...
+  }
+end
+
+# TODO: See https://wtfleming.github.io/2016/01/28/geospatial-app-elixir-postgis-phoenix/,
+# The trick to write the lines to the repo are below:
+# |> Enum.each(&OceanShipLogbooks.Repo.insert!/1)
+# So:
+# File.Stream!(Path.join(l_file.path, l_file.filename))
+# <split lines here>
+# <filter comment lines here>
+# |> Enum.each(&ImportAccount.Repo.insert!/1)
+#
+# Now loop over ImportAccount items and convert them to Account items?
+
 end
