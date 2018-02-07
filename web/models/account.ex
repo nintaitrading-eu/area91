@@ -14,6 +14,8 @@ defmodule Area91.Account do
     field :date_modified, Timex.Ecto.DateTime
   end
 
+  @fields ~w(name description)
+
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
 
@@ -23,7 +25,7 @@ defmodule Area91.Account do
   # Note: add required params below.
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:name, :description])
+    |> cast(a_params, @fields)
     |> validate_required([:name, :description])
   end
 
