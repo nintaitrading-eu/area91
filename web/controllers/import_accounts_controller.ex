@@ -42,8 +42,8 @@ defmodule Area91.ImportAccountsController do
 
 defp process_accounts_file(a_filename) do
   File.read!(a_filename)
-  |> String.Splitter("\n", trim: true)
-  %|> Enum.filter(&filter_line/1) # TODO: use this to filter comment lines
+  |> String.splitter("\n", trim: true)
+  #|> Enum.filter(&filter_line/1) # TODO: use this to filter comment lines
   |> Enum.each(&add_account/1)
   |> Enum.join("\n")
 end
@@ -54,11 +54,11 @@ defp add_account(a_row) do
   # %Account.Repo.insert!
   IO.inspect(a_row)
   # TODO: How to do this correctly?
-  IO.inspect(String.Splitter(a_row, " ", trim: true)[1])
-  %Account = {
-    name = String.Splitter(a_row, " ", trim: true)[1]
-    ...
-  }
+  IO.inspect String.splitter(a_row, " ", trim: true)[1] 
+  #%Account = {
+  #  name = String.splitter(a_row, " ", trim: true)[1]
+  #  ...
+  #}
 end
 
 # TODO: See https://wtfleming.github.io/2016/01/28/geospatial-app-elixir-postgis-phoenix/,
