@@ -1,5 +1,6 @@
 defmodule Area91.Market do
   use Ecto.Schema
+  use Timex
   import Ecto.Changeset
 
   @primary_key {:market_id, :integer, []}
@@ -32,4 +33,7 @@ defmodule Area91.Market do
     |> unique_constraint(:code)
   end
 
+  def format_date(a_date) do
+    Timex.format!(a_date, "%Y-%m-%d %H:%M", :strftime)
+  end
 end
