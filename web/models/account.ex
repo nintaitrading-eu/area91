@@ -1,8 +1,5 @@
 defmodule Area91.Account do
   use Area91.Web, :model
-  #use Ecto.Schema, Ecto.Type
-  #import Ecto.Changeset
-  import Ecto.Query
 
   @primary_key {:account_id, :integer, []}
   @derive {Phoenix.Param, key: :account_id}
@@ -15,6 +12,7 @@ defmodule Area91.Account do
   end
 
   @fields ~w(name description)
+  @required ~w(name description)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -26,7 +24,7 @@ defmodule Area91.Account do
   def changeset(a_model, a_params \\ %{}) do
     a_model
     |> cast(a_params, @fields)
-    |> validate_required([:name, :description])
+    |> validate_required(@required)
   end
 
 end
