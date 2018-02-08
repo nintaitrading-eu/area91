@@ -8,12 +8,12 @@ defmodule Area91.Currency do
     field :code, :string
     field :description, :string
     field :is_deleted, :boolean
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
 
-  @fields ~w(code description)
-  @required ~w(code description)
+  @fields ~w(code description is_deleted date_created date_modified)
+  @required ~w(code description is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
