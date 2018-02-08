@@ -11,9 +11,12 @@ defmodule Area91.Parameter do
     field :description, :string
     field :datatype, :string
     field :is_deleted, :boolean
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
+
+  @fields ~w(name value value_default description datatype is_deleted date_created date_modified)
+  @required ~w(name value value_default description datatype is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -23,10 +26,9 @@ defmodule Area91.Parameter do
   """
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:name, :value, :value_default, :description, :datatype])
-    |> validate_required([:name, :value, :value_default, :description, :datatype])
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
     |> validate_length(:value, max: 512)
   end
-
 
 end
