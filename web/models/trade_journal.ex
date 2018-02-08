@@ -3,14 +3,13 @@ defmodule Area91.TradeJournal do
 
   schema "trade_journal" do
     field :account_name, :string, virtual: true
-    # TODO: add fields from trade_calculated
-    has_one :trade_calculated, Area91.TradeCalculated
+    belongs_to :trade_calculated, Area91.TradeCalculated, references: :trade_calculated_id
     field :product_name, :string, virtual: true
     field :product_type_name, :string, virtual: true
     field :currency_code, :string, virtual: true
     field :pool, :float, virtual: true
-    # TODO: add costs
-    # TODO: add drawdown values
+    belongs_to :trade_cost, Area91.TradeCost, references: :trade_cost_id
+    belongs_to :trade_drawdown, Area91.TradeDrawdown, references: :trade_drawdown_id
     field :date_buy, Timex.Ecto.DateTime, virtual: true
     field :year_buy, :integer, virtual: true
     field :month_buy, :integer, virtual: true
