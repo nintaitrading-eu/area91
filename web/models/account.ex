@@ -7,8 +7,8 @@ defmodule Area91.Account do
     field :name, :string
     field :description, :string
     field :is_deleted, :boolean
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
 
   @fields ~w(name description is_deleted date_created date_modified)
