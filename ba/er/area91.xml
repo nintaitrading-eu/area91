@@ -278,7 +278,7 @@
 </key>
 <comment>Table with product type, e.g.: cfd, stock, fund, ...</comment>
 </table>
-<table x="894" y="1294" name="t_drawdown">
+<table x="894" y="1294" name="t_trade_drawdown">
 <row name="drawdown_id" null="0" autoincrement="1">
 <datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
@@ -470,9 +470,9 @@
 <datatype>BIGINT</datatype>
 <default>NULL</default><relation table="t_trade_cost" row="trade_cost_id" />
 </row>
-<row name="drawdown_id" null="1" autoincrement="0">
+<row name="trade_drawdown_id" null="1" autoincrement="0">
 <datatype>BIGINT</datatype>
-<default>NULL</default><relation table="t_drawdown" row="drawdown_id" />
+<default>NULL</default><relation table="t_trade_drawdown" row="trade_drawdown_id" />
 </row>
 <row name="date_buy" null="0" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
