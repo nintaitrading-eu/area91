@@ -237,7 +237,7 @@
 </row>
 <row name="product_tick_info_id" null="1" autoincrement="0">
 <datatype>BIGINT</datatype>
-<relation table="t_product_tick_info" row="product_tick_info_id" />
+<default>NULL</default><relation table="t_product_tick_info" row="product_tick_info_id" />
 <comment>May be NULL! The link is only valid for products that are cfd or futures contracts.</comment>
 </row>
 <row name="is_deleted" null="0" autoincrement="0">
@@ -278,7 +278,7 @@
 </key>
 <comment>Table with product type, e.g.: cfd, stock, fund, ...</comment>
 </table>
-<table x="894" y="1294" name="t_trade_drawdown">
+<table x="861" y="1234" name="t_trade_drawdown">
 <row name="drawdown_id" null="0" autoincrement="1">
 <datatype>BIGSERIAL</datatype>
 <default>NULL</default></row>
@@ -472,7 +472,7 @@
 </row>
 <row name="trade_drawdown_id" null="1" autoincrement="0">
 <datatype>BIGINT</datatype>
-<default>NULL</default><relation table="t_trade_drawdown" row="trade_drawdown_id" />
+<default>NULL</default><relation table="t_trade_drawdown" row="drawdown_id" />
 </row>
 <row name="date_buy" null="0" autoincrement="0">
 <datatype>TIMESTAMP</datatype>
@@ -816,7 +816,7 @@
 <default>NULL</default></row>
 <row name="product_tick_info_id" null="1" autoincrement="0">
 <datatype>BIGINT</datatype>
-</row>
+<default>NULL</default></row>
 <row name="is_deleted" null="0" autoincrement="0">
 <datatype>BOOLEAN</datatype>
 <default>'NULL'</default></row>
@@ -1012,5 +1012,33 @@
 <part>product_tick_info_hist_id</part>
 </key>
 <comment>History table for T_PRODUCT_TICK_INFO.</comment>
+</table>
+<table x="643" y="1171" name="t_trade_drawdown_hist">
+<row name="trade_drawdown_hist_id" null="0" autoincrement="1">
+<datatype>BIGSERIAL</datatype>
+<default>NULL</default></row>
+<row name="trade_drawdown_id" null="0" autoincrement="0">
+<datatype>BIGSERIAL</datatype>
+<relation table="t_trade_drawdown" row="drawdown_id" />
+</row>
+<row name="drawdown_current" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="drawdown_max" null="0" autoincrement="0">
+<datatype>DECIMAL(18,6)</datatype>
+</row>
+<row name="is_deleted" null="0" autoincrement="0">
+<datatype>BOOLEAN</datatype>
+<default>'false'</default></row>
+<row name="date_created" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'NULL'</default></row>
+<row name="date_modified" null="0" autoincrement="0">
+<datatype>TIMESTAMP</datatype>
+<default>'current_date'</default></row>
+<key type="PRIMARY" name="">
+<part>trade_drawdown_hist_id</part>
+</key>
+<comment>History table for T_TRADE_DRAWDOWN.</comment>
 </table>
 </sql>
