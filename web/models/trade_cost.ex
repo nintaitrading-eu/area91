@@ -1,6 +1,5 @@
 defmodule Area91.TradeCost do
   use Area91.Web, :model
-  import Ecto.Query
 
   @primary_key {:trade_cost_id, :integer, []}
   @derive {Phoenix.Param, key: :trade_cost_id}
@@ -8,10 +7,13 @@ defmodule Area91.TradeCost do
     field :commission, :decimal
     field :tax, :decimal
     field :is_manually_added, :boolean
-    field :is_deleted, :boolean
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :is_deleted, :boolean, default: false
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
+
+  @fields ~w(commission tax is_manually_added is_deleted date_created date_modified)
+  @required ~w(commission tax is_manually_added is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -22,8 +24,8 @@ defmodule Area91.TradeCost do
   # Note: add required params below.
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:commission, :tax, :is_manually_added, :is_deleted])
-    |> validate_required([:commission, :tax, :is_manually_added, :is_deleted])
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
   end
 
 end
