@@ -33,7 +33,4 @@ defmodule Area91.Market do
     |> unique_constraint(:code)
   end
 
-  def format_date(a_date) do
-    Timex.format!(a_date, "%Y-%m-%d %H:%M", :strftime)
-  end
 end

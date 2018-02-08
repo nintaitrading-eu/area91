@@ -48,6 +48,7 @@ defmodule Area91.Web do
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+      use Timex
 
       import Area91.Router.Helpers
       import Area91.ErrorHelpers
