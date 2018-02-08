@@ -1,6 +1,5 @@
 defmodule Area91.TradeCalculated do
   use Area91.Web, :model
-  import Ecto.Query
 
   @primary_key {:trade_calculated_id, :integer, []}
   @derive {Phoenix.Param, key: :trade_calculated_id}
@@ -23,10 +22,13 @@ defmodule Area91.TradeCalculated do
     field :profit_loss_total, :decimal
     field :profit_loss_total_percent, :decimal
     field :r_multiple, :decimal
-    field :is_deleted, :boolean
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :is_deleted, :boolean, default: false
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
+
+  @fields ~w(price_buy price_sell amount_buy amount_sell amount_buy_total amount_sell_total risk_input risk_initial risk_initial_percent cost_total cost_other stoploss stoploss_orig profit_loss profit_loss_orig profit_loss_total profit_loss_total_percent r_multiple is_deleted date_created date_modified)
+  @required ~w(price_buy price_sell amount_buy amount_sell amount_buy_total amount_sell_total risk_input risk_initial risk_initial_percent cost_total cost_other stoploss stoploss_orig profit_loss profit_loss_orig profit_loss_total profit_loss_total_percent r_multiple is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -37,8 +39,8 @@ defmodule Area91.TradeCalculated do
   # Note: add required params below.
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:price_buy, :price_sell, :amount_buy, :amount_sell, :amount_buy_total, :amount_sell_total, :risk_input, :risk_initial, :risk_initial_percent, :cost_total, :cost_other, :stoploss, :stoploss_orig, :profit_loss, :profit_loss_orig, :profit_loss_total, :profit_loss_total_percent, :r_multiple])
-    |> validate_required([:price_buy, :price_sell, :amount_buy, :amount_sell, :amount_buy_total, :amount_sell_total, :risk_input, :risk_initial, :risk_initial_percent, :cost_total, :cost_other, :stoploss, :stoploss_orig, :profit_loss, :profit_loss_orig, :profit_loss_total, :profit_loss_total_percent, :r_multiple])
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
   end
 
 end
