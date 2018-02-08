@@ -13,7 +13,7 @@ defmodule Area91.Currency do
   end
 
   @fields ~w(code description is_deleted date_created date_modified)
-  @required ~w(code description is_deleted date_created date_modified)
+  @required ~w(code description is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

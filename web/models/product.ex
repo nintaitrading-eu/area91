@@ -18,7 +18,7 @@ defmodule Area91.Product do
   end
 
   @fields ~w(name description product_type currency market product_tick_info)
-  @required ~w(name description product_type currency market product_tick_info)
+  @required ~w(name description product_type currency market product_tick_info)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

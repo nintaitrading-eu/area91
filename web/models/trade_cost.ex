@@ -13,7 +13,7 @@ defmodule Area91.TradeCost do
   end
 
   @fields ~w(commission tax is_manually_added is_deleted date_created date_modified)
-  @required ~w(commission tax is_manually_added is_deleted date_created date_modified)
+  @required ~w(commission tax is_manually_added is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

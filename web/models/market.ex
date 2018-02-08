@@ -14,7 +14,7 @@ defmodule Area91.Market do
   end
 
   @fields ~w(code name country is_deleted date_created date_modified)
-  @required ~w(code name country is_deleted date_created date_modified)
+  @required ~w(code name country is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

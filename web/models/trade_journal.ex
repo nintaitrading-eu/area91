@@ -24,7 +24,7 @@ defmodule Area91.TradeJournal do
   end
 
   @fields ~w(account_name trade_calculated product_name product_type_name currency_code pool trade_cost trade_drawdown date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
-  @required ~w(account_name trade_calculated product_name product_type_name currency_code pool trade_cost trade_drawdown date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
+  @required ~w(account_name trade_calculated product_name product_type_name currency_code pool trade_cost trade_drawdown date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

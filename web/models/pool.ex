@@ -15,7 +15,7 @@ defmodule Area91.Pool do
   end
 
   @fields ~w(total invested cash is_manually_added is_deleted date_created date_modified)
-  @required ~w(total invested cash is_manually_added is_deleted date_created date_modified)
+  @required ~w(total invested cash is_manually_added is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

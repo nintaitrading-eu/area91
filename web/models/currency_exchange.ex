@@ -13,7 +13,7 @@ defmodule Area91.CurrencyExchange do
   end
 
   @fields ~w(currency_from currency_to exchange_rate is_deleted date_created date_modified)
-  @required ~w(currency_from currency_to exchange_rate is_deleted date_created date_modified)
+  @required ~w(currency_from currency_to exchange_rate is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

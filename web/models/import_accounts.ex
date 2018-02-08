@@ -7,7 +7,7 @@ defmodule Area91.ImportAccounts do
   end
 
   @fields ~w(file)
-  @required ~w(file)
+  @required ~w(file)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

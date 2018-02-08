@@ -16,7 +16,7 @@ defmodule Area91.Parameter do
   end
 
   @fields ~w(name value value_default description datatype is_deleted date_created date_modified)
-  @required ~w(name value value_default description datatype is_deleted date_created date_modified)
+  @required ~w(name value value_default description datatype is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

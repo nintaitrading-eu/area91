@@ -13,18 +13,19 @@ defmodule Area91.Version do
     field :date_modified, Ecto.DateTime
   end
 
-  @required_fields ~w(database_version, database_version_info, application_version, application_version_info)
-  @optional_fields ~w()
+  @fields ~w(database_version, database_version_info, application_version, application_version_info)
+  @required ~w(database_version, database_version_info, application_version, application_version_info)a
 
   @doc """
-  Creates a changeset based on the `model` and `params`.
+  Creates a changeset based on the `a_model` and `a_params`.
 
   If no params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(model, params \\ :empty) do
-    model
-    |> cast(params, @required_fields, @optional_fields)
+  def changeset(a_model, a_params \\ %{}) do
+    a_model
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
   end
 
 end

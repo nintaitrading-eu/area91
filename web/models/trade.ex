@@ -23,7 +23,7 @@ defmodule Area91.Trade do
   end
 
   @fields ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
-  @required ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
+  @required ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

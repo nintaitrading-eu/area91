@@ -18,7 +18,7 @@ defmodule Area91.ProductTickInfo do
   end
 
   @fields ~w(description tick tick_value order_min order_max margin_day_proc margin_night_proc is_deleted date_created date_modified)
-  @required ~w(description tick tick_value order_min order_max margin_day_proc margin_night_proc is_deleted date_created date_modified)
+  @required ~w(description tick tick_value order_min order_max margin_day_proc margin_night_proc is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

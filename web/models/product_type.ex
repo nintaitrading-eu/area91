@@ -13,7 +13,7 @@ defmodule Area91.ProductType do
   end
 
   @fields ~w(name description is_deleted date_created date_modified)
-  @required ~w(name description is_deleted date_created date_modified)
+  @required ~w(name description is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

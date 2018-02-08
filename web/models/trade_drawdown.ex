@@ -12,7 +12,7 @@ defmodule Area91.TradeDrawdown do
   end
 
   @fields ~w(drawdown_current drawdown_max is_deleted date_created date_modified)
-  @required ~w(drawdown_current drawdown_max is_deleted date_created date_modified)
+  @required ~w(drawdown_current drawdown_max is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
