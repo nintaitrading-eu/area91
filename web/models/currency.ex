@@ -12,6 +12,8 @@ defmodule Area91.Currency do
     field :date_modified, Timex.Ecto.DateTime
   end
 
+  @fields ~w(code description)
+  @required ~w(code description)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -21,8 +23,8 @@ defmodule Area91.Currency do
   """
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:code, :description])
-    |> validate_required([:code, :description])
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
     #|> validate_length(:code, min: 3, max: 3)
   end
 
