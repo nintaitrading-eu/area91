@@ -11,8 +11,8 @@ defmodule Area91.Account do
     field :date_modified, Timex.Ecto.DateTime
   end
 
-  @fields ~w(name description)
-  @required ~w(name description)
+  @fields ~w(name description is_deleted date_created date_modified)
+  @required ~w(name description is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
