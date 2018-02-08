@@ -13,9 +13,12 @@ defmodule Area91.Product do
     has_one :market, Area91.Market
     #has_one :product_tick_info, Area91.ProductTickInfo
     field :is_deleted, :boolean, default: :false 
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
+
+  @fields ~w(name description product_type currency market product_tick_info)
+  @required ~w(name description product_type currency market product_tick_info)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -25,8 +28,8 @@ defmodule Area91.Product do
   """
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:name, :description, :product_type, :currency, :market, :product_tick_info])
-    |> validate_required([:name, :description, :product_type, :currency, :market])
+    |> cast(a_params, @fields) 
+    |> validate_required(@required)
   end
 
 end
