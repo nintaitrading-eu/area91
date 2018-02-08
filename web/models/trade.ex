@@ -1,6 +1,5 @@
 defmodule Area91.Trade do
   use Area91.Web, :model
-  import Ecto.Query
 
   @primary_key {:trade_id, :integer, []}
   @derive {Phoenix.Param, key: :trade_id}
@@ -18,10 +17,13 @@ defmodule Area91.Trade do
     field :year_sell, :integer
     field :month_sell, :integer
     field :day_sell, :integer
-    field :is_deleted, :boolean
-    field :date_created, Timex.Ecto.DateTime
-    field :date_modified, Timex.Ecto.DateTime
+    field :is_deleted, :boolean, default: false
+    field :date_created, :naive_datetime
+    field :date_modified, :naive_datetime
   end
+
+  @fields ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
+  @required ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -32,8 +34,8 @@ defmodule Area91.Trade do
   # Note: add required params below.
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:trade_calculated_id, :product_id, :pool_id, :trade_cost_id, :drawdown_id, :date_buy, :year_buy, :month_buy, :day_buy, :date_sell, :year_sell, :month_sell, :day_sell])
-    |> validate_required([:trade_calculated_id, :product_id, :pool_id, :trade_cost_id, :drawdown_id, :date_buy, :year_buy, :month_buy, :day_buy, :date_sell, :year_sell, :month_sell, :day_sell])
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
   end
 
 end
