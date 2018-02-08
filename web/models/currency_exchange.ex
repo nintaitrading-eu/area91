@@ -12,6 +12,8 @@ defmodule Area91.CurrencyExchange do
     field :date_modified, Timex.Ecto.DateTime
   end
 
+  @fields ~w(currency_from currency_to exchange_rate is_deleted date_created date_modified)
+  @required ~w(currency_from currency_to exchange_rate is_deleted date_created date_modified)
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -21,8 +23,8 @@ defmodule Area91.CurrencyExchange do
   """
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, [:currency_from, :currency_to, :exchange_rate, :is_deleted])
-    |> validate_required([:currency_from, :currency_to, :exchange_rate, :is_deleted])
+    |> cast(a_params, @fields)
+    |> validate_required(@required)
   end
 
 end
