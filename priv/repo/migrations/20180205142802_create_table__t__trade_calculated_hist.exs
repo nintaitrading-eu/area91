@@ -6,8 +6,6 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_CALCULATED_HIST do
     (
         trade_calculated_hist_id bigserial not null,
         trade_calculated_id bigint not null,
-        price_buy decimal(18,6) not null,
-        price_sell decimal(18,6) not null,
         amount_buy decimal(18,6) not null,
         amount_sell decimal(18,6) not null,
         amount_buy_total decimal(18,6) not null,
