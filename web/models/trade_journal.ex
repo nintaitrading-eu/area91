@@ -10,21 +10,29 @@ defmodule Area91.TradeJournal do
     field :pool, :float, virtual: true
     belongs_to :trade_cost, Area91.TradeCost, references: :trade_cost_id
     belongs_to :trade_drawdown, Area91.TradeDrawdown, references: :trade_drawdown_id
-    field :date_buy, Timex.Ecto.DateTime, virtual: true
+    field :date_buy, :naive_datetime, virtual: true
     field :year_buy, :integer, virtual: true
     field :month_buy, :integer, virtual: true
     field :day_buy, :integer, virtual: true
-    field :date_sell, Timex.Ecto.DateTime, virtual: true
+    field :date_sell, :naive_datetime, virtual: true
     field :year_sell, :integer, virtual: true
     field :month_sell, :integer, virtual: true
     field :day_sell, :integer, virtual: true
+    field :price_buy, :decimal, virtual: true
+    field :price_sell, :decimal, virtual: true
+    field :shares_buy, :integer, virtual: true
+    field :shares_sell, :integer, virtual: true
+    field :commission_buy, :decimal, virtual: true
+    field :commission_sell, :decimal, virtual: true
+    field :tax_buy, :decimal, virtual: true
+    field :tax_sell, :decimal, virtual: true
     field :is_deleted, :boolean, virtual: true
     field :date_created, :naive_datetime, virtual: true
     field :date_modified, :naive_datetime, virtual: true
   end
 
-  @fields ~w(account_name trade_calculated product_name product_type_name currency_code pool trade_cost trade_drawdown date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
-  @required ~w(account_name trade_calculated product_name product_type_name currency_code pool trade_cost trade_drawdown date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)a
+  @fields ~w(account_name product_name product_type_name currency_code pool date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)
+  @required ~w(account_name product_name product_type_name currency_code pool date_buy date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -35,8 +43,11 @@ defmodule Area91.TradeJournal do
   # Note: add required params below.
   def changeset(a_model, a_params \\ %{}) do
     a_model
-    |> cast(a_params, @fields) 
+    |> cast(a_params, @fields)
     |> validate_required(@required)
+    |> assoc_constraint(:trade_calculated)
+    |> assoc_constraint(:trade_cost)
+    |> assoc_constraint(:trade_drawdown)
   end
 
 end
