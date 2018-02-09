@@ -1,6 +1,6 @@
 .pure-control-group
-  %a.pure-button.pure-button-active{:href => "/trade/journal/new", :title => "New"}
-    %i.fa.fa-file{:title => "New", :aria-hidden => "true"}
+  %a.pure-button.pure-button-active{href: "/trade/journal/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
 %br/
 .pure-control-group
   Filter for account goes here...
@@ -15,7 +15,9 @@
         %th pool
         %th date_buy
         %th date_sell
-        %th trade_drawdown_id
+        %th price_buy
+        %th price_sell
+        %th drawdown
         %th &nbsp;
     %tbody
     - for l_record <- @trade_records do
@@ -25,6 +27,9 @@
         %td= l_record.pool.pool_id
         %td= l_record.date_buy
         %td= l_record.date_sell
+        %td= l_record.price_buy
+        %td= l_record.price_sell
+        %td #{l_record.trade_drawdown.drawdown_current}/#{l_record.trade_drawdown.drawdown_max}
         %td
           %a.pure-button{:href => "#{trade_journal_path(@conn, :edit, l_record.trade_journal_id)}", :title => "Modify", :alt => "Modify"}
             %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
