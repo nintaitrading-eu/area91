@@ -17,6 +17,12 @@
         %th date_sell
         %th price_buy
         %th price_sell
+        %th shares_buy
+        %th shares_sell
+        %th commission_buy
+        %th commission_sell
+        %th tax_buy
+        %th tax_sell
         %th drawdown
         %th &nbsp;
     %tbody
@@ -29,6 +35,12 @@
         %td= l_record.date_sell
         %td= l_record.price_buy
         %td= l_record.price_sell
+        %td= l_record.shares_buy
+        %td= l_record.shares_sell
+        %td= l_record.commission_buy
+        %td= l_record.commission_sell
+        %td= l_record.tax_buy
+        %td= l_record.tax_sell
         %td #{l_record.trade_drawdown.drawdown_current}/#{l_record.trade_drawdown.drawdown_max}
         %td
           %a.pure-button{:href => "#{trade_journal_path(@conn, :edit, l_record.trade_journal_id)}", :title => "Modify", :alt => "Modify"}
