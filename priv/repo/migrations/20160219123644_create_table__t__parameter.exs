@@ -12,7 +12,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
         datatype varchar(50) not null,
         is_deleted boolean not null default 'false',
         date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_modified timestamp not null default (select now() at timezone 'UTC'),
         constraint pk_parameter_id primary key(parameter_id),
         unique(parameter_id),
         unique(name),
