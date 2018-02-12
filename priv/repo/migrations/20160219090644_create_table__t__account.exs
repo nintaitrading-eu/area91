@@ -23,7 +23,7 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
   end
 
   def down do
-   execute "drop table T_ACCOUNT;" 
+   execute "drop table T_ACCOUNT;"
   end
 
 
