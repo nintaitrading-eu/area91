@@ -5,12 +5,12 @@ defmodule Area91.Repo.Migrations.CreateTable_T_MARKET do
     execute "CREATE TABLE T_MARKET
     (
         market_id bigserial not null,
-        code varchar(50) not null /* A unique code representation to use in applications. e.g.: EBR */,
+        code varchar(50) not null,
         name varchar(50) not null,
-        country char(2) not null /* ISO country code, 2 characters. */,
+        country char(2) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp with timezone not null,
-        date_modified timestamp with timezone not null default current_date,
+        date_created timestamp with time zone not null,
+        date_modified timestamp with time zone not null default (now() at time zone 'UTC'),
         constraint pk_market_id primary key(market_id),
         unique(market_id),
         unique(code),
