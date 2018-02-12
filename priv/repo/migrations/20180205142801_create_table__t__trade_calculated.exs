@@ -24,10 +24,12 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_CALCULATED do
         profit_loss_total_percent decimal(18,6) not null,
         r_multiple decimal(18,6) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default current_date,
         constraint pk_trade_calculated_id primary key(trade_calculated_id),
-        unique(trade_calculated_id)
+        unique(trade_calculated_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_TRADE_CALCULATED IS 'Contains a trade records calculated values.';"
     execute "COMMENT ON COLUMN T_TRADE_CALCULATED.amount_buy IS 'Amount at time of buying (start of long contract or stop of short contract).';"

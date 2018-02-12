@@ -27,10 +27,10 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE do
         tax_buy decimal(18,6) not null,
         tax_sell decimal(18,6) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with_timezone not null default current_date,
         constraint pk_trade_id primary key(trade_id),
-        unique(trade_id),
+        unique(trade_id)
         check(extract(timezone from date_buy) = '0'), /* Ensure no timezone info is stored. */
         check(extract(timezone from date_sell) = '0'), /* Ensure no timezone info is stored. */
         check(extract(timezone from date_created) = '0'),

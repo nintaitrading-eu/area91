@@ -7,8 +7,8 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER_DATATYPE do
         parameter_datatype_id bigserial not null,
         datatype varchar(512) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default current_date,
         constraint pk_parameter_datatype_id primary key(parameter_datatype_id),
         unique(parameter_datatype_id)
     );"
