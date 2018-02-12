@@ -4,11 +4,11 @@ defmodule Area91.Trade do
   @primary_key {:trade_id, :integer, []}
   @derive {Phoenix.Param, key: :trade_id}
   schema "t_trade" do
-    field :trade_calculated_id, :integer
+    belongs_to :trade_calculated, Area91.TradeCalculated, references: :trade_calculated_id
     field :product_id, :integer
     field :pool_id, :integer
-    field :trade_cost_id, :integer
-    field :drawdown_id, :integer
+    belongs_to :trade_cost, Area91.TradeCost, references: :trade_cost_id
+    belongs_to :trade_drawdown, Area91.TradeDrawdown, references: :trade_drawdown_id
     field :date_buy, Timex.Ecto.DateTime
     field :year_buy, :integer
     field :month_buy, :integer
@@ -30,8 +30,8 @@ defmodule Area91.Trade do
     field :date_modified, :naive_datetime
   end
 
-  @fields ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell price_buy price_sell shares_buy shares_sell commission_buy commission_sell tax_buy tax_sell is_deleted date_created date_modified)
-  @required ~w(trade_calculated_id product_id pool_id trade_cost_id drawdown_id date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell price_buy price_sell shares_buy shares_sell commission_buy commission_sell tax_buy tax_sell is_deleted date_created date_modified)a
+  @fields ~w(trade_calculated product_id pool_id trade_cost trade_drawdown date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell price_buy price_sell shares_buy shares_sell commission_buy commission_sell tax_buy tax_sell is_deleted date_created date_modified)
+  @required ~w(trade_calculated product_id pool_id trade_cost drawdown date_buy year_buy month_buy day_buy date_sell year_sell month_sell day_sell price_buy price_sell shares_buy shares_sell commission_buy commission_sell tax_buy tax_sell is_deleted date_created date_modified)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.
@@ -44,6 +44,9 @@ defmodule Area91.Trade do
     a_model
     |> cast(a_params, @fields)
     |> validate_required(@required)
+    |> assoc_constraint(:trade_calculated)
+    |> assoc_constraint(:trade_cost)
+    |> assoc_constraint(:trade_drawdown)
   end
 
 end
