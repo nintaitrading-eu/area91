@@ -30,22 +30,56 @@ defmodule Area91.TradeJournalController do
     render(conn, "new.html", trade_record: l_trade, changeset: l_changeset)
   end
 
-  def create(conn, %{"trade_journal" => %{"account_name" => account_name, "product_name" => product_name, "product_type_name" => product_type_name, "currency_code" => currency_code, "pool" => pool, "date_buy" => date_buy, "year_buy" => year_buy, "month_buy" => month_buy, "day_buy" => day_buy, "date_sell" => date_sell, "year_sell" => year_sell, "month_sell" => month_sell, "day_sell" => day_sell}}) do
-    Area91.Repo.insert(%TradeJournal{
-        account_name: account_name,
-        product_name: product_name,
-        product_type_name: product_type_name,
-        currency_code: currency_code,
-        pool: pool,
-        date_buy: date_buy,
-        year_buy: year_buy,
-        month_buy: month_buy,
-        day_buy: day_buy,
-        date_sell: date_sell,
-        year_sell: year_sell,
-        month_sell: month_sell,
-        day_sell: day_sell,
+  def create(conn, %{"trade_journal" => %{"date_buy" => date_buy, "date_sell" => date_sell, "price_buy" => price_buy, "price_sell" => price_sell, "shares_buy" => shares_buy, "shares_sell" => shares_sell, "commission_buy" => commission_buy, "commission_sell" => commission_sell, "tax_buy" => tax_buy, "tax_sell" => tax_sell}}) do
+  #def create(conn, a_params) do
+    {_, l_price_buy} = Decimal.parse(price_buy)
+    {_, l_price_sell} = Decimal.parse(price_sell)
+    {l_shares_buy, _} = Integer.parse(shares_buy)
+    {l_shares_sell, _} = Integer.parse(shares_sell)
+    {_, l_commission_buy} = Decimal.parse(commission_buy)
+    {_, l_commission_sell} = Decimal.parse(commission_sell)
+    {_, l_tax_buy} = Decimal.parse(tax_buy)
+    {_, l_tax_sell} = Decimal.parse(tax_sell)
+    {_, l_date_buy} = Timex.parse(date_buy, "{YYYY}-{0M}-{0D} {h24}:{m}")
+    {_, l_date_sell} = Timex.parse(date_sell, "{YYYY}-{0M}-{0D} {h24}:{m}")
+    IO.inspect shares_buy
+    IO.inspect l_shares_buy
+    Area91.Repo.insert(%Trade{
+        date_buy: l_date_buy,
+        date_sell: l_date_sell,
+        price_buy: l_price_buy,
+        price_sell: l_price_sell,
+        shares_buy: l_shares_buy,
+        shares_sell: l_shares_sell,
+        commission_buy: l_commission_buy,
+        commission_sell: l_commission_sell,
+        tax_buy: l_tax_buy,
+        tax_sell: l_tax_sell,
         date_created: Timex.now})
+
+#    Area91.Repo.insert(%Trade{
+#        #account_name: account_name,
+#        #product_name: product_name,
+#        #product_type_name: product_type_name,
+#        #currency_code: currency_code,
+#        #pool: pool,
+#        date_buy: l_date_buy,
+#        #year_buy: year_buy,
+#        #month_buy: month_buy,
+#        #day_buy: day_buy,
+#        date_sell: l_date_sell,
+#        #year_sell: year_sell,
+#        #month_sell: month_sell,
+#        #day_sell: day_sell,
+#        price_buy: l_price_buy,
+#        price_sell: l_price_sell,
+#        shares_buy: l_shares_buy,
+#        shares_sell: l_shares_sell,
+#        commission_buy: l_commission_buy,
+#        commission_sell: l_commission_sell,
+#        tax_buy: l_tax_buy,
+#        tax_sell: l_tax_sell,
+#        date_created: Timex.now})
     redirect(conn, to: trade_journal_path(conn, :index))
   end
 
