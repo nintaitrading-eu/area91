@@ -15,7 +15,9 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER do
         date_modified timestamp not null default current_date,
         constraint pk_parameter_id primary key(parameter_id),
         unique(parameter_id),
-        unique(name)
+        unique(name),
+	check(extract(timezone from date_created) = '0'),
+	check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_PARAMETER IS 'Table that contains global parameters, with default values and descriptions.';"
     execute "COMMENT ON COLUMN T_PARAMETER.datatype IS 'Note: add check constraint: integer, string, decimal(18,6)';"
