@@ -30,18 +30,22 @@ defmodule Area91.ImportAccountsController do
     IO.inspect l_file.path
     IO.inspect l_file.filename
     IO.inspect Path.join(l_file.path, l_file.filename)
-    case File.read(Path.join(l_file.path, l_file.filename)) do
-      {:ok, l_body} -> IO.inspect l_body
-      {:error, l_reason} -> IO.puts :stdio, l_reason
-    end
+    process_accounts_file(a_file)
+    #case File.read(Path.join(l_file.path, l_file.filename)) do
+    #  {:ok, l_body} -> process_accounts_file(l_file)
+    #  {:error, l_reason} -> IO.puts :stdio, l_reason
+    #end
     #IO.inspect a_params
     #conn
     #|> render("index.html")
     redirect(conn, to: import_accounts_path(conn, :index))
   end
 
-defp process_accounts_file(a_filename) do
-  File.read!(a_filename)
+defp process_accounts_file(a_file) do
+  IO.puts "[TEST: in process_accounts_file]"
+  IO.inspect a_file
+  IO.puts "[TEST2: in process_accounts_file]"
+  File.read(Path.join(a_file.path, a_file.filename))
   |> String.splitter("\n", trim: true)
   #|> Enum.filter(&filter_line/1) # TODO: use this to filter comment lines
   |> Enum.each(&add_account/1)
@@ -52,6 +56,7 @@ defp add_account(a_row) do
   # TODO: split a_row, to drop "account "
   # Assemble %Account object, with the data
   # %Account.Repo.insert!
+  IO.puts '[TEST: in add_account]'
   IO.inspect(a_row)
   # TODO: How to do this correctly?
   IO.inspect String.splitter(a_row, " ", trim: true)[1] 
