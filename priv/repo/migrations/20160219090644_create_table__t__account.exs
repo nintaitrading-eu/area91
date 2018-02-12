@@ -12,7 +12,9 @@ defmodule Area91.Repo.Migrations.CreateTable_T_ACCOUNT do
         date_modified timestamp not null default current_date /* Date, on which the record was last modified. */,
         constraint pk_account_id primary key(account_id),
         unique(account_id),
-        unique(name)
+        unique(name),
+	check(extract(timezone from date_created) = '0'),
+	check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_ACCOUNT IS 'Contains records with account names, as used in ledger. Accounts can be added manually or imported from the ledger accounts file.';"
     execute "COMMENT ON COLUMN T_ACCOUNT.is_deleted IS 'When a record is deleted. Nothing gets actually removed.';"

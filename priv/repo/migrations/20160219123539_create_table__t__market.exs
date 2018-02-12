@@ -13,7 +13,9 @@ defmodule Area91.Repo.Migrations.CreateTable_T_MARKET do
         date_modified timestamp not null default current_date,
         constraint pk_market_id primary key(market_id),
         unique(market_id),
-        unique(code)
+        unique(code),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_MARKET IS 'Contains a list of markets you can trade. E.g.: ''cfd .gold'', ''ebr''';"
     execute "COMMENT ON COLUMN T_MARKET.code IS 'A unique short code representation to use in applications. e.g.: EBR';"
