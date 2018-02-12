@@ -4,10 +4,10 @@ defmodule Area91.Repo.Migrations.InsertTable_T_PARAMETER_DATATYPE do
   def up do
     execute "
       insert into t_parameter_datatype(datatype, date_created)
-      values ('int', current_date),
-             ('string', current_date),
-             ('decimal(18,6)', current_date),
-             ('double', current_date);"
+      values ('int', (select now() at time zone 'UTC')),
+             ('string', (select now() at time zone 'UTC')),
+             ('decimal(18,6)', (select now() at time zone 'UTC')),
+             ('double', (select now() at time zone 'UTC'));"
   end
 
   def down do

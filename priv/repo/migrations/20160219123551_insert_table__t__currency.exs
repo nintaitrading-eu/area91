@@ -4,20 +4,20 @@ defmodule Area91.Repo.Migrations.InsertTable_T_CURRENCY do
   def up do
     execute "
       INSERT INTO T_CURRENCY (code, description, date_created)
-           VALUES ('EUR', 'Euro', current_date),
-                  ('USD', 'United States Dollar', current_date),
-                  ('GBP', 'British Pound', current_date),
-                  ('CHF', 'Swiss Frank', current_date),
-                  ('CAD', 'Canadian Dollar', current_date),
-                  ('JPY', 'Japanese Yen', current_date),
-                  ('NZD', 'New Zealand Dollar', current_date),
-                  ('AUD', 'Australian Dollar', current_date),
-                  ('HKD', 'Hong Kong Dollar', current_date),
-                  ('DKK', 'Danish Krone', current_date),
-                  ('PLN', 'Polish Zloty', current_date),
-                  ('MXN', 'Mexican Peso', current_date),
-                  ('SEK', 'Swedish Krona', current_date),
-                  ('RUB', 'Russian Ruble', current_date);"
+           VALUES ('EUR', 'Euro', (select now() at time zone 'UTC')),
+                  ('USD', 'United States Dollar', (select now() at time zone 'UTC')),
+                  ('GBP', 'British Pound', (select now() at time zone 'UTC')),
+                  ('CHF', 'Swiss Frank', (select now() at time zone 'UTC')),
+                  ('CAD', 'Canadian Dollar', (select now() at time zone 'UTC')),
+                  ('JPY', 'Japanese Yen', (select now() at time zone 'UTC')),
+                  ('NZD', 'New Zealand Dollar', (select now() at time zone 'UTC')),
+                  ('AUD', 'Australian Dollar', (select now() at time zone 'UTC')),
+                  ('HKD', 'Hong Kong Dollar', (select now() at time zone 'UTC')),
+                  ('DKK', 'Danish Krone', (select now() at time zone 'UTC')),
+                  ('PLN', 'Polish Zloty', (select now() at time zone 'UTC')),
+                  ('MXN', 'Mexican Peso', (select now() at time zone 'UTC')),
+                  ('SEK', 'Swedish Krona', (select now() at time zone 'UTC')),
+                  ('RUB', 'Russian Ruble', (select now() at time zone 'UTC'));"
   end
 
 
