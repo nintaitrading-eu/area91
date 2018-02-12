@@ -14,7 +14,9 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_DRAWDOWN_HIST do
         date_hist_created timestamp not null,
         date_hist_modified timestamp not null default current_date,
         constraint pk_trade_drawdown_hist_id primary key(trade_drawdown_id),
-        constraint fk_T_TRADE_DRAWDOWN_HIST_trade_drawdown_id foreign key (trade_drawdown_id) references T_TRADE_DRAWDOWN (trade_drawdown_id)
+        constraint fk_T_TRADE_DRAWDOWN_HIST_trade_drawdown_id foreign key (trade_drawdown_id) references T_TRADE_DRAWDOWN (trade_drawdown_id),
+	check(extract(timezone from date_hist_created) = '0'),
+	check(extract(timezone from date_hist_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_TRADE_DRAWDOWN_HIST IS 'History table for T_TRADE_DRAWDOWN.';"
   end
