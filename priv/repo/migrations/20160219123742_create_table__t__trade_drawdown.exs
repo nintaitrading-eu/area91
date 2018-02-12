@@ -11,7 +11,9 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_DRAWDOWN do
         date_created timestamp not null,
         date_modified timestamp not null default current_date,
         constraint pk_trade_drawdown_id primary key(trade_drawdown_id),
-        unique(trade_drawdown_id)
+        unique(trade_drawdown_id),
+	check(extract(timezone from date_created) = '0'),
+	check(extract(timezone from date_modified) = '0')
     );"
   end
 
