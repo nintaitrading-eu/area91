@@ -14,13 +14,17 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TICK_INFO_HIST do
         margin_day_proc decimal(18,6) not null,
         margin_night_proc decimal(18,6) not null,
         is_deleted boolean not null,
-        date_created timestamp not null,
-        date_modified timestamp not null,
-        date_hist_created timestamp not null,
-        date_hist_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null,
+        date_hist_created timestamp with timezone not null,
+        date_hist_modified timestamp with timezone not null default current_date,
         constraint pk_product_tick_info_hist_id primary key(product_tick_info_hist_id),
         unique(product_tick_info_hist_id),
-        constraint fk_T_PRODUCT_TICK_INFO_HIST_product_tick_info_id foreign key(product_tick_info_id) references T_PRODUCT_TICK_INFO (product_tick_info_id)
+        constraint fk_T_PRODUCT_TICK_INFO_HIST_product_tick_info_id foreign key(product_tick_info_id) references T_PRODUCT_TICK_INFO (product_tick_info_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0'),
+        check(extract(timezone from date_hist_created) = '0'),
+        check(extract(timezone from date_hist_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_PRODUCT_TICK_INFO_HIST IS 'History table for T_PRODUCT_TICK_INFO.';"
   end

@@ -10,10 +10,12 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_COST do
         tax decimal(18,6) not null,
         is_manually_added boolean not null default 'false',
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default current_date,
         constraint pk_trade_cost_id primary key(trade_cost_id),
-        unique(trade_cost_id)
+        unique(trade_cost_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_TRADE_COST IS 'Table with costs associated to trading.';"
   end

@@ -10,7 +10,9 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PARAMETER_DATATYPE do
         date_created timestamp with timezone not null,
         date_modified timestamp with timezone not null default current_date,
         constraint pk_parameter_datatype_id primary key(parameter_datatype_id),
-        unique(parameter_datatype_id)
+        unique(parameter_datatype_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_PARAMETER_DATATYPE IS 'Table that contains datatypes that may be used for the parameters. Please use valid datatypes, so a conversion can succeed.';"
   end

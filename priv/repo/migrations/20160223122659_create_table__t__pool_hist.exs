@@ -12,13 +12,17 @@ defmodule Area91.Repo.Migrations.CreateTableT_POOL_HIST do
         cash decimal(18,6) not null,
         is_manually_added boolean not null,
         is_deleted boolean not null,
-        date_created timestamp not null,
-        date_modified timestamp not null,
-        date_hist_created timestamp not null,
-        date_hist_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null,
+        date_hist_created timestamp with timezone not null,
+        date_hist_modified timestamp with timezone not null default current_date,
         constraint pk_pool_hist_id primary key(pool_hist_id),
         unique(pool_hist_id),
-        constraint fk_T_POOL_pool_id foreign key(pool_id) references T_POOL(pool_id)
+        constraint fk_T_POOL_pool_id foreign key(pool_id) references T_POOL(pool_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0'),
+        check(extract(timezone from date_hist_created) = '0'),
+        check(extract(timezone from date_hist_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_POOL_HIST IS 'History table for T_POOL.';"
   end

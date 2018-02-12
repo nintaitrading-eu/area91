@@ -8,10 +8,12 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TYPE do
         name varchar(50) not null,
         description varchar(4000) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default current_date,
         constraint pk_product_type_id primary key(product_type_id),
-        unique(product_type_id)
+        unique(product_type_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_PRODUCT_TYPE IS 'Table with product type, e.g.: cfd, stock, fund, ...'"
   end

@@ -25,13 +25,15 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_CALCULATED_HIST do
         profit_loss_total_percent decimal(18,6) not null,
         r_multiple decimal(18,6) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
-        date_hist_created timestamp not null,
-        date_hist_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default current_date,
+        date_hist_created timestamp with timezone not null,
+        date_hist_modified timestamp with timezone not null default current_date,
         constraint pk_trade_calculated_hist_id primary key(trade_calculated_hist_id),
         constraint fk_T_TRADE_CALCULATED_HIST_trade_calculated_id foreign key (trade_calculated_id) references T_TRADE_CALCULATED (trade_calculated_id),
-        unique(trade_calculated_hist_id)
+        unique(trade_calculated_hist_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_TRADE_CALCULATED_HIST IS 'History table for T_TRADE_CALCULATED.';"
   end

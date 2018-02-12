@@ -8,11 +8,13 @@ defmodule Area91.Repo.Migrations.CreateTable_T_CURRENCY do
         code varchar(3) not null,
         description varchar(4000) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null /* Date, on which the record was created. */,
-        date_modified timestamp not null default current_date /* Date, on which the record was last modified. */,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default (select now() at time zone 'UTC'),
         constraint pk_currency_id primary key(currency_id),
         unique(currency_id),
-        unique(code)
+        unique(code),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_CURRENCY IS 'Table that holds ISO currency codes.';"
     execute "COMMENT ON COLUMN T_ACCOUNT.date_created IS 'Date, on which the record was created.';"

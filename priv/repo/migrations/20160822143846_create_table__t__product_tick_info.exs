@@ -13,10 +13,12 @@ defmodule Area91.Repo.Migrations.CreateTable_T_PRODUCT_TICK_INFO do
         margin_day_proc decimal(18,6) not null,
         margin_night_proc decimal(18,6) not null,
         is_deleted boolean not null default 'false',
-        date_created timestamp not null,
-        date_modified timestamp not null default current_date,
+        date_created timestamp with timezone not null,
+        date_modified timestamp with timezone not null default current_date,
         constraint pk_product_tick_info_id primary key(product_tick_info_id),
-        unique(product_tick_info_id)
+        unique(product_tick_info_id),
+        check(extract(timezone from date_created) = '0'),
+        check(extract(timezone from date_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_PRODUCT_TICK_INFO IS 'Table with tick value information on contracts. Only belongs to cfd products and futures contracts.';"
   end
