@@ -33,7 +33,13 @@ defmodule Area91.Repo.Migrations.CreateTable_T_TRADE_HIST do
         date_hist_created timestamp not null,
         date_hist_modified timestamp not null default current_date,
         constraint pk_trade_hist_id primary key(trade_hist_id),
-        constraint fk_T_TRADE_HIST_trade_id foreign key (trade_id) references T_TRADE (trade_id)
+        constraint fk_T_TRADE_HIST_trade_id foreign key (trade_id) references T_TRADE (trade_id),
+	check(extract(timezone from date_buy) = '0'),
+	check(extract(timezone from date_sell) = '0'),
+	check(extract(timezone from date_created) = '0'),
+	check(extract(timezone from date_modified) = '0'),
+	check(extract(timezone from date_hist_created) = '0'),
+	check(extract(timezone from date_hist_modified) = '0')
     );"
     execute "COMMENT ON TABLE T_TRADE_HIST IS 'History table for T_TRADE.';"
   end
