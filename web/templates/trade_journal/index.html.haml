@@ -11,6 +11,7 @@
       -# TODO: split/visualize entered values vs calculated values.
       %tr
         %th trade_id
+        %th account
         %th product
         %th pool
         %th date_buy
@@ -29,6 +30,7 @@
     - for l_record <- @trade_records do
       %tr
         %td= l_record.trade_id
+        %td= l_record.account.name
         %td= l_record.product.name
         %td= l_record.pool.pool_id
         %td= l_record.date_buy

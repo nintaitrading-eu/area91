@@ -4,6 +4,21 @@
       %p Oops, something went wrong! Please check the errors below.
 
   .form-group
+    = label f, :account, class: "control-label"
+    = select f, :account, class: "form-control"
+    = error_tag f, :account
+
+  .form-group
+    = label f, :product, class: "control-label"
+    = select f, :product, class: "form-control"
+    = error_tag f, :product
+
+  .form-group
+    = label f, :currency, class: "control-label"
+    = select f, :product, class: "form-control"
+    = error_tag f, :product
+
+  .form-group
     = label f, :date_buy, class: "control-label"
     = text_input f, :date_buy, class: "form-control"
     = error_tag f, :date_buy

@@ -11,6 +11,10 @@ defmodule Area91.TradeJournalController do
 
   def index(conn, _params) do
     l_trade_records = Area91.Repo.all(Trade)
+    # TODO: trade records are loaded, but we need to fill in a trade_journal record
+    # structure, with the relevant info from the database.
+    # Where is the difference with T_TRADE?
+    # Could we not load T_TRADE and only show relevant information from that table?
     Logger.debug "DEBUG --- l_trade_records value: #{inspect(l_trade_records)}"
     # TODO: fill up a list of TradeJournal stuff
     conn
