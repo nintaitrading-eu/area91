@@ -20,7 +20,7 @@ defmodule Area91.Mixfile do
     [mod: {Area91, []},
      applications: [:phoenix, :phoenix_html, :cowboy, :logger, :gettext,
                     :phoenix_haml, :phoenix_ecto, :postgrex, :connection,
-                    :timex, :timex_ecto, :libcalculatorfinance]]
+                    :timex, :timex_ecto, :libcalculatorfinance, :plug]]
   end
 
   # Specifies which paths to compile per environment.
