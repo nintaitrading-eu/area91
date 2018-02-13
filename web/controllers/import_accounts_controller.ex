@@ -45,11 +45,11 @@ defp process_accounts_file(a_file) do
   IO.puts "[TEST: in process_accounts_file]"
   IO.inspect a_file
   IO.puts "[TEST2: in process_accounts_file]"
-  File.read(Path.join(a_file.path, a_file.filename))
-  |> String.splitter("\n", trim: true)
+  File.read!(Path.join(a_file.path, a_file.filename))
+  #|> String.splitter("\n", trim: true)
   #|> Enum.filter(&filter_line/1) # TODO: use this to filter comment lines
   |> Enum.each(&add_account/1)
-  |> Enum.join("\n")
+  #|> Enum.join("\n")
 end
 
 defp add_account(a_row) do
