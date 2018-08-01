@@ -12,8 +12,9 @@ config :logger, level: :warn
 # Configure your database
 config :area91, Area91.Repo,
   adapter: Ecto.Adapters.Postgres,
+  username: "rockwolf",
+  password: "",
+  database: "finance",
+  hostname: "se-db0-tst",
   username: "postgres",
-  password: "postgres",
-  database: "area91_test",
-  hostname: "localhost",
   pool: Ecto.Adapters.SQL.Sandbox
