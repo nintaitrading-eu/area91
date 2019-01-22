@@ -7,11 +7,10 @@ defmodule Area91.Product do
   schema "t_product" do
     field :name, :string
     field :description, :string
-    # TODO: Uncomment below, after the other tables/models have been implemented
-    #has_one :product_type, Area91.ProductType
-    has_one :currency, Area91.Currency
-    has_one :market, Area91.Market
-    #has_one :product_tick_info, Area91.ProductTickInfo
+    belongs_to :product_type, Area91.ProductType, [foreign_key: :product_type_id, references: :product_type_id, define_field: false]
+    belongs_to :currency, Area91.Currency, [foreign_key: :currency_id, references: :currency_id, define_field: false]
+    belongs_to :market, Area91.Market, [foreign_key: :market_id, references: :market_id, define_field: false]
+    belongs_to :product_tick_info, Area91.ProductTickInfo, [foreign_key: :product_tick_info_id, references: :product_tick_info_id, define_field: false]
     field :is_deleted, :boolean, default: :false 
     field :date_created, :naive_datetime
     field :date_modified, :naive_datetime
