@@ -4,8 +4,6 @@ defmodule Area91.ImportAccountsController do
   alias Area91.ImportAccounts
   import Area91.Router.Helpers
 
-  plug :action
-
   def index(conn, a_params) do
     # TODO: Show data about accounts?
     l_changeset = ImportAccounts.changeset(%ImportAccounts{})

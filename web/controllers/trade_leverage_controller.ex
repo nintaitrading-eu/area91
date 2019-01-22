@@ -5,8 +5,6 @@ defmodule Area91.TradeLeverageController do
 
   alias Area91.TradeLeverage
 
-  plug :action
-
   def index(conn, a_params) do
     l_contracts =
       if a_params == %{} do

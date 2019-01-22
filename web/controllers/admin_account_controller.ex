@@ -6,8 +6,6 @@ defmodule Area91.AdminAccountController do
   alias Area91.Account
   import Area91.Router.Helpers
 
-  plug :action
-
   def index(conn, _params) do
     l_accounts = Area91.Repo.all(Account)
     conn

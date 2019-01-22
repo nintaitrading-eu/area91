@@ -7,8 +7,6 @@ defmodule Area91.AdminCurrencyController do
   alias Area91.Currency
   import Area91.Router.Helpers
 
-  plug :action
-
   def index(conn, _params) do
     l_currency_records = Area91.Repo.all(Currency)
     conn

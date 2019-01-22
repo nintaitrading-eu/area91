@@ -4,8 +4,6 @@ defmodule Area91.AdminMarketController do
   alias Area91.Router
   import Area91.Router.Helpers
 
-  plug :action
-
   def index(conn, _params) do
     conn
     |> assign(:markets, Area91.Repo.all(Area91.Market))

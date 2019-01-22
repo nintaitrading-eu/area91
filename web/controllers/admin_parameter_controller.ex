@@ -7,8 +7,6 @@ defmodule Area91.AdminParameterController do
   alias Area91.Parameter
   import Area91.Router.Helpers
 
-  plug :action
-
   def index(conn, _params) do
     l_parameter_records = Area91.Repo.all(Parameter)
     conn

@@ -7,8 +7,6 @@ defmodule Area91.TradeJournalController do
   alias Area91.Trade
   import Area91.Router.Helpers
 
-  plug :action
-
   def index(conn, _params) do
     l_trade_records = Area91.Repo.all(Trade)
     # TODO: trade records are loaded, but we need to fill in a trade_journal record
