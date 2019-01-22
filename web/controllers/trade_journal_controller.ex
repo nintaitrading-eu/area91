@@ -5,6 +5,7 @@ defmodule Area91.TradeJournalController do
 
   alias Area91.TradeJournal
   alias Area91.Trade
+  alias Area91.Account
   import Area91.Router.Helpers
 
   def index(conn, _params) do
@@ -28,7 +29,8 @@ defmodule Area91.TradeJournalController do
 
   def new(conn, _params) do
     l_trade = %TradeJournal{}
-    l_changeset = TradeJournal.changeset(l_trade)
+    l_account = %Account{account_id: 1}
+    l_changeset = TradeJournal.changeset(l_trade, l_account)
     render(conn, "new.html", trade_record: l_trade, changeset: l_changeset)
   end
 
@@ -46,7 +48,7 @@ defmodule Area91.TradeJournalController do
     {_, l_date_sell} = Timex.parse(date_sell, "{YYYY}-{0M}-{0D} {h24}:{m}")
     IO.inspect shares_buy
     IO.inspect l_shares_buy
-    Area91.Repo.insert(%Trade{
+    Area91.Repo.insert(%TradeJournal{
         date_buy: l_date_buy,
         date_sell: l_date_sell,
         price_buy: l_price_buy,

@@ -3,7 +3,6 @@ defmodule Area91.AdminCurrencyController do
   use Timex
   require Logger
 
-  alias Area91.Router
   alias Area91.Currency
   import Area91.Router.Helpers
 
@@ -43,7 +42,7 @@ defmodule Area91.AdminCurrencyController do
     l_currency = Area91.Repo.get!(Currency, l_currency_id)
     l_currency_changeset = Currency.changeset(l_currency, a_params)
     case Area91.Repo.update(l_currency_changeset) do
-      {:ok, l_currency} ->
+      {:ok, _} ->
         conn
           |> put_flash(:info, "Currency updated successfully.")
           |> redirect(to: admin_currency_path(conn, :index, Area91.Repo.all(Currency)))

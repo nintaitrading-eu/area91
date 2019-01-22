@@ -1,7 +1,6 @@
 defmodule Area91.AdminMarketController do
   use Phoenix.Controller
 
-  alias Area91.Router
   import Area91.Router.Helpers
 
   def index(conn, _params) do

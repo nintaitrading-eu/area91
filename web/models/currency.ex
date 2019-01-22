@@ -1,6 +1,5 @@
 defmodule Area91.Currency do
   use Area91.Web, :model
-  import Ecto.Query
 
   @primary_key {:currency_id, :integer, []}
   @derive {Phoenix.Param, key: :currency_id}
