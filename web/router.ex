@@ -19,29 +19,21 @@ defmodule Area91.Router do
     ### Main
     get "/", MainController, :index
     ### Admin
-    get "/admin/account", AdminAccountController, :index
     resources "/admin/account", AdminAccountController
-    get "/admin/parameter", AdminParameterController, :index
     resources "/admin/parameter", AdminParameterController
-    get "/admin/currency", AdminCurrencyController, :index
     resources "/admin/currency", AdminCurrencyController
-    get "/admin/market", AdminMarketController, :index
     resources "/admin/market", AdminMarketController
     ### General
     get "/version", VersionController, :index
     get "/about", VersionController, :index
     ### Invoice
-    get "/invoice", InvoiceController, :index
     resources "/invoice", InvoiceController
     ### Trade
-    get "/trade/journal", TradeJournalController, :index
     resources "/trade/journal", TradeJournalController
     get "/trade/financing", TradeFinancingController, :index
-    get "/trade/leverage", TradeLeverageController, :index
-    post "/trade/leverage", TradeLeverageController, :index
+    resources "/trade/leverage", TradeLeverageController, only: [:index, :show, :create]
     get "/trade/drawdown", TradeDrawdownController, :index
     ### Import
-    get "/import/accounts", ImportAccountsController, :index
     resources "/import/accounts", ImportAccountsController
     ### Test
     get "/test", TestController, :index
