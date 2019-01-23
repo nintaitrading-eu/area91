@@ -22,6 +22,6 @@
         %td= l_currency.date_modified
         %td
           %a.pure-button{href: "#{admin_currency_path(@conn, :edit, l_currency.currency_id)}", title: "Modify", alt: "Modify"}
-            %i.fa.fa-pencil.fa-fw{:aria-hidden => "true"}
+            %i.fa.fa-pencil{:aria-hidden => "true"}
           %a.rest.pure-button{href: "#{admin_currency_path(@conn, :delete, l_currency)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
             %i.fa.fa-trash-o{:aria-hidden => "true"}
