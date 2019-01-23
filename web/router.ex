@@ -23,6 +23,7 @@ defmodule Area91.Router do
     resources "/admin/parameter", AdminParameterController
     resources "/admin/currency", AdminCurrencyController
     resources "/admin/market", AdminMarketController
+    resources "/admin/product", AdminProductController
     ### General
     get "/version", VersionController, :index
     get "/about", VersionController, :index

@@ -1,0 +1,27 @@
+.pure-control-group
+  %a.pure-button.pure-button-active{href: "/admin/product/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
+      
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th name
+        %th description
+        %th is_deleted
+        %th date_created
+        %th date_modified
+        %th &nbsp;
+    %tbody
+    - for l_product <- @product_records do
+      %tr
+        %td= l_product.name
+        %td= l_product.description
+        %td #{if l_product.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td= l_product.date_created
+        %td= l_product.date_modified
+        %td
+          %a.pure-button{href: "#{admin_product_path(@conn, :edit, l_product.product_id)}", title: "Modify", alt: "Modify"}
+            %i.fa.fa-pencil{:aria-hidden => "true"}
+          %a.rest.pure-button{href: "#{admin_product_path(@conn, :delete, l_product)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}

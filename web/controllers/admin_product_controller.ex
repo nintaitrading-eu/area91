@@ -1,9 +1,9 @@
-defmodule Area91.AdminCurrencyController do
+defmodule Area91.AdminProductController do
   use Phoenix.Controller
   use Timex
   require Logger
 
-  alias Area91.Currency
+  alias Area91.Product
   import Area91.Router.Helpers
 
   def index(conn, _params) do
@@ -20,32 +20,32 @@ defmodule Area91.AdminCurrencyController do
   end
 
   def new(conn, _params) do
-    l_product = %Currency{}
-    l_changeset = Currency.changeset(l_product)
+    l_product = %Product{}
+    l_changeset = Product.changeset(l_product)
     render(conn, "new.html", product: l_product, changeset: l_changeset)
   end
 
   # TODO: code etc. needs to be replaced with the correct fields for product
-  def create(conn, %{"product" => %{"code" => a_code, "description" => a_description}}) do
-    Area91.Repo.insert(%Currency{code: a_code, description: a_description, date_created: Timex.now})
+  def create(conn, %{"product" => %{"name" => a_name, "description" => a_description}}) do
+    Area91.Repo.insert(%Product{name: a_name, description: a_description, date_created: Timex.now})
     redirect(conn, to: admin_product_path(conn, :index))
   end
 
   def edit(conn, %{"id" => a_product_id}) do
     {l_product_id, _} = Integer.parse(a_product_id)
-    l_product = Area91.Repo.get!(Currency, l_product_id)
-    l_changeset = Currency.changeset(l_product)
+    l_product = Area91.Repo.get!(Product, l_product_id)
+    l_changeset = Product.changeset(l_product)
     render(conn, "edit.html", product: l_product, changeset: l_changeset)
   end
 
   def update(conn, %{"id" => a_product_id, "product" => a_params}) do
     {l_product_id, _} = Integer.parse(a_product_id)
     l_product = Area91.Repo.get!(Product, l_product_id)
-    l_product_changeset = Currency.changeset(l_product, a_params)
+    l_product_changeset = Product.changeset(l_product, a_params)
     case Area91.Repo.update(l_product_changeset) do
       {:ok, _} ->
         conn
-          |> put_flash(:info, "Currency updated successfully.")
+          |> put_flash(:info, "Product updated successfully.")
           |> redirect(to: admin_product_path(conn, :index, Area91.Repo.all(Currency)))
       {:error, l_product_changeset} ->
         conn
