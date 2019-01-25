@@ -1,5 +1,5 @@
-%h1.centered Create new currency
+%h1.centered Create new product
 
-= render "form.html", changeset: @changeset, action: admin_currency_path(@conn, :create)
+= render "form.html", changeset: @changeset, action: admin_product_path(@conn, :create)
 
-= link "Back", to: admin_currency_path(@conn, :index)
+= link "Back", to: admin_product_path(@conn, :index)
