@@ -1,0 +1,42 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      %p Oops, something went wrong! Please check the errors below.
+
+  .form-group
+    = label f, :description, class: "control-label"
+    = text_input f, :description, class: "form-control"
+    = error_tag f, :description
+
+  .form-group
+    = label f, :tick, class: "control-label"
+    = text_input f, :tick, class: "form-control"
+    = error_tag f, :tick
+
+  .form-group
+    = label f, :tick_value, class: "control-label"
+    = text_input f, :tick_value, class: "form-control"
+    = error_tag f, :tick_value
+
+  .form-group
+    = label f, :order_min, class: "control-label"
+    = text_input f, :order_min, class: "form-control"
+    = error_tag f, :order_min
+
+  .form-group
+    = label f, :order_max, class: "control-label"
+    = text_input f, :order_max, class: "form-control"
+    = error_tag f, :order_max
+
+  .form-group
+    = label f, :margin_day_proc, class: "control-label"
+    = text_input f, :margin_day_proc, class: "form-control"
+    = error_tag f, :margin_day_proc
+
+  .form-group
+    = label f, :margin_night_proc, class: "control-label"
+    = text_input f, :margin_night_proc, class: "form-control"
+    = error_tag f, :margin_night_proc
+
+  .form-group
+    = submit "Submit", class: "pure-button pure-button-active"

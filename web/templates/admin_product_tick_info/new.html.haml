@@ -1,0 +1,5 @@
+%h1.centered Create new product_tick_info
+
+= render "form.html", changeset: @changeset, action: admin_product_tick_info_path(@conn, :create)
+
+= link "Back", to: admin_product_tick_info_path(@conn, :index)

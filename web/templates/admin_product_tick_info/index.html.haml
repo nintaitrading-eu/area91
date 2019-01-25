@@ -1,0 +1,37 @@
+.pure-control-group
+  %a.pure-button.pure-button-active{href: "/admin/product_tick_info/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
+      
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th description
+        %th tick
+        %th tick_value
+        %th order_min
+        %th order_max
+        %th margin_day_proc
+        %th margin_night_proc
+        %th is_deleted
+        %th date_created
+        %th date_modified
+        %th &nbsp;
+    %tbody
+    - for l_product_tick_info <- @product_tick_info_records do
+      %tr
+        %td= l_product_tick_info.description
+        %td= l_product_tick_info.tick
+        %td= l_product_tick_info.tick_value
+        %td= l_product_tick_info.order_min
+        %td= l_product_tick_info.order_max
+        %td= l_product_tick_info.margin_day_proc
+        %td= l_product_tick_info.margin_night_proc
+        %td #{if l_product_tick_info.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td= l_product_tick_info.date_created
+        %td= l_product_tick_info.date_modified
+        %td
+          %a.pure-button{href: "#{admin_product_tick_info_path(@conn, :edit, l_product_tick_info.product_tick_info_id)}", title: "Modify", alt: "Modify"}
+            %i.fa.fa-pencil{:aria-hidden => "true"}
+          %a.rest.pure-button{href: "#{admin_product_tick_info_path(@conn, :delete, l_product_tick_info)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}
