@@ -5,9 +5,15 @@ defmodule Area91.AdminProductController do
 
   alias Area91.Product
   import Area91.Router.Helpers
+  import Ecto.Query
 
   def index(conn, _params) do
-    l_product_records = Area91.Repo.all(Product)
+    l_product_records = Area91.Repo.all from p in Product,
+      join: m in assoc(p, :market),
+      join: pti in assoc(p, :product_tick_info),
+      join: c in assoc(p, :currency),
+      join: pt in assoc(p, :product_type),
+      preload: [market: m, product_tick_info: pti, currency: c, product_type: pt]
     conn
     |> assign(:product_records, Area91.Repo.all(Product))
     |> render("index.html", product_records: l_product_records)

@@ -25,3 +25,17 @@
             %i.fa.fa-pencil{:aria-hidden => "true"}
           %a.rest.pure-button{href: "#{admin_product_path(@conn, :delete, l_product)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
             %i.fa.fa-trash-o{:aria-hidden => "true"}
+      %tr
+        %td *
+        %td= l_product.product_tick_info.tick
+        %td= l_product.product_tick_info.tick_value
+        %td= l_product.product_tick_info.margin_day_proc
+        %td= l_product.product_tick_info.margin_night_proc
+        %td #{if l_product.product_tick_info.is_deleted do}&#9745;#{else}&#9744;#{end}
+      %tr
+        %td *
+        %td= l_product.market.code
+        %td= l_product.market.name
+        %td= l_product.market.country
+        %td #{if l_product.market.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td
