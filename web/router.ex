@@ -13,6 +13,9 @@ defmodule Area91.Router do
     plug :accepts, ["json"]
   end
 
+  ##########################################
+  # Web backend
+  ##########################################
   scope "/", Area91 do
     pipe_through :browser # Use the default browser stack
 
@@ -40,8 +43,12 @@ defmodule Area91.Router do
     get "/test", TestController, :index
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", Area91 do
-  #   pipe_through :api
-  # end
+  ##########################################
+  # API backend
+  ##########################################
+  scope "/api/v1", Area91 do
+    pipe_through :api
+    #resources "/admin/currency", AdminCurrencyController
+    get "/admin/currency", Api.AdminCurrencyController, :index
+  end
 end
