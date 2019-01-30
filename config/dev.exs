@@ -35,8 +35,12 @@ config :phoenix, :stacktrace_depth, 20
 # Configure your database
 config :area91, Area91.Repo,
   adapter: Ecto.Adapters.Postgres,
-  username: "rockwolf",
-  password: "",
+  username: "postgres",
+  #username: "rockwolf",
+  password: "ppwppwppw_987",
+  #database: "finance",
   database: "finance",
-  hostname: "se-db0-tst",
+  #hostname: "se-db0-tst",
+  hostname: "localhost",
+  port: "5433",
   pool_size: 10

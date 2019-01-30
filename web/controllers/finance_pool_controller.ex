@@ -4,6 +4,7 @@ defmodule Area91.FinancePoolController do
   require Logger
 
   alias Area91.Pool
+  alias Area91.Account
   import Area91.Router.Helpers
   import Ecto.Query
 
@@ -24,7 +25,9 @@ defmodule Area91.FinancePoolController do
 
   def new(conn, _params) do
     l_pool = %Pool{}
-    l_changeset = Pool.changeset(l_pool)
+    {l_account, _} = Area91.Repo.one(Area91.Account)
+    IO.inspect l_account
+    l_changeset = Pool.changeset(l_pool, l_account)
     render(conn, "new.html", pool: l_pool, changeset: l_changeset)
   end
 
@@ -41,8 +44,12 @@ defmodule Area91.FinancePoolController do
 
   def edit(conn, %{"id" => a_pool_id}) do
     {l_pool_id, _} = Integer.parse(a_pool_id)
-    l_pool = Area91.Repo.get!(Pool, l_pool_id)
-    l_changeset = Pool.changeset(l_pool)
+    #l_pool = Area91.Repo.get!(Pool, l_pool_id)
+    l_pool = Area91.Repo.all from p in Pool,
+      join: a in assoc(p, :account),
+      where: p.pool_id == 1,
+      preload: [account: a]
+    l_changeset = Pool.changeset(l_pool, l_pool.account)
     render(conn, "edit.html", pool: l_pool, changeset: l_changeset)
   end
 

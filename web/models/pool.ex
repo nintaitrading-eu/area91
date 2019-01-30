@@ -24,10 +24,11 @@ defmodule Area91.Pool do
   If no a_params are provided, an invalid changeset is returned
   with no validation performed.
   """
-  def changeset(a_model, a_params \\ %{}) do
+  def changeset(a_model, %Area91.Account{} = a_account, a_params \\ %{}) do
     a_model
     |> cast(a_params, @fields)
     |> validate_required(@required)
+    |> put_assoc(:account, a_account)
   end
 
 end
