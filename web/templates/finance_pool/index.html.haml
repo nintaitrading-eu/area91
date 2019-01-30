@@ -1,0 +1,29 @@
+.pure-control-group
+  %a.pure-button.pure-button-active{href: "/finance/pool/new", title: "New", alt: "New"}
+    %i.fa.fa-file{aria-hidden: "true"}
+      
+.table-responsive
+  %table.mq-table.pure-table.pure-table-bordered
+    %thead
+      %tr
+        %th account
+        %th total
+        %th invested
+        %th cash
+        %th is_manually_added
+        %th is_deleted
+        %th &nbsp;
+    %tbody
+    - for l_pool <- @pool_records do
+      %tr
+        %td= l_pool.account.name
+        %td= l_pool.total
+        %td= l_pool.invested
+        %td= l_pool.cash
+        %td #{if l_pool.is_manually_added do}&#9745;#{else}&#9744;#{end}
+        %td #{if l_pool.is_deleted do}&#9745;#{else}&#9744;#{end}
+        %td
+          %a.pure-button{href: "#{finance_pool_path(@conn, :edit, l_pool.pool_id)}", title: "Modify", alt: "Modify"}
+            %i.fa.fa-pencil{:aria-hidden => "true"}
+          %a.rest.pure-button{href: "#{finance_pool_path(@conn, :delete, l_pool)}", title: "Delete", alt: "Delete", data-method: "DELETE"}
+            %i.fa.fa-trash-o{:aria-hidden => "true"}

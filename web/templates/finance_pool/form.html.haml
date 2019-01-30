@@ -1,0 +1,27 @@
+- form_for @changeset, @action, [multipart: true], fn f ->
+  - if @changeset.action do
+    .alert.alert-danger
+      %p Oops, something went wrong! Please check the errors below.
+
+  .form-group
+    = label f, :account, class: "control-label"
+    = select f, :account, class: "form-control"
+    = error_tag f, :account
+
+  .form-group
+    = label f, :total, class: "control-label"
+    = text_input f, :total, class: "form-control"
+    = error_tag f, :total
+
+  .form-group
+    = label f, :invested, class: "control-label"
+    = text_input f, :invested, class: "form-control"
+    = error_tag f, :invested
+
+  .form-group
+    = label f, :cash, class: "control-label"
+    = text_input f, :cash, class: "form-control"
+    = error_tag f, :cash
+
+  .form-group
+    = submit "Submit", class: "pure-button pure-button-active"

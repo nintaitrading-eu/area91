@@ -42,6 +42,12 @@
                     </ul>
                 </li>
                 <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
+                    <a href="#" id="mnu-finance" class="pure-menu-link"><i class="fa fa-eur" title="Finance" aria-hidden="true"></i> Finance</a>
+                    <ul class="pure-menu-children">
+                        <li class="pure-menu-item"><a href="/finance/pool" class="pure-menu-link">Pool</a></li>
+                    </ul>
+                </li>
+                <li class="pure-menu-item pure-menu-has-children pure-menu-allow-hover">
                     <a href="#" id="mnu-import" class="pure-menu-link"><i class="fa fa-upload" title="Import" aria-hidden="true"></i> Import</a>
                     <ul class="pure-menu-children">
                         <li class="pure-menu-item"><a href="/import/accounts" class="pure-menu-link">Accounts</a></li>
@@ -91,7 +97,7 @@
           $('form').submit(function(s) {
             var input = $("<input>")
             .attr("type", "hidden")
-            .attr("name", "_csrf_token").val("<%= get_csrf_token %>");
+            .attr("name", "_csrf_token").val("<%= get_csrf_token() %>");
             $(s.target).append($(input));
           });
         });

@@ -5,6 +5,7 @@ defmodule Area91.Pool do
   @primary_key {:pool_id, :integer, []}
   @derive {Phoenix.Param, key: :pool_id}
   schema "t_pool" do
+    belongs_to :account, Area91.Account, [foreign_key: :account_id, references: :account_id, define_field: false]
     field :total, :float
     field :invested, :float
     field :cash, :float
@@ -14,8 +15,8 @@ defmodule Area91.Pool do
     field :date_modified, :naive_datetime
   end
 
-  @fields ~w(total invested cash is_manually_added is_deleted date_created date_modified)
-  @required ~w(total invested cash is_manually_added is_deleted date_created date_modified)a
+  @fields ~w(account total invested cash is_manually_added)
+  @required ~w(account total invested cash is_manually_added)a
 
   @doc """
   Creates a changeset based on the `a_model` and `a_params`.

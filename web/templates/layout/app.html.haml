@@ -43,6 +43,12 @@
                   %li.pure-menu-item
                     %a.pure-menu-link{:href => "/trade/drawdown"} &nbsp;Drawdown
             %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
+              %a.pure-menu-link#mnu-finance{:href => "#"} &nbsp;Finance
+                %i.fa.fa-eur{:title => "Finance", :aria-hidden => "true"}
+                  %ul.pure-menu-children
+                    %li.pure-menu-item
+                      %a.pure-menu-link{:href => "/finance/pool"} Pool
+            %li.pure-menu-item.pure-menu-has-children.pure-menu-allow-hover
               %a.pure-menu-link#mnu-import{:href => "#"} &nbsp;Import
                 %i.fa.fa-upload{:title => "Invoice", :aria-hidden => "true"}
                   %ul.pure-menu-children
@@ -94,7 +100,7 @@
       $(function() {
         $(".rest").click(function(d) {
           $('form').submit(function(s) {
-            var input = $("<input>").attr("type", "hidden").attr("name", "_csrf_token").val("#{get_csrf_token}");
+            var input = $("<input>").attr("type", "hidden").attr("name", "_csrf_token").val("#{get_csrf_token()}");
             $(s.target).append($(input));
           });
         });

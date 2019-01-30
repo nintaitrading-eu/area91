@@ -40,6 +40,9 @@ defmodule Area91.Router do
     get "/trade/drawdown", TradeDrawdownController, :index
     ### Import
     resources "/import/accounts", ImportAccountsController
+    ### Finance
+    resources "/finance/pool", FinancePoolController
+    # TODO: Tax export etc. can go here too.
     ### Test
     get "/test", TestController, :index
   end
