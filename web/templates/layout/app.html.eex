@@ -67,6 +67,7 @@
                         <li class="pure-menu-item"><a href="/admin/currency" class="pure-menu-link">Currency</a></li>
                         <li class="pure-menu-item"><a href="/admin/market" class="pure-menu-link">Market</a></li>
                         <li class="pure-menu-item"><a href="/admin/parameter" class="pure-menu-link">Parameter</a></li>
+                        <li class="pure-menu-item"><a href="/admin/product" class="pure-menu-link">Product</a></li>
                         <li class="pure-menu-item"><a href="/admin/product_tick_info" class="pure-menu-link">Product tick info</a></li>
                     </ul>
                 </li>
